@@ -1,7 +1,7 @@
 export default () => {
   return (
     <>
-      <h1>123</h1>
+      <aButton>123</aButton>
     </>
   );
 };

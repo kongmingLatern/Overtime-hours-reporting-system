@@ -4,7 +4,11 @@ const routes = createRouter({
   routes: [
     {
       path: "/",
-      component: () => import("../components/HelloWorld.vue"),
+      redirect: "/home",
+    },
+    {
+      path: "/home",
+      component: () => import("@/pages/Home.vue"),
     },
   ],
 });
