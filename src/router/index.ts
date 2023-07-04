@@ -8,7 +8,7 @@ const routes = createRouter({
     },
     {
       path: "/home",
-      component: () => import("@/pages/Home.vue"),
+      component: () => import("@/pages/WorkHome.vue"),
     },
   ],
 });
