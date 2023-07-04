@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-	<h1>123</h1>
+  <a-button>123</a-button>
 </template>
 
 <style scoped></style>
