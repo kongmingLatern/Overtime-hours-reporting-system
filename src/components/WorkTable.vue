@@ -112,7 +112,7 @@ const setAgeSort = () => {
   };
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .table-operations {
   margin-bottom: 16px;
 }
