@@ -28,7 +28,7 @@ export default defineComponent({
       default: "取消",
     },
   },
-  setup(props) {
+  setup(props, { attrs }) {
     const formRef = ref<FormInstance>();
     const visible = ref(false);
     const formState = reactive(props?.formState || {});
@@ -38,7 +38,7 @@ export default defineComponent({
     // eslint-disable-next-line vue/no-setup-props-destructure
     const {
       buttonText = "编辑",
-      title = "Create a new collection",
+      title = "模态窗口标题",
       okText = "创建",
       cancelText = "取消",
     } = props;
@@ -69,7 +69,7 @@ export default defineComponent({
     };
 
     return () => (
-      <div>
+      <div {...attrs}>
         <aButton type="primary" onClick={() => (visible.value = true)}>
           {buttonText}
         </aButton>
