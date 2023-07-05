@@ -1,27 +1,28 @@
 <template>
   <ModalButtonTSX
     :form-state="formState"
+    :rule-state="ruleState"
     button-text="button"
     cancel-text="cancel"
     ok-text="ok"
     title="TestDemo"
   />
+  123
 </template>
 
 <script setup lang="ts">
 import ModalButtonTSX from "@/components/ModalButton.tsx";
 
 const formState = {
-  state: {
-    name: "",
-    age: "",
-    address: "",
-  },
+  name: "",
+  age: "",
+  address: "",
+};
+
+const ruleState: Record<keyof typeof formState, Record<string, any>> = {
   name: {
-    name: "name",
     type: "text",
     label: "Name",
-    value: "",
     rules: [
       {
         required: true,
@@ -30,10 +31,8 @@ const formState = {
     ],
   },
   age: {
-    name: "age",
     type: "number",
     label: "Age",
-    value: "",
     rules: [
       {
         required: true,
@@ -42,7 +41,6 @@ const formState = {
     ],
   },
   address: {
-    name: "address",
     type: "text",
     label: "Address",
     value: "",
