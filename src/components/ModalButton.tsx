@@ -1,5 +1,11 @@
-import { defineComponent, reactive, ref, toRaw } from "vue";
+import { PropType, defineComponent, reactive, ref, toRaw } from "vue";
 import type { FormInstance } from "ant-design-vue";
+
+interface RuleState {
+  type?: "text" | "number";
+  label?: string;
+  rules?: any[];
+}
 
 export default defineComponent({
   props: {
@@ -9,6 +15,10 @@ export default defineComponent({
     },
     formState: {
       type: Object,
+      default: () => ({}),
+    },
+    ruleState: {
+      type: Object as PropType<Array<RuleState>>,
       default: () => ({}),
     },
     title: {
@@ -25,12 +35,10 @@ export default defineComponent({
     },
   },
   setup(props) {
-    console.log("props", props);
     const formRef = ref<FormInstance>();
     const visible = ref(false);
-    const form = reactive(props?.formState || {});
-    const formState = form.state || {};
-    console.log(formState);
+    const formState = reactive(props?.formState || {});
+    const ruleState = reactive(props?.ruleState || {});
 
     const {
       buttonText = "编辑",
@@ -69,12 +77,11 @@ export default defineComponent({
           onOk={onOk}
         >
           <aForm ref={formRef} model={formState} layout="vertical">
-            {Object.keys(formState).map((key) => {
-              console.log("key", key, formState);
-              const item = formState[key];
+            {Object.keys(ruleState).map((key) => {
+              const item = ruleState[key];
               return (
                 <aFormItem name={key} label={item.label} rules={item.rules}>
-                  <aInput v-model:value={item.value} />
+                  <aInput v-model:value={formState[key]} />
                 </aFormItem>
               );
             })}
