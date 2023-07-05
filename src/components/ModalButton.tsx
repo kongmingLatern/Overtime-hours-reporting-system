@@ -1,12 +1,6 @@
 import { PropType, defineComponent, reactive, ref, toRaw } from "vue";
 import type { FormInstance } from "ant-design-vue";
 
-interface RuleState {
-  type?: "text" | "number" | string;
-  label?: string;
-  rules?: Record<string, any>[];
-}
-
 export default defineComponent({
   props: {
     buttonText: {
@@ -40,6 +34,8 @@ export default defineComponent({
     const formState = reactive(props?.formState || {});
     const ruleState = reactive(props?.ruleState || {});
 
+    // NOTE: 以下属性无需具备响应式
+    // eslint-disable-next-line vue/no-setup-props-destructure
     const {
       buttonText = "编辑",
       title = "Create a new collection",
@@ -64,6 +60,14 @@ export default defineComponent({
       }
     };
 
+    const getInputByType = (type: InputType, key: keyof typeof formState) => {
+      return type === "number" ? (
+        <aInputNumber v-model:value={formState[key]} />
+      ) : (
+        <aInput v-model:value={formState[key]} />
+      );
+    };
+
     return () => (
       <div>
         <aButton type="primary" onClick={() => (visible.value = true)}>
@@ -81,7 +85,7 @@ export default defineComponent({
               const item = ruleState[key];
               return (
                 <aFormItem name={key} label={item.label} rules={item.rules}>
-                  <aInput v-model:value={formState[key]} />
+                  {getInputByType(item.type as InputType, key)}
                 </aFormItem>
               );
             })}
