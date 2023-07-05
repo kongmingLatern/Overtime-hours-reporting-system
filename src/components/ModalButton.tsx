@@ -27,6 +27,14 @@ export default defineComponent({
       type: String,
       default: "取消",
     },
+    onOk: {
+      type: Function as PropType<(value: Record<string, any>) => void>,
+      default: () => {},
+    },
+    onFail: {
+      type: Function as PropType<(info: any) => void>,
+      default: () => {},
+    },
   },
   setup(props, { attrs }) {
     const formRef = ref<FormInstance>();
@@ -50,11 +58,13 @@ export default defineComponent({
           .then((values) => {
             console.log("Received values of form: ", values);
             console.log("formState: ", toRaw(formState));
+            props.onOk(toRaw(formState));
             visible.value = false;
             formRef.value && formRef.value.resetFields();
             console.log("reset formState: ", toRaw(formState));
           })
           .catch((info) => {
+            props.onFail(info);
             console.log("Validate Failed:", info);
           });
       }
