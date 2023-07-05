@@ -1,15 +1,5 @@
-<template>
-  <ModalButtonTSX
-    :form-state="formState"
-    button-text="button"
-    cancel-text="cancel"
-    ok-text="ok"
-    title="TestDemo"
-  />
-</template>
-
-<script setup lang="ts">
-import ModalButtonTSX from "@/components/ModalButton.tsx";
+import { defineComponent } from "vue";
+import ModalButtonTSX from "@/components/ModalButton";
 
 const formState = {
   state: {
@@ -54,6 +44,17 @@ const formState = {
     ],
   },
 };
-</script>
 
-<style scoped></style>
+export default defineComponent({
+  setup() {
+    return () => (
+      <ModalButtonTSX
+        formState={formState}
+        title="TestDemo"
+        buttonText={"button"}
+        cancelText="cancel"
+        okText="ok"
+      />
+    );
+  },
+});

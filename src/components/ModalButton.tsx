@@ -1,20 +1,43 @@
 import { defineComponent, reactive, ref, toRaw } from "vue";
 import type { FormInstance } from "ant-design-vue";
-interface Values {
-  title: string;
-  description: string;
-  modifier: string;
-}
 
 export default defineComponent({
-  setup() {
+  props: {
+    buttonText: {
+      type: String,
+      default: "编辑",
+    },
+    formState: {
+      type: Object,
+      default: () => ({}),
+    },
+    title: {
+      type: String,
+      default: "Create a new collection",
+    },
+    okText: {
+      type: String,
+      default: "创建",
+    },
+    cancelText: {
+      type: String,
+      default: "取消",
+    },
+  },
+  setup(props) {
+    console.log("props", props);
     const formRef = ref<FormInstance>();
     const visible = ref(false);
-    const formState = reactive<Values>({
-      title: "",
-      description: "",
-      modifier: "public",
-    });
+    const form = reactive(props?.formState || {});
+    const formState = form.state || {};
+    console.log(formState);
+
+    const {
+      buttonText = "编辑",
+      title = "Create a new collection",
+      okText = "创建",
+      cancelText = "取消",
+    } = props;
 
     const onOk = () => {
       if (formRef.value) {
@@ -36,36 +59,25 @@ export default defineComponent({
     return () => (
       <div>
         <aButton type="primary" onClick={() => (visible.value = true)}>
-          New Collection
+          {buttonText}
         </aButton>
         <aModal
           v-model:visible={visible.value}
-          title={"Create a new collection"}
-          okText="Create"
-          cancelText="Cancel"
+          title={title}
+          okText={okText}
+          cancelText={cancelText}
           onOk={onOk}
         >
-          <aForm
-            ref={formRef}
-            model={formState}
-            layout="vertical"
-            name="form_in_modal"
-          >
-            <aFormItem
-              name="title"
-              label="Title"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input the title of collection!",
-                },
-              ]}
-            >
-              <aInput v-model:value={formState.title} />
-            </aFormItem>
-            <aFormItem name="description" label="Description">
-              <a-textarea v-model:value={formState.description} />
-            </aFormItem>
+          <aForm ref={formRef} model={formState} layout="vertical">
+            {Object.keys(formState).map((key) => {
+              console.log("key", key, formState);
+              const item = formState[key];
+              return (
+                <aFormItem name={key} label={item.label} rules={item.rules}>
+                  <aInput v-model:value={item.value} />
+                </aFormItem>
+              );
+            })}
           </aForm>
         </aModal>
       </div>
