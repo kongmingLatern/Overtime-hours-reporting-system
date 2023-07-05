@@ -6,6 +6,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
     "types": ["vitest/globals"],
     "paths": {
       "@/*": ["src/*"]
