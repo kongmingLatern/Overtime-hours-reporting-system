@@ -7,11 +7,13 @@
     ok-text="ok"
     title="TestDemo"
   />
-  123
+  <CascaderSelect :options="options" :on-change="onChange" />
 </template>
 
 <script setup lang="ts">
 import ModalButtonTSX from "@/components/ModalButton.tsx";
+import CascaderSelect from "@/components/CascaderSelect.tsx";
+import { CascaderProps } from "ant-design-vue";
 
 const formState = {
   name: "",
@@ -50,5 +52,42 @@ const ruleState: Record<keyof typeof formState, Record<string, any>> = {
       },
     ],
   },
+};
+const options: CascaderProps["options"] = [
+  {
+    value: "zhejiang",
+    label: "Zhejiang",
+    children: [
+      {
+        value: "hangzhou",
+        label: "Hangzhou",
+        children: [
+          {
+            value: "xihu",
+            label: "West Lake",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: "jiangsu",
+    label: "Jiangsu",
+    children: [
+      {
+        value: "nanjing",
+        label: "Nanjing",
+        children: [
+          {
+            value: "zhonghuamen",
+            label: "Zhong Hua Men",
+          },
+        ],
+      },
+    ],
+  },
+];
+const onChange = (value: string[]) => {
+  console.log("value", value);
 };
 </script>
