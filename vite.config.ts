@@ -5,7 +5,13 @@ import UnoCSS from "unocss/vite";
 import path from "path";
 
 export default defineConfig({
-  plugins: [vue(), vueJSX(), UnoCSS()],
+  plugins: [
+    vue(),
+    vueJSX(),
+    UnoCSS({
+      configFile: "./uno.config.ts",
+    }),
+  ],
   resolve: {
     alias: {
       "@/": `${path.resolve(__dirname, "src")}/`,
