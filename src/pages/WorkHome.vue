@@ -22,7 +22,7 @@ const formState = {
 const ruleState: Record<keyof typeof formState, Record<string, any>> = {
   name: {
     type: "text",
-    label: "Name",
+    label: "姓名",
     rules: [
       {
         required: true,
@@ -32,7 +32,7 @@ const ruleState: Record<keyof typeof formState, Record<string, any>> = {
   },
   age: {
     type: "number",
-    label: "Age",
+    label: "年龄",
     rules: [
       {
         required: true,
@@ -42,8 +42,7 @@ const ruleState: Record<keyof typeof formState, Record<string, any>> = {
   },
   address: {
     type: "text",
-    label: "Address",
-    value: "",
+    label: "地址",
     rules: [
       {
         required: true,
@@ -53,5 +52,3 @@ const ruleState: Record<keyof typeof formState, Record<string, any>> = {
   },
 };
 </script>
-
-<style scoped></style>

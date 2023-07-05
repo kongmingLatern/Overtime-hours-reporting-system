@@ -13,7 +13,7 @@ const ruleState = {
     label: "Name",
     rules: [
       {
-        required: true,
+        required: false,
         message: "Please input your name",
       },
     ],

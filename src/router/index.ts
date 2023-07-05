@@ -10,6 +10,10 @@ const routes = createRouter({
       path: "/home",
       component: () => import("@/pages/WorkHome.vue"),
     },
+    {
+      path: "/home1",
+      component: () => import("@/pages/WorkHome.tsx"),
+    },
   ],
 });
 
