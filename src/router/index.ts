@@ -8,7 +8,7 @@ const routes = createRouter({
     },
     {
       path: "/home",
-      component: () => import("@/pages/WorkHome.vue"),
+      component: () => import("@/pages/OverWorkPersonList.vue"),
     },
     {
       path: "/home1",
