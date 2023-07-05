@@ -1,11 +1,9 @@
 <template>
-  <WorkTable />
-  <WorkTableA />
+  <ModalButtonTSX />
 </template>
 
 <script setup lang="ts">
-import WorkTable from "@/components/WorkTable.vue";
-import WorkTableA from "@/components/WorkTable.tsx";
+import ModalButtonTSX from "@/components/ModalButton.tsx";
 </script>
 
 <style scoped></style>
