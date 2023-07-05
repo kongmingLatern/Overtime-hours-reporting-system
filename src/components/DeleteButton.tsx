@@ -1,5 +1,4 @@
 import { defineComponent } from "vue";
-import { message } from "ant-design-vue";
 export default defineComponent({
   props: {
     title: {
@@ -28,14 +27,13 @@ export default defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    console.log(slots);
     return () => (
       <aPopconfirm
         title={props.title}
         ok-text={props.okText}
         cancel-text={props.cancelText}
-        onConfirm={(e) => props.onConfirm(e)}
-        onCancel={(e) => props.onCancel(e)}
+        onConfirm={props.onConfirm}
+        onCancel={props.onCancel}
         {...attrs}
       >
         {slots.default ? (
