@@ -2,16 +2,15 @@ import { defineComponent } from "vue";
 import ModalButtonTSX from "@/components/ModalButton";
 
 const formState = {
-  state: {
-    name: "",
-    age: "",
-    address: "",
-  },
+  name: "",
+  age: "",
+  address: "",
+};
+
+const ruleState = {
   name: {
-    name: "name",
     type: "text",
     label: "Name",
-    value: "",
     rules: [
       {
         required: true,
@@ -20,10 +19,8 @@ const formState = {
     ],
   },
   age: {
-    name: "age",
     type: "number",
     label: "Age",
-    value: "",
     rules: [
       {
         required: true,
@@ -32,10 +29,8 @@ const formState = {
     ],
   },
   address: {
-    name: "address",
     type: "text",
     label: "Address",
-    value: "",
     rules: [
       {
         required: true,
@@ -50,6 +45,7 @@ export default defineComponent({
     return () => (
       <ModalButtonTSX
         formState={formState}
+        ruleState={ruleState}
         title="TestDemo"
         buttonText={"button"}
         cancelText="cancel"

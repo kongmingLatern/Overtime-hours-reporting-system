@@ -2,9 +2,9 @@ import { PropType, defineComponent, reactive, ref, toRaw } from "vue";
 import type { FormInstance } from "ant-design-vue";
 
 interface RuleState {
-  type?: "text" | "number";
+  type?: "text" | "number" | string;
   label?: string;
-  rules?: any[];
+  rules?: Record<string, any>[];
 }
 
 export default defineComponent({
@@ -18,7 +18,7 @@ export default defineComponent({
       default: () => ({}),
     },
     ruleState: {
-      type: Object as PropType<Array<RuleState>>,
+      type: Object as PropType<Record<string, Partial<RuleState>>>,
       default: () => ({}),
     },
     title: {
