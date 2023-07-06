@@ -23,11 +23,16 @@ export default defineComponent({
     const ruleState = reactive(props?.ruleState || {});
 
     const getInputByType = (type: InputType, key: keyof typeof formState) => {
-      return type === "number" ? (
-        <aInputNumber v-model:value={formState[key]} />
-      ) : (
-        <aInput v-model:value={formState[key]} />
-      );
+      switch (type) {
+        case "number":
+          return <aInputNumber v-model:value={formState[key]} />;
+        case "date":
+          return <aDatePicker v-model:value={formState[key]} show-time />;
+        case "text":
+          return <aInput v-model:value={formState[key]} />;
+        default:
+          return <aInput v-model:value={formState[key]} />;
+      }
     };
 
     const onFinish = (values: any) => {
