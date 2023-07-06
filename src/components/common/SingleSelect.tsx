@@ -4,6 +4,10 @@ export default defineComponent({
   props: {
     value: {
       type: String,
+      default: undefined,
+    },
+    placeholder: {
+      type: String,
       default: "",
     },
     options: {
@@ -26,9 +30,9 @@ export default defineComponent({
       <aSelect
         ref={select.value}
         v-model:value={props.value}
-        style={{ width: "120px" }}
         onFocus={props.onFocus}
         onChange={(targetValue) => props.onChange(targetValue)}
+        placeholder={props.placeholder}
       >
         {props.options &&
           props.options.map((option: any) => (
