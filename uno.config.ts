@@ -14,4 +14,9 @@ export default defineConfig({
       },
     }),
   ],
+  shortcuts: {
+    "j-c-c": "justify-center",
+    "a-i-c": "items-center",
+    "j-a-c": "justify-center items-center",
+  },
 });
