@@ -13,12 +13,15 @@ export default defineComponent({
         <aLayoutSider
           bg="#f0f2f5"
           style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
             height: "100vh",
           }}
         >
           {Slot.sider && Slot.sider()}
         </aLayoutSider>
-        <aLayout>
+        <aLayout style={{ marginLeft: "200px" }}>
           <a-layout-header bg="#f0f2f5" p="0">
             {Slot.header && Slot.header()}
           </a-layout-header>
