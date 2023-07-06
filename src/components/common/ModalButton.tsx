@@ -1,4 +1,5 @@
 import { PropType, defineComponent, reactive, ref, toRaw } from "vue";
+import DynamicForm from "./DynamicForm";
 import type { FormInstance } from "ant-design-vue";
 
 export default defineComponent({
@@ -70,14 +71,6 @@ export default defineComponent({
       }
     };
 
-    const getInputByType = (type: InputType, key: keyof typeof formState) => {
-      return type === "number" ? (
-        <aInputNumber v-model:value={formState[key]} />
-      ) : (
-        <aInput v-model:value={formState[key]} />
-      );
-    };
-
     return () => (
       <div {...attrs}>
         <aButton type="primary" onClick={() => (visible.value = true)}>
@@ -90,16 +83,11 @@ export default defineComponent({
           cancelText={cancelText}
           onOk={onOk}
         >
-          <aForm ref={formRef} model={formState} layout="vertical">
-            {Object.keys(ruleState).map((key) => {
-              const item = ruleState[key];
-              return (
-                <aFormItem name={key} label={item.label} rules={item.rules}>
-                  {getInputByType(item.type as InputType, key)}
-                </aFormItem>
-              );
-            })}
-          </aForm>
+          <DynamicForm
+            formRef={formRef}
+            formState={formState}
+            ruleState={ruleState}
+          />
         </aModal>
       </div>
     );
