@@ -9,7 +9,7 @@ export default defineComponent({
     };
     return () => (
       <>
-        <aLayoutHeader bg="#f0f2f5" p="0">
+        <aLayoutHeader bg="#f0f2f5" p="0" h="150px" lh="0">
           {Slot.header && Slot.header()}
         </aLayoutHeader>
         <aLayoutContent bg="#f0f2f5" p="0">
