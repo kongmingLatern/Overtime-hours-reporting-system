@@ -25,11 +25,12 @@ export default defineComponent({
   },
   setup(props) {
     const select = ref(null);
+    const value = ref(props.value);
 
     return () => (
       <aSelect
         ref={select.value}
-        v-model:value={props.value}
+        v-model:value={value.value}
         onFocus={props.onFocus}
         onChange={(targetValue) => props.onChange(targetValue)}
         placeholder={props.placeholder}
