@@ -14,7 +14,7 @@ export default defineComponent({
   setup(props, { slots }) {
     const handleSlot = {
       //  对应 operation 的单元格 插槽内容
-      bodyCell: ({ text, column }) => {
+      bodyCell: ({ record, text, column }) => {
         if (column.key === "status") {
           switch (text) {
             case "已通过":
@@ -29,7 +29,7 @@ export default defineComponent({
         if (column.key === "operation") {
           return (
             <slot name="operation">
-              {(slots.operation && slots.operation()) || (
+              {(slots.operation && slots.operation(record)) || (
                 <aButton>删除</aButton>
               )}
             </slot>

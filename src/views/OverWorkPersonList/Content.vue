@@ -1,7 +1,9 @@
 <template>
   <CustomTable :columns="columns" :data="dataSource">
-    <template #operation>
-      <a-button danger>删除</a-button>
+    <template #operation="record">
+      <a-button v-if="record.status === '已提交'" type="primary">查看</a-button>
+      <a-button v-if="record.status === '已驳回'">删除</a-button>
+      <a-button v-if="record.status === '已通过'" disabled>删除</a-button>
     </template>
   </CustomTable>
 </template>
