@@ -10,11 +10,12 @@ const routes = createRouter({
       path: "/admin",
       name: "admin",
       redirect: "/admin/overworkList",
+      component: () => import("@/layout/Basic"),
       children: [
         {
           // NOTE: 加班人员列表
-          path: "overwork",
-          name: "overwork",
+          path: "overWorkPersonList",
+          name: "overWorkPersonList",
           component: () => import("@/pages/OverWorkPersonList.vue"),
         },
         {

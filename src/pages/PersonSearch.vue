@@ -1,8 +1,5 @@
 <template>
-  <Basic>
-    <template #sider>
-      <Sider />
-    </template>
+  <RouterContent>
     <template #header>
       <Header />
     </template>
@@ -12,15 +9,17 @@
     <template #footer>
       <Footer />
     </template>
-  </Basic>
+  </RouterContent>
 </template>
 
 <script setup lang="ts">
-import Basic from "@/layout/Basic";
+import RouterContent from "@/layout/RouterContent";
 import Header from "@/views/OverWorkPersonList/Header.vue";
-import Sider from "@/views/OverWorkPersonList/Sider.vue";
 import Content from "@/views/OverWorkPersonList/Content.vue";
 import Footer from "@/views/OverWorkPersonList/Footer.vue";
 </script>
 
 <style scoped></style>
+
+
+
