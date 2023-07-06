@@ -4,4 +4,4 @@ interface RuleState {
   rules?: Record<string, any>[];
 }
 
-type InputType = "number" | "text";
+type InputType = "number" | "text" | 'date'

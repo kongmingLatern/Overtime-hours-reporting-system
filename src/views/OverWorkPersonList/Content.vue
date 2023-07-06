@@ -5,6 +5,7 @@
         v-if="record.status === '已提交'"
         type="primary"
         button-text="查看"
+        title="查看"
         :form-state="record"
         :rule-state="ruleState"
       />
@@ -76,7 +77,7 @@ const dataSource = [
     start_time: "2021-09-01 12:00:00",
     end_time: "2021-09-01 12:00:00",
     over_time: "2小时",
-    report_time: "2021-09-01 12:00:00",
+    report_time: "",
   },
   {
     key: "2",
@@ -87,7 +88,7 @@ const dataSource = [
     start_time: "2021-09-01 12:00:00",
     end_time: "2021-09-01 12:00:00",
     over_time: "3小时",
-    report_time: "2021-09-01 12:00:00",
+    report_time: "",
   },
   {
     key: "3",
@@ -98,20 +99,9 @@ const dataSource = [
     start_time: "2021-09-01 12:00:00",
     end_time: "2021-09-01 12:00:00",
     over_time: "3小时",
-    report_time: "2021-09-01 12:00:00",
+    report_time: "",
   },
 ];
-
-const formState = {
-  job_number: "",
-  job_name: "",
-  department: "",
-  status: "",
-  start_time: "",
-  end_time: "",
-  over_time: "",
-  report_time: "",
-};
 
 const ruleState = {
   job_number: {
@@ -159,7 +149,7 @@ const ruleState = {
     ],
   },
   start_time: {
-    type: "string",
+    type: "text",
     label: "加班开始时间",
     rules: [
       {
@@ -170,7 +160,7 @@ const ruleState = {
     ],
   },
   end_time: {
-    type: "string",
+    type: "text",
     label: "加班结束时间",
     rules: [
       {
@@ -181,7 +171,7 @@ const ruleState = {
     ],
   },
   over_time: {
-    type: "string",
+    type: "text",
     label: "加班时长",
     rules: [
       {
@@ -192,7 +182,7 @@ const ruleState = {
     ],
   },
   report_time: {
-    type: "string",
+    type: "date",
     label: "填报时间",
     rules: [
       {
