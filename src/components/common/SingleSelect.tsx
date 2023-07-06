@@ -21,7 +21,6 @@ export default defineComponent({
   },
   setup(props) {
     const select = ref(null);
-    console.log("props", props.value);
 
     return () => (
       <aSelect
