@@ -9,7 +9,7 @@ const routes = createRouter({
     {
       path: "/admin",
       name: "admin",
-      redirect: "/admin/overwork",
+      redirect: "/admin/overworkList",
       children: [
         {
           // NOTE: 加班人员列表
@@ -31,9 +31,9 @@ const routes = createRouter({
         },
         {
           // NOTE: 项目维护
-          path: "projectMaintenance",
-          name: "projectMaintenance",
-          component: () => import("@/pages/ProjectMaintenance.vue"),
+          path: "projectMaintain",
+          name: "projectMaintain",
+          component: () => import("@/pages/ProjectMaintain.vue"),
         },
         {
           // NOTE: 生成报表
