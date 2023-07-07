@@ -10,7 +10,13 @@
         :form-state="record"
         :rule-state="ruleState"
       />
-      <a-button v-if="record.status === '已驳回'">删除</a-button>
+      <ModalButton
+        v-if="record.status === '已驳回'"
+        button-text="查看"
+        title="查看"
+        :form-state="{ ...record, reason: '驳回原因' }"
+        :rule-state="ruleState"
+      />
       <a-button v-if="record.status === '已通过'" disabled>删除</a-button>
     </template>
   </CustomTable>
@@ -196,6 +202,13 @@ const ruleState = {
         trigger: "blur",
       },
     ],
+  },
+  reason: {
+    type: "text",
+    label: "驳回原因",
+    options: {
+      disabled: true
+    }
   },
 };
 </script>
