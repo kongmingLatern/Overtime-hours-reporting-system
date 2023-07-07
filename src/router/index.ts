@@ -9,7 +9,7 @@ const routes = createRouter({
     {
       path: "/admin",
       name: "admin",
-      redirect: "/admin/overworkList",
+      redirect: "/admin/overWorkPersonList",
       component: () => import("@/layout/Basic"),
       children: [
         {
