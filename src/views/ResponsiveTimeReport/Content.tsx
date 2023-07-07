@@ -26,7 +26,24 @@ export default defineComponent({
                     cancelText="取消"
                     formState={record}
                     ruleState={ruleState}
-                  />
+                    v-slots={{
+                      modalFooter: ({ visible, onOk }) => {
+                        return (
+                          <aSpace>
+                            <aButton
+                              type="primary"
+                              onClick={() => (visible.value = false)}
+                            >
+                              取消
+                            </aButton>
+                            <aButton type="info" onClick={onOk}>
+                              提交
+                            </aButton>
+                          </aSpace>
+                        );
+                      },
+                    }}
+                  ></ModalButton>
                 );
               },
             }}

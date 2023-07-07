@@ -41,7 +41,7 @@ export default defineComponent({
       default: () => {},
     },
   },
-  setup(props, { attrs }) {
+  setup(props, { slots, attrs }) {
     const formRef = ref<FormInstance>();
     const visible = ref(false);
     const formState = reactive(props?.formState || {});
@@ -75,6 +75,25 @@ export default defineComponent({
       }
     };
 
+    const handleSlots = {
+      footer: () => {
+        return (
+          <slot name="modalFooter">
+            {(slots.modalFooter && slots.modalFooter({ visible, onOk })) || (
+              <>
+                <aButton onClick={() => (visible.value = false)}>
+                  {cancelText}
+                </aButton>
+                <aButton type="primary" onClick={onOk}>
+                  {okText}
+                </aButton>
+              </>
+            )}
+          </slot>
+        );
+      },
+    };
+
     return () => (
       <div {...attrs}>
         <aButton
@@ -89,6 +108,7 @@ export default defineComponent({
           okText={okText}
           cancelText={cancelText}
           onOk={onOk}
+          v-slots={handleSlots}
         >
           <DynamicForm
             formRef={formRef}
