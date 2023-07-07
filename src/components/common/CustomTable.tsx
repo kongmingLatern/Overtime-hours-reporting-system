@@ -35,6 +35,12 @@ export default defineComponent({
             </slot>
           );
         }
+
+        // 正则匹配字符串中的 time 字段
+        if (column.key !== "over_time" && /time/.test(column.key)) {
+          return <span>{text.format("YYYY-MM-DD HH:mm:ss")}</span>;
+        }
+
         return text;
       },
     };
