@@ -22,10 +22,14 @@ export default defineComponent({
     const formState = reactive(props?.formState || {});
     const ruleState = reactive(props?.ruleState || {});
 
-    const getInputByType = (type: InputType, key: keyof typeof formState) => {
+    const getInputByType = (
+      type: InputType,
+      key: keyof typeof formState,
+      options?
+    ) => {
       switch (type) {
         case "number":
-          return <aInputNumber v-model:value={formState[key]} />;
+          return <aInputNumber v-model:value={formState[key]} {...options} />;
         case "date":
           return (
             <aDatePicker
@@ -33,12 +37,13 @@ export default defineComponent({
               show-time
               format="YYYY-MM-DD HH:mm:ss"
               value-format="YYYY-MM-DD HH:mm:ss"
+              {...options}
             />
           );
         case "text":
-          return <aInput v-model:value={formState[key]} />;
+          return <aInput v-model:value={formState[key]} {...options} />;
         default:
-          return <aInput v-model:value={formState[key]} />;
+          return <aInput v-model:value={formState[key]} {...options} />;
       }
     };
 
@@ -64,7 +69,7 @@ export default defineComponent({
           const item = ruleState[key];
           return (
             <aFormItem name={key} label={item.label} rules={item.rules}>
-              {getInputByType(item.type as InputType, key)}
+              {getInputByType(item.type as InputType, key, item?.options)}
             </aFormItem>
           );
         })}

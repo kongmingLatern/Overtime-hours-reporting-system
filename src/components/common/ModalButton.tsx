@@ -4,6 +4,10 @@ import type { FormInstance } from "ant-design-vue";
 
 export default defineComponent({
   props: {
+    type: {
+      type: String as PropType<"primary" | "dashed" | "link" | "text">,
+      default: "primary",
+    },
     buttonText: {
       type: String,
       default: "编辑",
@@ -73,7 +77,10 @@ export default defineComponent({
 
     return () => (
       <div {...attrs}>
-        <aButton type="primary" onClick={() => (visible.value = true)}>
+        <aButton
+          type={props.type || "primary"}
+          onClick={() => (visible.value = true)}
+        >
           {buttonText}
         </aButton>
         <aModal
