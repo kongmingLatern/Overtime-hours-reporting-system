@@ -207,8 +207,8 @@ const ruleState = {
     type: "text",
     label: "驳回原因",
     options: {
-      disabled: true
-    }
+      disabled: true,
+    },
   },
 };
 </script>
