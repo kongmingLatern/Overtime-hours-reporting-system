@@ -4,7 +4,11 @@
       <Header />
     </template>
     <template #content>
-      <Content />
+      <Content>
+        <template #toolbar>
+          <ToolBar />
+        </template>
+      </Content>
     </template>
     <template #footer>
       <Footer />
@@ -17,6 +21,7 @@ import RouterContent from "@/layout/RouterContent";
 import Header from "@/views/OverWorkPersonList/Header.vue";
 import Content from "@/views/OverWorkPersonList/Content.vue";
 import Footer from "@/views/OverWorkPersonList/Footer.vue";
+import ToolBar from "@/views/OverWorkPersonList/ToolBar.vue";
 </script>
 
 <style scoped></style>

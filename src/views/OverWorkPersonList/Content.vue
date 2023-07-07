@@ -1,4 +1,5 @@
 <template>
+  <slot name="toolbar"></slot>
   <CustomTable :columns="columns" :data="dataSource">
     <template #operation="record">
       <ModalButton
@@ -18,6 +19,10 @@
 <script setup lang="ts">
 import CustomTable from "@/components/common/CustomTable";
 import ModalButton from "@/components/common/ModalButton";
+import * as dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
+
 const columns = [
   {
     title: "工号",
@@ -74,10 +79,10 @@ const dataSource = [
     job_name: "John Brown",
     department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
     status: "已驳回",
-    start_time: "2021-09-01 12:00:00",
-    end_time: "2021-09-01 12:00:00",
-    over_time: "2小时",
-    report_time: "",
+    start_time: dayjs(),
+    end_time: dayjs("2023-07-12"),
+    over_time: dayjs("2023-07-12").fromNow(true),
+    report_time: dayjs(),
   },
   {
     key: "2",
@@ -85,10 +90,10 @@ const dataSource = [
     job_name: "John Brown2",
     department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
     status: "已通过",
-    start_time: "2021-09-01 12:00:00",
-    end_time: "2021-09-01 12:00:00",
-    over_time: "3小时",
-    report_time: "",
+    start_time: dayjs(),
+    end_time: dayjs(),
+    over_time: dayjs("2023-07-11").fromNow(true),
+    report_time: dayjs(),
   },
   {
     key: "3",
@@ -96,10 +101,10 @@ const dataSource = [
     job_name: "John Brown3",
     department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
     status: "已提交",
-    start_time: "2021-09-01 12:00:00",
-    end_time: "2021-09-01 12:00:00",
-    over_time: "3小时",
-    report_time: "",
+    start_time: dayjs(),
+    end_time: dayjs(),
+    over_time: dayjs("2023-07-13").fromNow(true),
+    report_time: dayjs(),
   },
 ];
 
@@ -149,7 +154,7 @@ const ruleState = {
     ],
   },
   start_time: {
-    type: "text",
+    type: "date",
     label: "加班开始时间",
     rules: [
       {
@@ -160,7 +165,7 @@ const ruleState = {
     ],
   },
   end_time: {
-    type: "text",
+    type: "date",
     label: "加班结束时间",
     rules: [
       {
