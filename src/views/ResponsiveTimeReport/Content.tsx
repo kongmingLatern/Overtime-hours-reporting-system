@@ -1,7 +1,8 @@
 import { defineComponent, ref } from "vue";
-import { columnsData, data } from "@/store";
+import { columnsData, data, ruleState } from "@/store";
 import ResponsiveTab from "@/components/responsive/ResponsiveTab.tsx";
 import CustomTable from "@/components/common/CustomTable";
+import ModalButton from "@/components/common/ModalButton";
 
 export default defineComponent({
   setup() {
@@ -10,7 +11,30 @@ export default defineComponent({
       {
         key: "pending",
         title: "待填报",
-        content: <CustomTable columns={columnsData} data={data} />,
+        content: (
+          <CustomTable
+            columns={columnsData}
+            data={data}
+            scroll={{ x: 700 }}
+            v-slots={{
+              operation: (record) => {
+                return (
+                  <ModalButton
+                    buttonText="查看"
+                    title="填报信息"
+                    okText="确认"
+                    cancelText="取消"
+                    formState={record}
+                    ruleState={ruleState}
+                  />
+                );
+              },
+            }}
+            pagination={{
+              position: ["bottomCenter"],
+            }}
+          />
+        ),
       },
       {
         key: "reported",

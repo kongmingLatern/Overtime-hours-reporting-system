@@ -85,6 +85,7 @@ export const dataSource = [
     report_time: dayjs(),
   },
 ];
+
 export const data = [
   {
     key: "1",
@@ -110,7 +111,19 @@ export const data = [
     over_time: dayjs("2023-07-10").fromNow(true),
     apply_time: dayjs(),
   },
-];
+]
+  .concat(
+    new Array(10).fill({
+      key: "1",
+      job_name: "张三",
+      job_number: "1",
+      project: "项目1",
+      over_time: dayjs("2023-07-11").fromNow(true),
+      apply_time: dayjs(),
+    })
+  )
+  .map((i) => i);
+
 export const columnsData = [
   {
     title: "姓名",
@@ -129,15 +142,77 @@ export const columnsData = [
     dataIndex: "project",
     key: "project",
     ellipsis: true,
+    width: 100,
   },
   {
     title: "加班时长",
     dataIndex: "over_time",
     key: "over_time",
+    ellipsis: true,
+    width: 100,
   },
   {
     title: "申请时间",
     dataIndex: "apply_time",
     key: "apply_time",
+    width: 200,
+  },
+  {
+    title: "操作",
+    dataIndex: "operation",
+    key: "operation",
   },
 ];
+
+export const ruleState = {
+  job_number: {
+    type: "number",
+    label: "工号",
+    rules: [
+      {
+        required: true,
+        message: "请输入工号",
+      },
+    ],
+  },
+  job_name: {
+    type: "text",
+    label: "姓名",
+    rules: [
+      {
+        required: true,
+        message: "请输入姓名",
+      },
+    ],
+  },
+  project: {
+    type: "text",
+    label: "所属项目",
+    rules: [
+      {
+        required: true,
+        message: "请输入所属项目",
+      },
+    ],
+  },
+  over_time: {
+    type: "text",
+    label: "加班时长",
+    rules: [
+      {
+        required: true,
+        message: "请输入加班时长",
+      },
+    ],
+  },
+  apply_time: {
+    type: "date",
+    label: "申请时间",
+    rules: [
+      {
+        required: true,
+        message: "请输入申请时间",
+      },
+    ],
+  },
+};
