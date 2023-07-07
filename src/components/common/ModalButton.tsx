@@ -95,7 +95,7 @@ export default defineComponent({
     };
 
     return () => (
-      <div {...attrs}>
+      <div>
         <aButton
           type={props.type || "primary"}
           onClick={() => (visible.value = true)}
@@ -109,6 +109,7 @@ export default defineComponent({
           cancelText={cancelText}
           onOk={onOk}
           v-slots={handleSlots}
+          {...attrs}
         >
           <DynamicForm
             formRef={formRef}
