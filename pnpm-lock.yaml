@@ -46,6 +46,9 @@ devDependencies:
   axios:
     specifier: ^1.4.0
     version: 1.4.0
+  dayjs:
+    specifier: ^1.11.9
+    version: 1.11.9
   eslint:
     specifier: ^8.44.0
     version: 8.44.0
