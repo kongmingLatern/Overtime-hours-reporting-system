@@ -15,7 +15,7 @@ export default defineComponent({
       default: () => [],
     },
   },
-  setup(props, { slots }) {
+  setup(props, { slots, attrs }) {
     const handleSlot = {
       //  对应 operation 的单元格 插槽内容
       bodyCell: ({ record, text, column }) => {
@@ -53,6 +53,7 @@ export default defineComponent({
         columns={props.columns}
         dataSource={props.data}
         v-slots={handleSlot}
+        {...attrs}
       />
     );
   },
