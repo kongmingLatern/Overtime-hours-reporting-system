@@ -58,7 +58,7 @@ export default defineComponent({
           v-model:selectedKeys={selectedKeys.value}
           theme="dark"
           mode="inline"
-          h="100vh"
+          h="inherit"
         >
           {MenuLists.map((item) => (
             <aMenuItem key={item.key} onClick={() => router.push(item.link)}>
