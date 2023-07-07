@@ -44,6 +44,18 @@ const routes = createRouter({
         },
       ],
     },
+    {
+      path: "/home",
+      name: "home",
+      redirect: "/home/index",
+      children: [
+        {
+          path: "index",
+          name: "index",
+          component: () => import("@/pages/ResponsiveTimeReport.vue"),
+        },
+      ],
+    },
   ],
 });
 
