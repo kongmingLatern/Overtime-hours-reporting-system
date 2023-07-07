@@ -1,5 +1,7 @@
-import ResponsiveTab from "@/components/responsive/ResponsiveTab.tsx";
 import { defineComponent, ref } from "vue";
+import { columnsData, data } from "@/store";
+import ResponsiveTab from "@/components/responsive/ResponsiveTab.tsx";
+import CustomTable from "@/components/common/CustomTable";
 
 export default defineComponent({
   setup() {
@@ -8,13 +10,11 @@ export default defineComponent({
       {
         key: "pending",
         title: "待填报",
-        icon: "iconfont icon-daishenhe",
-        content: <div>123</div>,
+        content: <CustomTable columns={columnsData} data={data} />,
       },
       {
         key: "reported",
         title: "已填报",
-        icon: "iconfont icon-yitijiao",
         content: "已填报",
       },
     ];
