@@ -29,21 +29,30 @@ export default defineComponent({
                     v-slots={{
                       modalFooter: ({ visible, onOk }) => {
                         return (
-                          <aSpace>
+                          <div class="flex justify-between">
                             <aButton
-                              type="primary"
                               onClick={() => (visible.value = false)}
+                              bg="red-600"
+                              color="white"
+                              w="1/3"
                             >
-                              取消
+                              驳回
                             </aButton>
-                            <aButton type="info" onClick={onOk}>
-                              提交
+                            <aButton
+                              bg="green-600"
+                              color="white"
+                              htmlType="submit"
+                              w="1/3"
+                              onClick={onOk}
+                            >
+                              同意
                             </aButton>
-                          </aSpace>
+                          </div>
                         );
                       },
                     }}
-                  ></ModalButton>
+                    wrap-class-name="full-modal"
+                  />
                 );
               },
             }}
