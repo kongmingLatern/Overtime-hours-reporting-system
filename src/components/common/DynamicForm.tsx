@@ -27,7 +27,14 @@ export default defineComponent({
         case "number":
           return <aInputNumber v-model:value={formState[key]} />;
         case "date":
-          return <aDatePicker v-model:value={formState[key]} show-time />;
+          return (
+            <aDatePicker
+              v-model:value={formState[key]}
+              show-time
+              format="YYYY-MM-DD HH:mm:ss"
+              value-format="YYYY-MM-DD HH:mm:ss"
+            />
+          );
         case "text":
           return <aInput v-model:value={formState[key]} />;
         default:
