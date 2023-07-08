@@ -166,53 +166,38 @@ export const columnsData = [
 
 export const ruleState = {
   job_number: {
-    type: "number",
+    type: "readonly",
     label: "工号",
-    rules: [
-      {
-        required: true,
-        message: "请输入工号",
-      },
-    ],
+    options: {
+      disabled: true,
+    },
   },
   job_name: {
-    type: "text",
+    type: "readonly",
     label: "姓名",
-    rules: [
-      {
-        required: true,
-        message: "请输入姓名",
-      },
-    ],
+    options: {
+      disabled: true,
+    },
   },
   project: {
-    type: "text",
+    type: "readonly",
     label: "所属项目",
-    rules: [
-      {
-        required: true,
-        message: "请输入所属项目",
-      },
-    ],
+    options: {
+      disabled: true,
+    },
   },
   over_time: {
-    type: "text",
+    type: "readonly",
     label: "加班时长",
-    rules: [
-      {
-        required: true,
-        message: "请输入加班时长",
-      },
-    ],
+    options: {
+      disabled: true,
+    },
   },
   apply_time: {
     type: "date",
     label: "申请时间",
-    rules: [
-      {
-        required: true,
-        message: "请输入申请时间",
-      },
-    ],
+    options: {
+      disabled: true,
+    },
   },
 };
