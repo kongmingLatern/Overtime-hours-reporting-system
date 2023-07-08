@@ -1,5 +1,6 @@
 import { FormInstance } from "ant-design-vue";
 import { PropType, Ref, defineComponent, reactive, ref } from "vue";
+import SingleSelect from "./SingleSelect";
 
 export default defineComponent({
   props: {
@@ -42,6 +43,15 @@ export default defineComponent({
           );
         case "text":
           return <aInput v-model:value={formState[key]} {...options} />;
+
+        case "select":
+          return <SingleSelect value={formState[key]} {...options} />;
+        case "readonly":
+          return (
+            <aTypographyParagraph>
+              <blockquote>{formState[key]}</blockquote>
+            </aTypographyParagraph>
+          );
         default:
           return <aInput v-model:value={formState[key]} {...options} />;
       }

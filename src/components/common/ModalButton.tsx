@@ -8,9 +8,17 @@ export default defineComponent({
       type: String as PropType<"primary" | "dashed" | "link" | "text">,
       default: "primary",
     },
+    containProps: {
+      type: Object,
+      default: () => {},
+    },
     buttonText: {
       type: String,
       default: "编辑",
+    },
+    buttonProps: {
+      type: Object,
+      default: () => {},
     },
     formState: {
       type: Object,
@@ -95,10 +103,11 @@ export default defineComponent({
     };
 
     return () => (
-      <div {...attrs}>
+      <div {...props.containProps}>
         <aButton
           type={props.type || "primary"}
           onClick={() => (visible.value = true)}
+          {...props.buttonProps}
         >
           {buttonText}
         </aButton>
@@ -109,6 +118,7 @@ export default defineComponent({
           cancelText={cancelText}
           onOk={onOk}
           v-slots={handleSlots}
+          {...attrs}
         >
           <DynamicForm
             formRef={formRef}

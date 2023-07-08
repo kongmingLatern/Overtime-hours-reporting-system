@@ -1,11 +1,38 @@
+import { message } from "ant-design-vue";
 import axios from "axios";
 
-axios.interceptors.request.use((config) => {
-  return config;
+const http = axios.create({
+  baseURL:
+    "https://www.fastmock.site/mock/293bd4e6457a72210f13652b93a118b4/api",
 });
 
-axios.interceptors.response.use((response) => {
-  return response;
-});
+http.interceptors.request.use(
+  (config) => {
+    return config;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
+);
 
-export default axios;
+http.interceptors.response.use(
+  (response) => {
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      message.error(response.status);
+      return response;
+    }
+  },
+  (err) => {
+    const { response } = err;
+    if (response) {
+      message.error(response.status);
+      return Promise.reject(response.data);
+    } else {
+      message.error("网络连接异常，请稍后再试");
+    }
+  }
+);
+
+export { http };
