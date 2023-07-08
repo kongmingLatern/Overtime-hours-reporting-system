@@ -1,5 +1,5 @@
 import { defineComponent, ref } from "vue";
-import { columnsData, data, ruleState, reportColumnsData } from "@/store";
+import { useResponsiveTimeReportStore, data } from "@/store";
 import ResponsiveTab from "@/components/responsive/ResponsiveTab.tsx";
 import CustomTable from "@/components/common/CustomTable";
 import ModalButton from "@/components/common/ModalButton";
@@ -7,13 +7,15 @@ import ModalButton from "@/components/common/ModalButton";
 export default defineComponent({
   setup() {
     const activeKey = ref<string>("pending");
+    const { columns, reportColumns, ruleState } =
+      useResponsiveTimeReportStore();
     const tabList = [
       {
         key: "pending",
         title: "待审批",
         content: (
           <CustomTable
-            columns={columnsData}
+            columns={columns}
             data={data}
             scroll={{ x: 700 }}
             v-slots={{
@@ -88,7 +90,7 @@ export default defineComponent({
         title: "已审批",
         content: (
           <CustomTable
-            columns={reportColumnsData}
+            columns={reportColumns}
             data={data}
             scroll={{ x: 700 }}
             pagination={{

@@ -1,34 +1,4 @@
 // personSearch
-export const personSearchColumns = [
-  {
-    title: "工号",
-    dataIndex: "job_number",
-    key: "job_number",
-  },
-  {
-    title: "姓名",
-    dataIndex: "job_name",
-    key: "job_name",
-    width: 160,
-  },
-  {
-    title: "所属部门",
-    dataIndex: "department",
-    key: "department",
-    ellipsis: true,
-  },
-  {
-    title: "职级",
-    dataIndex: "job",
-    key: "job",
-    width: 160,
-  },
-  {
-    title: "操作",
-    dataIndex: "operation",
-    key: "operation",
-  },
-];
 export const personDataSource = [
   {
     key: "1",
@@ -54,35 +24,6 @@ export const personDataSource = [
 ];
 
 //department
-export const departMentColumns = [
-  {
-    title: "部门名称",
-    dataIndex: "department_name",
-    key: "department_name",
-  },
-  {
-    title: "部门编码",
-    dataIndex: "department_number",
-    key: "department_number",
-    width: 160,
-  },
-  {
-    title: "部长",
-    dataIndex: "leader",
-    key: "leader",
-    ellipsis: true,
-  },
-  {
-    title: "所属条线",
-    dataIndex: "line_number",
-    key: "line_number",
-  },
-  {
-    title: "操作",
-    dataIndex: "operation",
-    key: "operation",
-  },
-];
 export const departMentDataSource = [
   {
     key: "1",
@@ -107,30 +48,6 @@ export const departMentDataSource = [
   },
 ];
 //projectmaintain
-export const projectMaintainColumns = [
-  {
-    title: "项目名称",
-    dataIndex: "work_name",
-    key: "work_name",
-  },
-  {
-    title: "项目时间",
-    dataIndex: "work_time",
-    key: "work_time",
-    width: 200,
-  },
-  {
-    title: "所属部门",
-    dataIndex: "department",
-    key: "department",
-    ellipsis: true,
-  },
-  {
-    title: "操作",
-    dataIndex: "operation",
-    key: "operation",
-  },
-];
 export const projectMaintainDataSource = [
   {
     key: "1",
@@ -152,30 +69,6 @@ export const projectMaintainDataSource = [
   },
 ];
 //generateResports
-export const generateResportsColumns = [
-  {
-    title: "员工姓名",
-    dataIndex: "job_name",
-    key: "job_name",
-  },
-  {
-    title: "项目名称",
-    dataIndex: "work_name",
-    key: "work_name",
-    width: 420,
-  },
-  {
-    title: "部门名称",
-    dataIndex: "department_name",
-    key: "department_name",
-    ellipsis: true,
-  },
-  // {
-  //   title: "操作",
-  //   dataIndex: "operation",
-  //   key: "operation",
-  // },
-];
 export const generateResportsDataSource = [
   {
     key: "1",
@@ -235,118 +128,3 @@ export const data = [
     })
   )
   .map((i) => i);
-
-export const columnsData = [
-  {
-    title: "姓名",
-    dataIndex: "job_name",
-    key: "job_name",
-    ellipsis: true,
-  },
-  {
-    title: "工号",
-    dataIndex: "job_number",
-    key: "job_number",
-    ellipsis: true,
-  },
-  {
-    title: "所属项目",
-    dataIndex: "project",
-    key: "project",
-    ellipsis: true,
-    width: 100,
-  },
-  {
-    title: "加班时长",
-    dataIndex: "over_time",
-    key: "over_time",
-    ellipsis: true,
-    width: 100,
-  },
-  {
-    title: "申请时间",
-    dataIndex: "apply_time",
-    key: "apply_time",
-    width: 200,
-  },
-  {
-    title: "操作",
-    dataIndex: "operation",
-    key: "operation",
-  },
-];
-
-export const reportColumnsData = [
-  {
-    title: "工号",
-    dataIndex: "job_number",
-    key: "job_number",
-    width: 80,
-    ellipsis: true,
-  },
-  {
-    title: "姓名",
-    dataIndex: "job_name",
-    key: "job_name",
-    width: 100,
-    ellipsis: true,
-  },
-  {
-    title: "所属项目",
-    dataIndex: "project",
-    key: "project",
-    ellipsis: true,
-    width: 100,
-  },
-  {
-    title: "加班时长",
-    dataIndex: "over_time",
-    key: "over_time",
-    ellipsis: true,
-    width: 100,
-  },
-  {
-    title: "申请时间",
-    dataIndex: "apply_time",
-    key: "apply_time",
-    width: 200,
-  },
-];
-
-export const ruleState = {
-  job_number: {
-    type: "readonly",
-    label: "工号",
-    options: {
-      disabled: true,
-    },
-  },
-  job_name: {
-    type: "readonly",
-    label: "姓名",
-    options: {
-      disabled: true,
-    },
-  },
-  project: {
-    type: "readonly",
-    label: "所属项目",
-    options: {
-      disabled: true,
-    },
-  },
-  over_time: {
-    type: "readonly",
-    label: "加班时长",
-    options: {
-      disabled: true,
-    },
-  },
-  apply_time: {
-    type: "date",
-    label: "申请时间",
-    options: {
-      disabled: true,
-    },
-  },
-};
