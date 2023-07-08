@@ -1,5 +1,6 @@
 import App from "./App.vue";
 import { createApp } from "vue";
+import "@/assets/fullModal.scss";
 
 // ======== Pinia ========
 import { createPinia } from "pinia";
