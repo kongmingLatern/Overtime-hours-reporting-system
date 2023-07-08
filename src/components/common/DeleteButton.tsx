@@ -3,15 +3,15 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      default: "Are you sure delete this task?",
+      default: "你确定要删除吗?",
     },
     okText: {
       type: String,
-      default: "Yes",
+      default: "是",
     },
     cancelText: {
       type: String,
-      default: "No",
+      default: "否",
     },
     onConfirm: {
       type: Function,
