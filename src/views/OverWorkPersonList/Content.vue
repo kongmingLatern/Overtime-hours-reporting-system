@@ -1,6 +1,6 @@
 <template>
   <slot name="toolbar"></slot>
-  <CustomTable :columns="columns" :data="dataSource">
+  <CustomTable :columns="overWorkPersonColumns" :data="dataSource">
     <template #operation="record">
       <ModalButton
         v-if="record.status === '已提交'"
@@ -25,7 +25,20 @@
 <script setup lang="ts">
 import CustomTable from "@/components/common/CustomTable";
 import ModalButton from "@/components/common/ModalButton";
-import { columns, dataSource } from "@/store";
+import { onMounted, ref } from "vue";
+import {
+  useOverWorkPersonListStore,
+  OverWorkPersonType,
+} from "@/store/overWorkPersonList.store";
+const { overWorkPersonColumns, getAllOverWorkPersonList } =
+  useOverWorkPersonListStore();
+
+const dataSource = ref<OverWorkPersonType[]>([]);
+
+onMounted(async () => {
+  dataSource.value = await getAllOverWorkPersonList();
+  console.log(dataSource.value);
+});
 
 const ruleState = {
   job_number: {
