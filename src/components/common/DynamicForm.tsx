@@ -1,6 +1,9 @@
 import { FormInstance } from "ant-design-vue";
 import { PropType, Ref, defineComponent, reactive, ref } from "vue";
 import SingleSelect from "./SingleSelect";
+import * as dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 export default defineComponent({
   props: {
@@ -49,7 +52,11 @@ export default defineComponent({
         case "readonly":
           return (
             <aTypographyParagraph>
-              <blockquote>{formState[key]}</blockquote>
+              {key === "over_time" ? (
+                <blockquote>{dayjs(formState[key]).fromNow(true)}</blockquote>
+              ) : (
+                <blockquote>{formState[key]}</blockquote>
+              )}
             </aTypographyParagraph>
           );
         default:
