@@ -23,7 +23,7 @@ export default defineComponent({
       default: () => {},
     },
   },
-  setup(props) {
+  setup(props, { attrs }) {
     const select = ref(null);
     const value = ref(props.value);
 
@@ -34,6 +34,7 @@ export default defineComponent({
         onFocus={props.onFocus}
         onChange={(targetValue) => props.onChange(targetValue)}
         placeholder={props.placeholder}
+        {...attrs}
       >
         {props.options &&
           props.options.map((option: any) => (
