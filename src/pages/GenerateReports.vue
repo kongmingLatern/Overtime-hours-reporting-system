@@ -15,9 +15,9 @@
 
 <script setup lang="ts">
 import RouterContent from "@/layout/RouterContent";
-import Header from "@/views/OverWorkPersonList/Header.vue";
-import Content from "@/views/OverWorkPersonList/Content.vue";
-import Footer from "@/views/OverWorkPersonList/Footer.vue";
+import Header from "@/views/GenerateReports/Header.vue";
+import Content from "@/views/GenerateReports/Content.vue";
+import Footer from "@/views/GenerateReports/Footer.vue";
 </script>
 
 <style scoped></style>

@@ -4,7 +4,7 @@ dayjs.extend(relativeTime);
 // OverWorkPersonList
 export const columns = [
   {
-    title: "工号1",
+    title: "工号",
     dataIndex: "job_number",
     key: "job_number",
   },
@@ -99,7 +99,7 @@ export const personSearchColumns=[
     title: "姓名",
     dataIndex: "job_name",
     key: "job_name",
-    width: 80,
+    width: 160,
   },
   {
     title: "所属部门",
@@ -111,6 +111,7 @@ export const personSearchColumns=[
     title: "职级",
     dataIndex: "job",
     key: "job",
+    width:160,
   },
   {
     title: "操作",
@@ -141,8 +142,151 @@ export const personDataSource = [
     job:"经理"
   },
 ];
-
-
+//department
+export const departMentColumns=[
+  {
+    title: "部门名称",
+    dataIndex: "department_name",
+    key: "department_name",
+  },
+  {
+    title: "部门编码",
+    dataIndex: "department_number",
+    key: "department_number",
+    width: 160,
+  },
+  {
+    title: "部长",
+    dataIndex: "leader",
+    key: "leader",
+    ellipsis: true,
+  },
+  {
+    title: "所属条线",
+    dataIndex: "line_number",
+    key: "line_number",
+  },
+  {
+    title: "操作",
+    dataIndex: "operation",
+    key: "operation",
+  },
+];
+export const departMentDataSource = [
+  {
+    key: "1",
+    department_name: "财务部",
+    department_number: "2014",
+    leader: "David",
+    line_number: "1000-12"
+  },
+  {
+    key: "2",
+    department_name: "研发部",
+    department_number: "2015",
+    leader: "White",
+    line_number: "1000-13"
+  },
+  {
+    key: "3",
+    department_name: "营销部",
+    department_number: "2016",
+    leader: "Taylor",
+    line_number: "1000-14"
+  },
+];
+//projectmaintain
+export const projectMaintainColumns=[
+  {
+    title: "项目名称",
+    dataIndex: "work_name",
+    key: "work_name",
+  },
+  {
+    title: "项目时间",
+    dataIndex: "work_time",
+    key: "work_time",
+    width: 200,
+  },
+  {
+    title: "所属部门",
+    dataIndex: "department",
+    key: "department",
+    ellipsis: true,
+  },
+  {
+    title: "操作",
+    dataIndex: "operation",
+    key: "operation",
+  },
+];
+export const projectMaintainDataSource = [
+  {
+    key: "1",
+    work_name: "人员查询",
+    work_time: "2020-1-1",
+    department: "研发部",
+    
+  },
+  {
+    key: "2",
+    work_name: "薪资调整",
+    work_time: "2020-2-1",
+    department: "财务部",
+  },
+  {
+    key: "3",
+    work_name: "市场拓展",
+    work_time: "2020-3-1",
+    department: "营销部",
+  },
+];
+//generateResports
+export const generateResportsColumns=[
+  {
+    title: "员工姓名",
+    dataIndex: "job_name",
+    key: "job_name",
+  },
+  {
+    title: "项目名称",
+    dataIndex: "work_name",
+    key: "work_name",
+    width: 420,
+  },
+  {
+    title: "部门名称",
+    dataIndex: "department_name",
+    key: "department_name",
+    ellipsis: true,
+  },
+  // {
+  //   title: "操作",
+  //   dataIndex: "operation",
+  //   key: "operation",
+  // },
+];
+export const generateResportsDataSource = [
+  {
+    key: "1",
+    job_name: "BOb",
+    work_name: "人员查询",
+    department_name: "研发部",
+    
+  },
+  {
+    key: "2",
+    job_name: "Andy",
+    work_name: "薪资调整",
+    department_name: "财务部",
+  },
+  {
+    key: "3",
+    job_name: "ALaly",
+    work_name: "市场拓展",
+    department_name: "营销部",
+  },
+];
 // responsive
 export const data = [
   {

@@ -4,13 +4,18 @@
       <Header />
     </template>
     <template #content>
-      <Content />
+      <Content>
+        <template #toolbar>
+          <ToolBar />
+        </template>
+      </Content>
     </template>
     <template #footer>
       <Footer />
     </template>
   </RouterContent>
 </template>
+
 
 <script setup lang="ts">
 import RouterContent from "@/layout/RouterContent";
