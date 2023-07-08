@@ -12,6 +12,10 @@ export default defineComponent({
       type: String,
       default: "编辑",
     },
+    buttonProps: {
+      type: Object,
+      default: () => {},
+    },
     formState: {
       type: Object,
       default: () => ({}),
@@ -99,6 +103,7 @@ export default defineComponent({
         <aButton
           type={props.type || "primary"}
           onClick={() => (visible.value = true)}
+          {...props.buttonProps}
         >
           {buttonText}
         </aButton>
