@@ -1,6 +1,6 @@
 export const columns = [
   {
-    title: "工号",
+    title: "工号1",
     dataIndex: "job_number",
     key: "job_number",
   },
@@ -83,6 +83,63 @@ export const dataSource = [
   },
 ];
 
+
+// personSearch
+export const personSearchColumns=[
+  {
+    title: "工号",
+    dataIndex: "job_number",
+    key: "job_number",
+  },
+  {
+    title: "姓名",
+    dataIndex: "job_name",
+    key: "job_name",
+    width: 80,
+  },
+  {
+    title: "所属部门",
+    dataIndex: "department",
+    key: "department",
+    ellipsis: true,
+  },
+  {
+    title: "职级",
+    dataIndex: "job",
+    key: "job",
+  },
+  {
+    title: "操作",
+    dataIndex: "operation",
+    key: "operation",
+  },
+];
+export const personDataSource = [
+  {
+    key: "1",
+    job_number: "1",
+    job_name: "John Brown",
+    department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
+    job: 'CEO'
+  },
+  {
+    key: "2",
+    job_number: "2",
+    job_name: "John Brown2",
+    department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
+    job:'CFO'
+  },
+  {
+    key: "3",
+    job_number: "3",
+    job_name: "John Brown3",
+    department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
+    job:"经理"
+  },
+];
+
+
+// responsive
 export const data = [
   {
     key: "1",
