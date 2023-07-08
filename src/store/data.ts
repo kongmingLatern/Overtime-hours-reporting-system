@@ -84,8 +84,9 @@ export const dataSource = [
 ];
 
 
+
 // personSearch
-export const personSearchColumns=[
+export const personSearchColumns = [
   {
     title: "工号",
     dataIndex: "job_number",
@@ -121,23 +122,24 @@ export const personDataSource = [
     job_number: "1",
     job_name: "John Brown",
     department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
-    job: 'CEO'
+    job: "CEO",
   },
   {
     key: "2",
     job_number: "2",
     job_name: "John Brown2",
     department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
-    job:'CFO'
+    job: "CFO",
   },
   {
     key: "3",
     job_number: "3",
     job_name: "John Brown3",
     department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
-    job:"经理"
+    job: "经理",
   },
 ];
+
 //department
 export const departMentColumns=[
   {
@@ -283,6 +285,7 @@ export const generateResportsDataSource = [
     department_name: "营销部",
   },
 ];
+
 // responsive
 export const data = [
   {

@@ -3,15 +3,15 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      default: "Are you sure delete this task?",
+      default: "你确定要删除吗?",
     },
     okText: {
       type: String,
-      default: "Yes",
+      default: "是",
     },
     cancelText: {
       type: String,
-      default: "No",
+      default: "否",
     },
     onConfirm: {
       type: Function,
@@ -24,6 +24,10 @@ export default defineComponent({
     value: {
       type: String,
       default: "删除",
+    },
+    buttonProps: {
+      type: Object,
+      default: () => {},
     },
   },
   setup(props, { attrs, slots }) {
@@ -39,7 +43,7 @@ export default defineComponent({
         {slots.default ? (
           slots.default()
         ) : (
-          <a-button type="link">{props.value}</a-button>
+          <a-button {...props.buttonProps}>{props.value}</a-button>
         )}
       </aPopconfirm>
     );
