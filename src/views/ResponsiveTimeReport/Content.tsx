@@ -164,7 +164,7 @@ export default defineComponent({
                 },
               },
             },
-            over_time_reasion: {
+            over_time_reason: {
               type: "text",
               label: "加班事由",
             },
