@@ -1,7 +1,6 @@
 <template>
   <slot name="toolbar"></slot>
-  <CustomTable :columns="columns" :data="generateResportsDataSource">
-  </CustomTable>
+  <CustomTable :columns="columns" :data="generateResportsDataSource" />
 </template>
 
 <script setup lang="ts">

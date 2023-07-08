@@ -3,7 +3,3 @@
     &copy; 2023-2024 Syj & Zmt
   </div>
 </template>
-
-<script setup lang="ts"></script>
-
-<style scoped></style>
