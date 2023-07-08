@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { http } from "@/api";
+
 export interface OverWorkPersonType {
   job_number: string | number;
   job_name: string;
@@ -23,12 +24,14 @@ export const useOverWorkPersonListStore = defineStore(
         title: "工号",
         dataIndex: "job_number",
         key: "job_number",
+        width: 80,
       },
       {
         title: "姓名",
         dataIndex: "job_name",
         key: "job_name",
         width: 80,
+        ellipsis: true,
       },
       {
         title: "所属部门",
@@ -40,31 +43,39 @@ export const useOverWorkPersonListStore = defineStore(
         title: "表单状态",
         dataIndex: "status",
         key: "status",
+        width: 80,
+        ellipsis: true,
       },
       {
         title: "加班开始时间",
         dataIndex: "start_time",
         key: "start_time",
+        ellipsis: true,
       },
       {
         title: "加班结束时间",
         dataIndex: "end_time",
         key: "end_time",
+        ellipsis: true,
       },
       {
         title: "加班时长",
         dataIndex: "over_time",
         key: "over_time",
+        width: 100,
+        ellipsis: true,
       },
       {
         title: "填报时间",
         dataIndex: "report_time",
         key: "report_time",
+        ellipsis: true,
       },
       {
         title: "驳回原因",
         dataIndex: "operation",
         key: "operation",
+        ellipsis: true,
       },
     ];
 

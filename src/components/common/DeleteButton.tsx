@@ -25,6 +25,10 @@ export default defineComponent({
       type: String,
       default: "删除",
     },
+    buttonProps: {
+      type: Object,
+      default: () => {},
+    },
   },
   setup(props, { attrs, slots }) {
     return () => (
@@ -39,7 +43,7 @@ export default defineComponent({
         {slots.default ? (
           slots.default()
         ) : (
-          <a-button type="link">{props.value}</a-button>
+          <a-button {...props.buttonProps}>{props.value}</a-button>
         )}
       </aPopconfirm>
     );
