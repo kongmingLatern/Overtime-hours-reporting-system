@@ -1,5 +1,5 @@
 import { defineComponent, ref } from "vue";
-import { columnsData, data, ruleState } from "@/store";
+import { columnsData, data, ruleState, reportColumnsData } from "@/store";
 import ResponsiveTab from "@/components/responsive/ResponsiveTab.tsx";
 import CustomTable from "@/components/common/CustomTable";
 import ModalButton from "@/components/common/ModalButton";
@@ -10,7 +10,7 @@ export default defineComponent({
     const tabList = [
       {
         key: "pending",
-        title: "待填报",
+        title: "待审批",
         content: (
           <CustomTable
             columns={columnsData}
@@ -85,16 +85,95 @@ export default defineComponent({
       },
       {
         key: "reported",
-        title: "已填报",
-        content: "已填报",
+        title: "已审批",
+        content: (
+          <CustomTable
+            columns={reportColumnsData}
+            data={data}
+            scroll={{ x: 700 }}
+            pagination={{
+              position: ["bottomCenter"],
+            }}
+          />
+        ),
       },
     ];
     return () => (
-      <ResponsiveTab
-        activeKey={activeKey.value}
-        tabList={tabList}
-        justify-center
-      />
+      <>
+        <ResponsiveTab
+          activeKey={activeKey.value}
+          tabList={tabList}
+          justify-center
+        />
+        <ModalButton
+          wrap-class-name="full-modal"
+          title="填报信息"
+          containProps={{
+            class: "fixed bottom-[50px] right-2 ",
+          }}
+          buttonProps={{
+            class: "rounded-full w-[45px] h-[45px]",
+          }}
+          buttonText="+"
+          formState={{
+            job_name: "",
+            job_number: "",
+            over_time: "",
+            project: "123",
+            over_time_reason: "",
+          }}
+          ruleState={{
+            job_name: {
+              type: "text",
+              label: "员工姓名",
+            },
+            job_number: {
+              type: "number",
+              label: "工号",
+            },
+            over_time: {
+              type: "date",
+              label: "加班时间",
+            },
+            project: {
+              type: "select",
+              label: "所属项目",
+              options: {
+                options: [
+                  {
+                    value: "1号部门",
+                    options: {
+                      disabled: true,
+                    },
+                  },
+                  {
+                    value: "2号部门",
+                    options: {
+                      disabled: true,
+                    },
+                  },
+                  {
+                    value: "3号部门",
+                    options: {
+                      disabled: false,
+                    },
+                  },
+                ],
+                onChange: (e) => {
+                  console.log("e", e);
+                },
+              },
+            },
+            over_time_reasion: {
+              type: "text",
+              label: "加班事由",
+            },
+          }}
+          v-slots={{
+            modalFooter: ({ onOk }) => <aButton onClick={onOk}>提交</aButton>,
+          }}
+        />
+      </>
     );
   },
 });

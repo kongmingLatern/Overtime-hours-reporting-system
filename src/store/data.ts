@@ -164,6 +164,43 @@ export const columnsData = [
   },
 ];
 
+export const reportColumnsData = [
+  {
+    title: "工号",
+    dataIndex: "job_number",
+    key: "job_number",
+    width: 80,
+    ellipsis: true,
+  },
+  {
+    title: "姓名",
+    dataIndex: "job_name",
+    key: "job_name",
+    width: 100,
+    ellipsis: true,
+  },
+  {
+    title: "所属项目",
+    dataIndex: "project",
+    key: "project",
+    ellipsis: true,
+    width: 100,
+  },
+  {
+    title: "加班时长",
+    dataIndex: "over_time",
+    key: "over_time",
+    ellipsis: true,
+    width: 100,
+  },
+  {
+    title: "申请时间",
+    dataIndex: "apply_time",
+    key: "apply_time",
+    width: 200,
+  },
+];
+
 export const ruleState = {
   job_number: {
     type: "readonly",
