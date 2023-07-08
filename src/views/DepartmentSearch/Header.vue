@@ -31,42 +31,31 @@
   
   const searchList = [
     {
-      label: "员工姓名",
-      placeholder: "请输入员工姓名",
+      label: "部门名称",
+      placeholder: "请输入部门名称",
       onSearch: (e: any) => {
         console.log(e);
       },
     },
     {
-      label: "员工工号",
-      placeholder: "请输入员工工号",
-      onSearch: (e: any) => {
-        console.log(e);
-      },
-    },
-    
-  ];
-  
-  const singleSelect = [
-    {
-      label: "所属部门",
-      placeholder: "请选择所属部门",
-      value: "1号部门",
+      label: "部门编码",
+      placeholder: "请输入部门编码",
+      value: "1000-12",
       options: [
         {
-          value: "1号部门",
+          value: "1000-12",
           options: {
             disabled: true,
           },
         },
         {
-          value: "2号部门",
+          value: "1000-13",
           options: {
             disabled: true,
           },
         },
         {
-          value: "3号部门",
+          value: "1000-14",
           options: {
             disabled: false,
           },
@@ -76,7 +65,38 @@
         console.log(e);
       },
     },
+    
+  ];
   
+  const singleSelect = [
+    {
+      label: "部长",
+      placeholder: "请输入部长",
+      value: "张三",
+      options: [
+        {
+          value: "张三",
+          options: {
+            disabled: true,
+          },
+        },
+        {
+          value: "李四",
+          options: {
+            disabled: true,
+          },
+        },
+        {
+          value: "王五",
+          options: {
+            disabled: false,
+          },
+        },
+      ],
+      onChange: (e: any) => {
+        console.log(e);
+      },
+    },
   ];
   </script>
   
@@ -87,3 +107,4 @@
     align-items: center;
   }
   </style>
+  

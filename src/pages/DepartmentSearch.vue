@@ -4,7 +4,11 @@
       <Header />
     </template>
     <template #content>
-      <Content />
+      <Content>
+        <template #toolbar>
+          <ToolBar/>
+        </template>
+      </Content>
     </template>
     <template #footer>
       <Footer />
@@ -14,9 +18,10 @@
 
 <script setup lang="ts">
 import RouterContent from "@/layout/RouterContent";
-import Header from "@/views/OverWorkPersonList/Header.vue";
-import Content from "@/views/OverWorkPersonList/Content.vue";
-import Footer from "@/views/OverWorkPersonList/Footer.vue";
+import Header from "@/views/DepartmentSearch/Header.vue";
+import Content from "@/views/DepartmentSearch/Content.vue";
+import Footer from "@/views/DepartmentSearch/Footer.vue";
+import ToolBar from "@/views/DepartmentSearch/ToolBar.vue";
 </script>
 
 <style scoped></style>
