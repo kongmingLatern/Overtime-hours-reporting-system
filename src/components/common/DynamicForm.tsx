@@ -42,6 +42,12 @@ export default defineComponent({
           );
         case "text":
           return <aInput v-model:value={formState[key]} {...options} />;
+        case "readonly":
+          return (
+            <aTypographyParagraph>
+              <blockquote>{formState[key]}</blockquote>
+            </aTypographyParagraph>
+          );
         default:
           return <aInput v-model:value={formState[key]} {...options} />;
       }
