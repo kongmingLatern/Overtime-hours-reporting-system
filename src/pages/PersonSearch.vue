@@ -14,9 +14,10 @@
 
 <script setup lang="ts">
 import RouterContent from "@/layout/RouterContent";
-import Header from "@/views/OverWorkPersonList/Header.vue";
-import Content from "@/views/OverWorkPersonList/Content.vue";
-import Footer from "@/views/OverWorkPersonList/Footer.vue";
+import Header from "@/views/PersonSearch/Header.vue";
+import Content from "@/views/PersonSearch/Content.vue";
+import Footer from "@/views/PersonSearch/Footer.vue";
+import ToolBar from "@/views/PersonSearch/ToolBar.vue";
 </script>
 
 <style scoped></style>
