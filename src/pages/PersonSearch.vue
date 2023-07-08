@@ -17,10 +17,6 @@ import RouterContent from "@/layout/RouterContent";
 import Header from "@/views/PersonSearch/Header.vue";
 import Content from "@/views/PersonSearch/Content.vue";
 import Footer from "@/views/PersonSearch/Footer.vue";
-import ToolBar from "@/views/PersonSearch/ToolBar.vue";
 </script>
 
 <style scoped></style>
-
-
-
