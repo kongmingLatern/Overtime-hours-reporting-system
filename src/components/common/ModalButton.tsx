@@ -8,6 +8,10 @@ export default defineComponent({
       type: String as PropType<"primary" | "dashed" | "link" | "text">,
       default: "primary",
     },
+    containProps: {
+      type: Object,
+      default: () => {},
+    },
     buttonText: {
       type: String,
       default: "编辑",
@@ -99,7 +103,7 @@ export default defineComponent({
     };
 
     return () => (
-      <div>
+      <div {...props.containProps}>
         <aButton
           type={props.type || "primary"}
           onClick={() => (visible.value = true)}
