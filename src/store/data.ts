@@ -1,90 +1,3 @@
-export const columns = [
-  {
-    title: "工号",
-    dataIndex: "job_number",
-    key: "job_number",
-  },
-  {
-    title: "姓名",
-    dataIndex: "job_name",
-    key: "job_name",
-    width: 80,
-  },
-  {
-    title: "所属部门",
-    dataIndex: "department",
-    key: "department",
-    ellipsis: true,
-  },
-  {
-    title: "表单状态",
-    dataIndex: "status",
-    key: "status",
-  },
-  {
-    title: "加班开始时间",
-    dataIndex: "start_time",
-    key: "start_time",
-  },
-  {
-    title: "加班结束时间",
-    dataIndex: "end_time",
-    key: "end_time",
-  },
-  {
-    title: "加班时长",
-    dataIndex: "over_time",
-    key: "over_time",
-  },
-  {
-    title: "填报时间",
-    dataIndex: "report_time",
-    key: "report_time",
-  },
-  {
-    title: "驳回原因",
-    dataIndex: "operation",
-    key: "operation",
-  },
-];
-export const dataSource = [
-  {
-    key: "1",
-    job_number: "1",
-    job_name: "John Brown",
-    department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
-    status: "已驳回",
-    start_time: new Date(),
-    end_time: new Date("2023-07-12"),
-    over_time: new Date(),
-    report_time: new Date(),
-  },
-  {
-    key: "2",
-    job_number: "2",
-    job_name: "John Brown2",
-    department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
-    status: "已通过",
-    start_time: new Date(),
-    end_time: new Date("2023-07-12"),
-    over_time: new Date("2023-07-22"),
-    report_time: new Date(),
-  },
-  {
-    key: "3",
-    job_number: "3",
-    job_name: "John Brown3",
-    department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
-    status: "已提交",
-    start_time: new Date(),
-    end_time: new Date("2023-07-12"),
-    over_time: new Date("2023-09-20"),
-    report_time: new Date(),
-  },
-];
-
-
-
 // personSearch
 export const personSearchColumns = [
   {
@@ -108,7 +21,7 @@ export const personSearchColumns = [
     title: "职级",
     dataIndex: "job",
     key: "job",
-    width:160,
+    width: 160,
   },
   {
     title: "操作",
@@ -141,7 +54,7 @@ export const personDataSource = [
 ];
 
 //department
-export const departMentColumns=[
+export const departMentColumns = [
   {
     title: "部门名称",
     dataIndex: "department_name",
@@ -176,25 +89,25 @@ export const departMentDataSource = [
     department_name: "财务部",
     department_number: "2014",
     leader: "David",
-    line_number: "1000-12"
+    line_number: "1000-12",
   },
   {
     key: "2",
     department_name: "研发部",
     department_number: "2015",
     leader: "White",
-    line_number: "1000-13"
+    line_number: "1000-13",
   },
   {
     key: "3",
     department_name: "营销部",
     department_number: "2016",
     leader: "Taylor",
-    line_number: "1000-14"
+    line_number: "1000-14",
   },
 ];
 //projectmaintain
-export const projectMaintainColumns=[
+export const projectMaintainColumns = [
   {
     title: "项目名称",
     dataIndex: "work_name",
@@ -224,7 +137,6 @@ export const projectMaintainDataSource = [
     work_name: "人员查询",
     work_time: "2020-1-1",
     department: "研发部",
-    
   },
   {
     key: "2",
@@ -240,7 +152,7 @@ export const projectMaintainDataSource = [
   },
 ];
 //generateResports
-export const generateResportsColumns=[
+export const generateResportsColumns = [
   {
     title: "员工姓名",
     dataIndex: "job_name",
@@ -270,7 +182,6 @@ export const generateResportsDataSource = [
     job_name: "BOb",
     work_name: "人员查询",
     department_name: "研发部",
-    
   },
   {
     key: "2",
