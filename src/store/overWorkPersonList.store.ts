@@ -18,7 +18,7 @@ const enum AxiosAPIPath {
 export const useOverWorkPersonListStore = defineStore(
   "overWorkPersonList",
   () => {
-    const overWorkPersonColumns = [
+    const columns = [
       {
         title: "工号",
         dataIndex: "job_number",
@@ -75,7 +75,7 @@ export const useOverWorkPersonListStore = defineStore(
 
     return {
       getAllOverWorkPersonList,
-      overWorkPersonColumns,
+      columns,
     };
   }
 );

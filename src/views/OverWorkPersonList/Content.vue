@@ -1,6 +1,6 @@
 <template>
   <slot name="toolbar"></slot>
-  <CustomTable :columns="overWorkPersonColumns" :data="dataSource">
+  <CustomTable :columns="columns" :data="dataSource">
     <template #operation="record">
       <ModalButton
         v-if="record.status === '已提交'"
@@ -30,14 +30,12 @@ import {
   useOverWorkPersonListStore,
   OverWorkPersonType,
 } from "@/store/overWorkPersonList.store";
-const { overWorkPersonColumns, getAllOverWorkPersonList } =
-  useOverWorkPersonListStore();
+const { columns, getAllOverWorkPersonList } = useOverWorkPersonListStore();
 
 const dataSource = ref<OverWorkPersonType[]>([]);
 
 onMounted(async () => {
   dataSource.value = await getAllOverWorkPersonList();
-  console.log(dataSource.value);
 });
 
 const ruleState = {
