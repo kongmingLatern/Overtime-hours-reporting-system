@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { http } from "@/api";
+import { ref } from "vue";
 
 export interface OverWorkPersonType {
   job_number: string | number;
@@ -19,6 +20,7 @@ const enum AxiosAPIPath {
 export const useOverWorkPersonListStore = defineStore(
   "overWorkPersonList",
   () => {
+    const data = ref<OverWorkPersonType[]>([]);
     const columns = [
       {
         title: "工号",
@@ -179,10 +181,11 @@ export const useOverWorkPersonListStore = defineStore(
 
     async function getAllOverWorkPersonList() {
       const res = await http.get(AxiosAPIPath.GETALL);
-      return res.data;
+      data.value = res.data;
     }
 
     return {
+      data,
       getAllOverWorkPersonList,
       columns,
       ruleState,
