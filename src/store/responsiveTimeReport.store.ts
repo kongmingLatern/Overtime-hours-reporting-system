@@ -24,8 +24,8 @@ export const useResponsiveTimeReport = () => {
     },
     {
       title: "所属项目",
-      dataIndex: "project",
-      key: "project",
+      dataIndex: "project_name",
+      key: "project_name",
       ellipsis: true,
       width: 100,
     },
@@ -65,8 +65,8 @@ export const useResponsiveTimeReport = () => {
     },
     {
       title: "所属项目",
-      dataIndex: "project",
-      key: "project",
+      dataIndex: "project_name",
+      key: "project_name",
       ellipsis: true,
       width: 100,
     },
@@ -100,7 +100,7 @@ export const useResponsiveTimeReport = () => {
         disabled: true,
       },
     },
-    project: {
+    project_name: {
       type: "readonly",
       label: "所属项目",
       options: {

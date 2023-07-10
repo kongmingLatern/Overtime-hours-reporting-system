@@ -11,13 +11,13 @@ export const useProjectMaintain = () => {
   const columns = [
     {
       title: "项目名称",
-      dataIndex: "work_name",
-      key: "work_name",
+      dataIndex: "project_name",
+      key: "project_name",
     },
     {
       title: "项目时间",
-      dataIndex: "work_time",
-      key: "work_time",
+      dataIndex: "project_time",
+      key: "project_time",
       width: 200,
     },
     {

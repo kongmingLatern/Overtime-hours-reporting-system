@@ -9,7 +9,7 @@ interface DepartMentDataType {
 interface GenerateReportsType {
   key: string | number;
   job_name: string;
-  work_name: string;
+  project_name: string;
   department_name: string;
 }
 
@@ -34,8 +34,8 @@ interface PersonDataType {
 
 interface ProjectMaintainType {
   key: string | number;
-  work_name: string;
-  work_time: string;
+  project_name: string;
+  project_time: string;
   department_name: string;
 }
 

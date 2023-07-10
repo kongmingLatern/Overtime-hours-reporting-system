@@ -17,8 +17,8 @@ export const useGenerateReports = defineStore("generateReports", () => {
     },
     {
       title: "项目名称",
-      dataIndex: "work_name",
-      key: "work_name",
+      dataIndex: "project_name",
+      key: "project_name",
       width: 420,
     },
     {
@@ -27,11 +27,6 @@ export const useGenerateReports = defineStore("generateReports", () => {
       key: "department_name",
       ellipsis: true,
     },
-    // {
-    //   title: "操作",
-    //   dataIndex: "operation",
-    //   key: "operation",
-    // },
   ];
   const ruleState = {
     job_name: {
@@ -45,7 +40,7 @@ export const useGenerateReports = defineStore("generateReports", () => {
         },
       ],
     },
-    work_name: {
+    project_name: {
       type: "string",
       label: "项目名称",
       rules: [
@@ -67,17 +62,6 @@ export const useGenerateReports = defineStore("generateReports", () => {
         },
       ],
     },
-    // line_number: {
-    //   type: "string",
-    //   label: "所属条线",
-    //   rules: [
-    //     {
-    //       required: true,
-    //       message: "请输入所属条线",
-    //       trigger: "blur",
-    //     },
-    //   ],
-    // },
   };
 
   async function getAllReportList() {
