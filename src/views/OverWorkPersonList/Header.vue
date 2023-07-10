@@ -12,7 +12,7 @@
 
       <a-space :size="32">
         <SingleSelect
-          v-for="item in singleSelect"
+          v-for="item in singleSelectList"
           :key="item.label"
           :value="item.value"
           :options="item.options"
@@ -28,120 +28,8 @@
 <script setup lang="ts">
 import SearchInput from "@/components/common/SearchInput";
 import SingleSelect from "@/components/common/SingleSelect";
-import { useOverWorkPersonList } from "@/store";
-
-function searchByValue(key: string, value: string) {
-  return function (item: any) {
-    return item[key].includes(value);
-  };
-}
-async function fuzzyQueryByKey(key, e) {
-  const { data, resetData } = useOverWorkPersonList();
-  await resetData();
-  data.value = data.value.filter((item: any) => searchByValue(key, e)(item));
-}
-
-const searchList = [
-  {
-    label: "员工姓名",
-    placeholder: "请输入员工姓名",
-    onSearch: async (e: any) => {
-      await fuzzyQueryByKey("job_name", e);
-    },
-  },
-  {
-    label: "员工工号",
-    placeholder: "请输入员工工号",
-    onSearch: async (e: any) => {
-      await fuzzyQueryByKey("job_number", e);
-    },
-  },
-  {
-    label: "加班时间",
-    placeholder: "请输入加班时间",
-    onSearch: async (e: any) => {
-      await fuzzyQueryByKey("start_time", e);
-    },
-  },
-];
-
-const singleSelect = [
-  {
-    label: "所属部门",
-    placeholder: "请选择所属部门",
-    value: "1号部门",
-    options: [
-      {
-        value: "1号部门",
-        options: {
-          disabled: true,
-        },
-      },
-      {
-        value: "2号部门",
-        options: {
-          disabled: true,
-        },
-      },
-      {
-        value: "3号部门",
-        options: {
-          disabled: false,
-        },
-      },
-    ],
-    onChange: (e: any) => {
-      console.log(e);
-    },
-  },
-  {
-    label: "表单状态",
-    placeholder: "请选择表单状态",
-    value: "已通过",
-    options: [
-      {
-        value: "已通过",
-      },
-      {
-        value: "已提交",
-      },
-      {
-        value: "已驳回",
-      },
-    ],
-    onChange: (e: any) => {
-      console.log(e);
-    },
-  },
-  {
-    label: "所属项目",
-    value: "1号项目",
-    options: [
-      {
-        value: "1号项目",
-        options: {
-          disabled: true,
-        },
-      },
-      {
-        value: "2号项目",
-        options: {
-          disabled: true,
-        },
-      },
-      {
-        value: "3号项目",
-        options: {
-          disabled: false,
-        },
-      },
-    ],
-    placeholder: "请选择所属项目",
-    onChange: (e: any) => {
-      console.log(e);
-    },
-  },
-];
+import { searchList } from "./searchList";
+import { singleSelectList } from "./singleSelectList";
 </script>
 
 <style lang="scss" scoped>

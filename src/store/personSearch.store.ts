@@ -22,8 +22,8 @@ export const usePersonSearch = () => {
     },
     {
       title: "所属部门",
-      dataIndex: "department",
-      key: "department",
+      dataIndex: "department_name",
+      key: "department_name",
       ellipsis: true,
     },
     {
