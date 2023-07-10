@@ -1,6 +1,6 @@
 <template>
   <slot name="toolbar"></slot>
-  <CustomTable :columns="columns" :data="departMentDataSource">
+  <CustomTable :columns="columns" :data="data" :loading="loading">
     <template #operation="record">
       <a-space>
         <ModalButton
@@ -20,6 +20,12 @@
 import CustomTable from "@/components/common/CustomTable";
 import ModalButton from "@/components/common/ModalButton";
 import DeleteButton from "@/components/common/DeleteButton";
-import { departMentDataSource, useDepartmentSearchStore } from "@/store";
-const { columns, ruleState } = useDepartmentSearchStore();
+import { useDepartmentSearch } from "@/store";
+import { onMounted } from "vue";
+const { data, loading, getAllDepartmentList, columns, ruleState } =
+  useDepartmentSearch();
+
+onMounted(async () => {
+  await getAllDepartmentList();
+});
 </script>

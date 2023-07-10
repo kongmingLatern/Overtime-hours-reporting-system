@@ -13,7 +13,7 @@ const enum AxiosAPIPath {
   GETALL = "/getAllPersonList",
 }
 
-export const usePersonSearchStore = () => {
+export const usePersonSearch = () => {
   const data = ref<PersonDataType[]>([]);
   const loading = ref<boolean>(true);
 

@@ -1,28 +1,4 @@
 
-//department
-export const departMentDataSource = [
-  {
-    key: "1",
-    department_name: "财务部",
-    department_number: "2014",
-    leader: "David",
-    line_number: "1000-12",
-  },
-  {
-    key: "2",
-    department_name: "研发部",
-    department_number: "2015",
-    leader: "White",
-    line_number: "1000-13",
-  },
-  {
-    key: "3",
-    department_name: "营销部",
-    department_number: "2016",
-    leader: "Taylor",
-    line_number: "1000-14",
-  },
-];
 //projectmaintain
 export const projectMaintainDataSource = [
   {

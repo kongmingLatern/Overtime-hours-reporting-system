@@ -20,10 +20,10 @@
 import CustomTable from "@/components/common/CustomTable";
 import ModalButton from "@/components/common/ModalButton";
 import DeleteButton from "@/components/common/DeleteButton";
-import { usePersonSearchStore } from "@/store";
+import { usePersonSearch } from "@/store";
 import { onMounted } from "vue";
 const { data, loading, getAllPersonList, columns, ruleState } =
-  usePersonSearchStore();
+  usePersonSearch();
 
 onMounted(async () => {
   await getAllPersonList();

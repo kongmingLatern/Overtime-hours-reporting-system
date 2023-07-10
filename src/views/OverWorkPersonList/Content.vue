@@ -44,8 +44,8 @@
 <script setup lang="ts">
 import CustomTable from "@/components/common/CustomTable";
 import ModalButton from "@/components/common/ModalButton";
-import { onMounted } from "vue";
 import DeleteButton from "@/components/common/DeleteButton";
+import { onMounted } from "vue";
 import { useOverWorkPersonList } from "@/store";
 const { data, loading, columns, ruleState, getAllOverWorkPersonList } =
   useOverWorkPersonList();
