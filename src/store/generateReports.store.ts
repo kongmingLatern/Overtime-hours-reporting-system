@@ -69,6 +69,7 @@ export const useGenerateReports = defineStore("generateReports", () => {
     data.value = res.data;
     loading.value = false;
   }
+
   return {
     data,
     loading,

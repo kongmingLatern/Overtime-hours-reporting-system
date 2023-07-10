@@ -90,7 +90,12 @@ export const useDepartmentSearch = () => {
     loading.value = false;
   }
 
+  async function init() {
+    await getAllDepartmentList();
+  }
+
   return {
+    init,
     data,
     loading,
     columns,

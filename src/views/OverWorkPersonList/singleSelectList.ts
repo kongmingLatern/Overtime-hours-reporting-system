@@ -1,12 +1,23 @@
-import { useDepartmentSearch } from "@/store";
+import { useDepartmentSearch, useProjectMaintain } from "@/store";
 import { ref } from "vue";
 import { fuzzyQueryByKey } from "./searchList";
-const { data, getAllDepartmentList } = useDepartmentSearch();
-await getAllDepartmentList();
-const result = ref(
+const { data, init } = useDepartmentSearch();
+const { data: projectData, init: initProjectData } = useProjectMaintain();
+await init();
+await initProjectData();
+
+const departmentData = ref(
   data.value.map((item) => {
     return {
       value: item.department_name,
+    };
+  })
+);
+
+const projectList = ref(
+  projectData.value.map((item) => {
+    return {
+      value: item.project_name,
     };
   })
 );
@@ -15,8 +26,8 @@ export const singleSelectList = [
   {
     label: "所属部门",
     placeholder: "请选择所属部门",
-    value: result.value[0].value,
-    options: result.value,
+    value: departmentData.value[0].value,
+    options: departmentData.value,
     onChange: async (e: any) => {
       await fuzzyQueryByKey("department_name", e);
     },
@@ -42,30 +53,11 @@ export const singleSelectList = [
   },
   {
     label: "所属项目",
-    value: "1号项目",
-    options: [
-      {
-        value: "1号项目",
-        options: {
-          disabled: true,
-        },
-      },
-      {
-        value: "2号项目",
-        options: {
-          disabled: true,
-        },
-      },
-      {
-        value: "3号项目",
-        options: {
-          disabled: false,
-        },
-      },
-    ],
+    value: projectList.value[0].value,
+    options: projectList.value,
     placeholder: "请选择所属项目",
-    onChange: (e: any) => {
-      console.log(e);
+    onChange: async (e: any) => {
+      await fuzzyQueryByKey("project_name", e);
     },
   },
 ];

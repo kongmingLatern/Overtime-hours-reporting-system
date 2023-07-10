@@ -38,8 +38,12 @@ export const useProjectMaintain = () => {
     data.value = res.data;
     loading.value = false;
   }
+  async function init() {
+    await getAllProjectList();
+  }
 
   return {
+    init,
     data,
     loading,
     columns,
