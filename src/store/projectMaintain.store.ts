@@ -1,6 +1,4 @@
-import { defineStore } from "pinia";
-
-export const useProjectMaintainStore = defineStore("projectMainStore", () => {
+export const useProjectMaintainStore = () => {
   const columns = [
     {
       title: "项目名称",
@@ -29,4 +27,4 @@ export const useProjectMaintainStore = defineStore("projectMainStore", () => {
   return {
     columns,
   };
-});
+};

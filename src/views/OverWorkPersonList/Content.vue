@@ -1,6 +1,6 @@
 <template>
   <slot name="toolbar"></slot>
-  <CustomTable :columns="columns" :data="data">
+  <CustomTable :columns="columns" :data="data" :loading="loading">
     <template #operation="record">
       <a-space>
         <ModalButton
@@ -47,7 +47,7 @@ import ModalButton from "@/components/common/ModalButton";
 import { onMounted } from "vue";
 import DeleteButton from "@/components/common/DeleteButton";
 import { useOverWorkPersonList } from "@/store";
-const { data, columns, ruleState, getAllOverWorkPersonList } =
+const { data, loading, columns, ruleState, getAllOverWorkPersonList } =
   useOverWorkPersonList();
 onMounted(async () => {
   await getAllOverWorkPersonList();

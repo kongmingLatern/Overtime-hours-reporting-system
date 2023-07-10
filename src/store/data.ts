@@ -1,27 +1,3 @@
-// personSearch
-export const personDataSource = [
-  {
-    key: "1",
-    job_number: "1",
-    job_name: "John Brown",
-    department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
-    job: "CEO",
-  },
-  {
-    key: "2",
-    job_number: "2",
-    job_name: "John Brown2",
-    department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
-    job: "CFO",
-  },
-  {
-    key: "3",
-    job_number: "3",
-    job_name: "John Brown3",
-    department: "New York No. 1 Lake Park, New York No. 1 Lake Park",
-    job: "经理",
-  },
-];
 
 //department
 export const departMentDataSource = [

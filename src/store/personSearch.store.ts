@@ -1,6 +1,22 @@
-import { defineStore } from "pinia";
+import { http } from "@/api";
+import { ref } from "vue";
 
-export const usePersonSearchStore = defineStore("personSearch", () => {
+interface PersonDataType {
+  key: string | number;
+  job_number: string | number;
+  job_name: string;
+  department: string;
+  job: string;
+}
+
+const enum AxiosAPIPath {
+  GETALL = "/getAllPersonList",
+}
+
+export const usePersonSearchStore = () => {
+  const data = ref<PersonDataType[]>([]);
+  const loading = ref<boolean>(true);
+
   const columns = [
     {
       title: "工号",
@@ -79,8 +95,17 @@ export const usePersonSearchStore = defineStore("personSearch", () => {
     },
   };
 
+  async function getAllPersonList() {
+    const res = await http.get(AxiosAPIPath["GETALL"]);
+    data.value = res.data;
+    loading.value = false;
+  }
+
   return {
+    data,
+    loading,
     columns,
     ruleState,
+    getAllPersonList,
   };
-});
+};
