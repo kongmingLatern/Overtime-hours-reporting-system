@@ -8,6 +8,7 @@
           :placeholder="item.placeholder"
           :on-search="item.onSearch"
         />
+        <RangePicker />
       </a-space>
 
       <a-space :size="32">
@@ -28,6 +29,7 @@
 <script setup lang="ts">
 import SearchInput from "@/components/common/SearchInput";
 import SingleSelect from "@/components/common/SingleSelect";
+import RangePicker from "@/components/common/RangePicker.vue";
 import { searchList } from "./searchList";
 import { singleSelectList } from "./singleSelectList";
 </script>

@@ -26,11 +26,4 @@ export const searchList = [
       await fuzzyQueryByKey("job_number", e);
     },
   },
-  {
-    label: "加班时间",
-    placeholder: "请输入加班时间",
-    onSearch: async (e: any) => {
-      await fuzzyQueryByKey("start_time", e);
-    },
-  },
 ];
