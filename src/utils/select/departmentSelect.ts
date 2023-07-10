@@ -13,12 +13,14 @@ const departmentData = ref(
   })
 );
 
-export const departmentSelect = {
-  label: "所属部门",
-  placeholder: "请选择所属部门",
-  value: departmentData.value[0].value,
-  options: departmentData.value,
-  onChange: async (e: any) => {
-    await fuzzyQueryByKey(useDepartmentSearch, "department_name", e);
-  },
+export const departmentSelect = (hook) => {
+  return {
+    label: "所属部门",
+    placeholder: "请选择所属部门",
+    value: departmentData.value[0].value,
+    options: departmentData.value,
+    onChange: async (e: any) => {
+      await fuzzyQueryByKey(hook, "department_name", e);
+    },
+  };
 };
