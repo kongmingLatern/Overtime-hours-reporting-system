@@ -1,89 +1,41 @@
 <template>
-    <div bg="#001529" flex j-a-c h="150px">
-      <a-space :size="32" direction="vertical">
-        <a-space :size="32">
-          <SearchInput
-            v-for="item in searchList"
-            :key="item.label"
-            :placeholder="item.placeholder"
-            :on-search="item.onSearch"
-          />
-        </a-space>
-  
-        <a-space :size="32">
-          <SingleSelect
-            v-for="item in singleSelect"
-            :key="item.label"
-            :value="item.value"
-            :options="item.options"
-            :placeholder="item.placeholder"
-            :on-change="item.onChange"
-            class="w-[210px]"
-          />
-        </a-space>
+  <div bg="#001529" flex j-a-c h="150px">
+    <a-space :size="32" direction="vertical">
+      <a-space :size="32">
+        <SearchInput
+          v-for="item in searchList"
+          :key="item.label"
+          :placeholder="item.placeholder"
+          :on-search="item.onSearch"
+        />
       </a-space>
-    </div>
-  </template>
-  
-  <script setup lang="ts">
-  import SearchInput from "@/components/common/SearchInput";
-  import SingleSelect from "@/components/common/SingleSelect";
-  
-  const searchList = [
-    {
-      label: "员工姓名",
-      placeholder: "请输入员工姓名",
-      onSearch: (e: any) => {
-        console.log(e);
-      },
-    },
-    {
-      label: "员工工号",
-      placeholder: "请输入员工工号",
-      onSearch: (e: any) => {
-        console.log(e);
-      },
-    },
-    
-  ];
-  
-  const singleSelect = [
-    {
-      label: "所属部门",
-      placeholder: "请选择所属部门",
-      value: "1号部门",
-      options: [
-        {
-          value: "1号部门",
-          options: {
-            disabled: true,
-          },
-        },
-        {
-          value: "2号部门",
-          options: {
-            disabled: true,
-          },
-        },
-        {
-          value: "3号部门",
-          options: {
-            disabled: false,
-          },
-        },
-      ],
-      onChange: (e: any) => {
-        console.log(e);
-      },
-    },
-  
-  ];
-  </script>
-  
-  <style lang="scss" scoped>
-  :deep(.ant-space-item) {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  </style>
+
+      <a-space :size="32">
+        <SingleSelect
+          v-for="item in singleSelectList"
+          :key="item.label"
+          :value="item.value"
+          :options="item.options"
+          :placeholder="item.placeholder"
+          :on-change="item.onChange"
+          class="w-[210px]"
+        />
+      </a-space>
+    </a-space>
+  </div>
+</template>
+
+<script setup lang="ts">
+import SearchInput from "@/components/common/SearchInput";
+import SingleSelect from "@/components/common/SingleSelect";
+import { searchList } from "./searchList";
+import { singleSelectList } from "./singleSelectList";
+</script>
+
+<style lang="scss" scoped>
+:deep(.ant-space-item) {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+</style>

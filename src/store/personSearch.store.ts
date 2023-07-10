@@ -98,5 +98,6 @@ export const usePersonSearch = () => {
     columns,
     ruleState,
     getAllPersonList,
+    resetData: getAllPersonList,
   };
 };
