@@ -1,8 +1,9 @@
 import { useDepartmentSearch, useProjectMaintain } from "@/store";
 import { ref } from "vue";
-import { fuzzyQueryByKey } from "./searchList";
+import { fuzzyQueryByKey } from "@/utils";
 const { data, init } = useDepartmentSearch();
 const { data: projectData, init: initProjectData } = useProjectMaintain();
+
 await init();
 await initProjectData();
 
@@ -29,7 +30,7 @@ export const singleSelectList = [
     value: departmentData.value[0].value,
     options: departmentData.value,
     onChange: async (e: any) => {
-      await fuzzyQueryByKey("department_name", e);
+      await fuzzyQueryByKey(useDepartmentSearch, "department_name", e);
     },
   },
   {
@@ -48,7 +49,7 @@ export const singleSelectList = [
       },
     ],
     onChange: async (e: any) => {
-      await fuzzyQueryByKey("status", e);
+      await fuzzyQueryByKey(useDepartmentSearch, "status", e);
     },
   },
   {
@@ -57,7 +58,7 @@ export const singleSelectList = [
     options: projectList.value,
     placeholder: "请选择所属项目",
     onChange: async (e: any) => {
-      await fuzzyQueryByKey("project_name", e);
+      await fuzzyQueryByKey(useDepartmentSearch, "project_name", e);
     },
   },
 ];
