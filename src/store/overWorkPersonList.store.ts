@@ -1,25 +1,14 @@
 import { http } from "@/api";
 import { ref } from "vue";
 
-export interface OverWorkPersonType {
-  job_number: string | number;
-  job_name: string;
-  department: string;
-  status: "已驳回" | "已通过" | "已提交";
-  start_time: Date;
-  end_time: Date;
-  over_time: Date;
-  report_time: Date;
-}
-
 const enum AxiosAPIPath {
   GETALL = "/getAllOverWorkPersonList",
 }
 
-export function useOverWorkPersonList() {
-  const data = ref<OverWorkPersonType[]>([]);
-  const loading = ref<boolean>(true);
+const data = ref<OverWorkPersonType[]>([]);
+const loading = ref<boolean>(true);
 
+export function useOverWorkPersonList() {
   const columns = [
     {
       title: "工号",

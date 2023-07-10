@@ -1,22 +1,13 @@
 import { http } from "@/api";
 import { ref } from "vue";
 
-interface PersonDataType {
-  key: string | number;
-  job_number: string | number;
-  job_name: string;
-  department: string;
-  job: string;
-}
-
 const enum AxiosAPIPath {
   GETALL = "/getAllPersonList",
 }
+const data = ref<PersonDataType[]>([]);
+const loading = ref<boolean>(true);
 
 export const usePersonSearch = () => {
-  const data = ref<PersonDataType[]>([]);
-  const loading = ref<boolean>(true);
-
   const columns = [
     {
       title: "工号",

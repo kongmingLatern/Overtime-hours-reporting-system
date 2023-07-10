@@ -1,21 +1,14 @@
 import { http } from "@/api";
 import { defineStore } from "pinia";
 import { ref } from "vue";
-interface GenerateReportsType {
-  key: string | number;
-  job_name: string;
-  work_name: string;
-  department_name: string;
-}
 
 const enum AxiosAPIPath {
   GETALL = "/getAllReportList",
 }
+const data = ref<GenerateReportsType[]>([]);
+const loading = ref<boolean>(true);
 
 export const useGenerateReports = defineStore("generateReports", () => {
-  const data = ref<GenerateReportsType[]>([]);
-  const loading = ref<boolean>(true);
-
   const columns = [
     {
       title: "员工姓名",

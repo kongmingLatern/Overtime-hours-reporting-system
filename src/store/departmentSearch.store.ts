@@ -1,46 +1,13 @@
 import { http } from "@/api";
 import { ref } from "vue";
 
-interface DepartMentDataType {
-  key: string | number;
-  department_name: string;
-  department_number: string;
-  leader: string;
-  line_number: string;
-}
 const enum AxiosAPIPath {
   GETALL = "/getAllDepartmentList",
 }
-
-//department
-export const departMentDataSource = [
-  {
-    key: "1",
-    department_name: "财务部",
-    department_number: "2014",
-    leader: "David",
-    line_number: "1000-12",
-  },
-  {
-    key: "2",
-    department_name: "研发部",
-    department_number: "2015",
-    leader: "White",
-    line_number: "1000-13",
-  },
-  {
-    key: "3",
-    department_name: "营销部",
-    department_number: "2016",
-    leader: "Taylor",
-    line_number: "1000-14",
-  },
-];
+const data = ref<DepartMentDataType[]>([]);
+const loading = ref<boolean>(true);
 
 export const useDepartmentSearch = () => {
-  const data = ref<DepartMentDataType[]>([]);
-  const loading = ref<boolean>(true);
-
   const columns = [
     {
       title: "部门名称",

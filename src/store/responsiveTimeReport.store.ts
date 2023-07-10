@@ -1,23 +1,14 @@
 import { http } from "@/api";
 import { ref } from "vue";
 
-interface ResponsiveTimeReportType {
-  key: string | number;
-  job_name: string;
-  job_number: string;
-  project: string;
-  over_time: Date;
-  apply_time: Date;
-}
-
 const enum AxiosAPIPath {
   GETALL = "/getAllPendingPersonList",
 }
 
-export const useResponsiveTimeReport = () => {
-  const data = ref<ResponsiveTimeReportType[]>([]);
-  const loading = ref<boolean>(true);
+const data = ref<ResponsiveTimeReportType[]>([]);
+const loading = ref<boolean>(true);
 
+export const useResponsiveTimeReport = () => {
   const columns = [
     {
       title: "姓名",

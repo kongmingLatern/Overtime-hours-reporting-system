@@ -1,41 +1,13 @@
 import { http } from "@/api";
 import { ref } from "vue";
 
-interface ProjectMaintainType {
-  key: string | number;
-  work_name: string;
-  work_time: string;
-  department: string;
-}
-
 const enum AxiosAPIPath {
   GETALL = "/getAllProjectList",
 }
-//projectmaintain
-export const projectMaintainDataSource = [
-  {
-    key: "1",
-    work_name: "人员查询",
-    work_time: "2020-1-1",
-    department: "研发部",
-  },
-  {
-    key: "2",
-    work_name: "薪资调整",
-    work_time: "2020-2-1",
-    department: "财务部",
-  },
-  {
-    key: "3",
-    work_name: "市场拓展",
-    work_time: "2020-3-1",
-    department: "营销部",
-  },
-];
-export const useProjectMaintain = () => {
-  const data = ref<ProjectMaintainType[]>([]);
-  const loading = ref<boolean>(true);
+const data = ref<ProjectMaintainType[]>([]);
+const loading = ref<boolean>(true);
 
+export const useProjectMaintain = () => {
   const columns = [
     {
       title: "项目名称",
