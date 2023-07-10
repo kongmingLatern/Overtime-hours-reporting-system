@@ -92,11 +92,16 @@ export const usePersonSearch = () => {
     loading.value = false;
   }
 
+  async function init() {
+    await getAllPersonList();
+  }
+
   return {
     data,
     loading,
     columns,
     ruleState,
+    init,
     getAllPersonList,
     resetData: getAllPersonList,
   };
