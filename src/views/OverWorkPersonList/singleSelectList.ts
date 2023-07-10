@@ -10,7 +10,6 @@ const result = ref(
     };
   })
 );
-console.log("value", result.value);
 
 export const singleSelectList = [
   {
@@ -37,8 +36,8 @@ export const singleSelectList = [
         value: "已驳回",
       },
     ],
-    onChange: (e: any) => {
-      console.log(e);
+    onChange: async (e: any) => {
+      await fuzzyQueryByKey("status", e);
     },
   },
   {
