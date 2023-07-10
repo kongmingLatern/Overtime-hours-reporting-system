@@ -179,5 +179,6 @@ export function useOverWorkPersonList() {
     columns,
     ruleState,
     getAllOverWorkPersonList,
+    resetData: getAllOverWorkPersonList,
   };
 }

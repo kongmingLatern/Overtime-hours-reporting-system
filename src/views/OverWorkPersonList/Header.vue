@@ -28,27 +28,39 @@
 <script setup lang="ts">
 import SearchInput from "@/components/common/SearchInput";
 import SingleSelect from "@/components/common/SingleSelect";
+import { useOverWorkPersonList } from "@/store";
+
+function searchByValue(key: string, value: string) {
+  return function (item: any) {
+    return item[key].includes(value);
+  };
+}
+async function fuzzyQueryByKey(key, e) {
+  const { data, resetData } = useOverWorkPersonList();
+  await resetData();
+  data.value = data.value.filter((item: any) => searchByValue(key, e)(item));
+}
 
 const searchList = [
   {
     label: "员工姓名",
     placeholder: "请输入员工姓名",
-    onSearch: (e: any) => {
-      console.log(e);
+    onSearch: async (e: any) => {
+      await fuzzyQueryByKey("job_name", e);
     },
   },
   {
     label: "员工工号",
     placeholder: "请输入员工工号",
-    onSearch: (e: any) => {
-      console.log(e);
+    onSearch: async (e: any) => {
+      await fuzzyQueryByKey("job_number", e);
     },
   },
   {
     label: "加班时间",
     placeholder: "请输入加班时间",
-    onSearch: (e: any) => {
-      console.log(e);
+    onSearch: async (e: any) => {
+      await fuzzyQueryByKey("start_time", e);
     },
   },
 ];
