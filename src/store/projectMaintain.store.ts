@@ -48,5 +48,6 @@ export const useProjectMaintain = () => {
     loading,
     columns,
     getAllProjectList,
+    resetData: getAllProjectList,
   };
 };

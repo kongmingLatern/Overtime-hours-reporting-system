@@ -129,12 +129,18 @@ export const useResponsiveTimeReport = () => {
     loading.value = false;
   }
 
+  async function init() {
+    await getAllPendingPersonList();
+  }
+
   return {
+    init,
     data,
     loading,
     columns,
     reportColumns,
     ruleState,
     getAllPendingPersonList,
+    resetData: getAllPendingPersonList,
   };
 };

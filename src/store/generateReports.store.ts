@@ -70,11 +70,17 @@ export const useGenerateReports = defineStore("generateReports", () => {
     loading.value = false;
   }
 
+  async function init() {
+    await getAllReportList();
+  }
+
   return {
+    init,
     data,
     loading,
     columns,
     ruleState,
     getAllReportList,
+    resetData: getAllReportList,
   };
 });

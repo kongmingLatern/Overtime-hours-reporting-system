@@ -173,7 +173,12 @@ export function useOverWorkPersonList() {
     data.value = res.data;
   }
 
+  async function init() {
+    await getAllOverWorkPersonList();
+  }
+
   return {
+    init,
     data,
     loading,
     columns,

@@ -101,5 +101,6 @@ export const useDepartmentSearch = () => {
     columns,
     ruleState,
     getAllDepartmentList,
+    resetData: getAllDepartmentList
   };
 };
