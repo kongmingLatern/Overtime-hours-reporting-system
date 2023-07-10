@@ -1,6 +1,21 @@
+import { http } from "@/api";
 import { defineStore } from "pinia";
+import { ref } from "vue";
+interface GenerateReportsType {
+  key: string | number;
+  job_name: string;
+  work_name: string;
+  department_name: string;
+}
+
+const enum AxiosAPIPath {
+  GETALL = "/getAllReportList",
+}
 
 export const useGenerateReports = defineStore("generateReports", () => {
+  const data = ref<GenerateReportsType[]>([]);
+  const loading = ref<boolean>(true);
+
   const columns = [
     {
       title: "员工姓名",
@@ -71,8 +86,17 @@ export const useGenerateReports = defineStore("generateReports", () => {
     //   ],
     // },
   };
+
+  async function getAllReportList() {
+    const res = await http.get(AxiosAPIPath.GETALL);
+    data.value = res.data;
+    loading.value = false;
+  }
   return {
+    data,
+    loading,
     columns,
     ruleState,
+    getAllReportList,
   };
 });

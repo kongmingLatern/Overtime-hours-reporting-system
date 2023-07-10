@@ -1,26 +1,5 @@
 
 
-//generateResports
-export const generateResportsDataSource = [
-  {
-    key: "1",
-    job_name: "BOb",
-    work_name: "人员查询",
-    department_name: "研发部",
-  },
-  {
-    key: "2",
-    job_name: "Andy",
-    work_name: "薪资调整",
-    department_name: "财务部",
-  },
-  {
-    key: "3",
-    job_name: "ALaly",
-    work_name: "市场拓展",
-    department_name: "营销部",
-  },
-];
 
 // responsive
 export const data = [
