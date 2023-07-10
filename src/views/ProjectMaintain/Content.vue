@@ -1,13 +1,18 @@
 <template>
   <slot name="toolbar"></slot>
-  <CustomTable :columns="columns" :data="departMentDataSource" />
+  <CustomTable :columns="columns" :data="data" :loading="loading" />
 </template>
 
 <script setup lang="ts">
 import CustomTable from "@/components/common/CustomTable";
-import { useDepartmentSearchStore, departMentDataSource } from "@/store";
+import { useProjectMaintain } from "@/store";
+import { onMounted } from "vue";
 
-const { columns } = useDepartmentSearchStore();
+const { data, loading, columns, getAllProjectList } = useProjectMaintain();
+
+onMounted(async () => {
+  await getAllProjectList();
+});
 </script>
 
 <style scoped></style>

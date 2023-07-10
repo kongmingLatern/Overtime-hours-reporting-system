@@ -1,25 +1,5 @@
 
-//projectmaintain
-export const projectMaintainDataSource = [
-  {
-    key: "1",
-    work_name: "人员查询",
-    work_time: "2020-1-1",
-    department: "研发部",
-  },
-  {
-    key: "2",
-    work_name: "薪资调整",
-    work_time: "2020-2-1",
-    department: "财务部",
-  },
-  {
-    key: "3",
-    work_name: "市场拓展",
-    work_time: "2020-3-1",
-    department: "营销部",
-  },
-];
+
 //generateResports
 export const generateResportsDataSource = [
   {
