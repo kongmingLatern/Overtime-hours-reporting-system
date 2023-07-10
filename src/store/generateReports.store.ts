@@ -27,6 +27,12 @@ export const useGenerateReports = defineStore("generateReports", () => {
       key: "department_name",
       ellipsis: true,
     },
+    {
+      title: "生成报表",
+      dataIndex: "operation",
+      key: "operation",
+      ellipsis: true,
+    },
   ];
   const ruleState = {
     job_name: {

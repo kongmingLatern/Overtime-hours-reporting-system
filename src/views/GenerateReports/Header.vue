@@ -12,9 +12,6 @@
           class="w-[210px]"
         />
       </a-space>
-      <a-space :size="32">
-        <a-button h="45px" w="90px"> 生成报表 </a-button>
-      </a-space>
     </a-space>
   </div>
 </template>
