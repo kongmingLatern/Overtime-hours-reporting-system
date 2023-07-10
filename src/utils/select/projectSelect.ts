@@ -1,20 +1,18 @@
-import { useProjectMaintain } from "@/store";
 import { ref } from "vue";
 import { fuzzyQueryByKey } from "@/utils";
 
-const { data: projectData, init: initProjectData } = useProjectMaintain();
+export const projectSelect = async (hook) => {
+  const { data: projectData, init: initProjectData } = hook();
 
-await initProjectData();
+  await initProjectData();
 
-const projectList = ref(
-  projectData.value.map((item) => {
-    return {
-      value: item.project_name,
-    };
-  })
-);
-
-export const projectSelect = (hook) => {
+  const projectList = ref(
+    projectData.value.map((item) => {
+      return {
+        value: item.project_name,
+      };
+    })
+  );
   return {
     label: "所属项目",
     value: projectList.value[0].value,
