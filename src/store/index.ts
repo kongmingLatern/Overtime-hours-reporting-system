@@ -1,5 +1,3 @@
-export * from "./data";
-
 export * from "./overWorkPersonList.store";
 export * from "./personSearch.store";
 export * from "./departmentSearch.store";

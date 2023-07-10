@@ -1,5 +1,5 @@
-import { defineComponent, ref } from "vue";
-import { useResponsiveTimeReportStore, data } from "@/store";
+import { defineComponent, onMounted, ref } from "vue";
+import { useResponsiveTimeReport } from "@/store";
 import ResponsiveTab from "@/components/responsive/ResponsiveTab.tsx";
 import CustomTable from "@/components/common/CustomTable";
 import ModalButton from "@/components/common/ModalButton";
@@ -7,16 +7,28 @@ import ModalButton from "@/components/common/ModalButton";
 export default defineComponent({
   setup() {
     const activeKey = ref<string>("pending");
-    const { columns, reportColumns, ruleState } =
-      useResponsiveTimeReportStore();
+    const {
+      data,
+      loading,
+      columns,
+      reportColumns,
+      getAllPendingPersonList,
+      ruleState,
+    } = useResponsiveTimeReport();
+
+    onMounted(async () => {
+      await getAllPendingPersonList();
+    });
+
     const tabList = [
       {
         key: "pending",
         title: "待审批",
-        content: (
+        content: () => (
           <CustomTable
             columns={columns}
-            data={data}
+            data={data.value}
+            loading={loading.value}
             scroll={{ x: 700 }}
             v-slots={{
               operation: (record) => {
@@ -88,10 +100,11 @@ export default defineComponent({
       {
         key: "reported",
         title: "已审批",
-        content: (
+        content: () => (
           <CustomTable
             columns={reportColumns}
-            data={data}
+            data={data.value}
+            loading={loading.value}
             scroll={{ x: 700 }}
             pagination={{
               position: ["bottomCenter"],

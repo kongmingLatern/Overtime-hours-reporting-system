@@ -16,7 +16,7 @@ export default defineComponent({
       <aTabs v-model:activeKey={activeKey.value} centered {...attrs}>
         {props.tabList.map((item: any) => (
           <aTabPane key={item.key} tab={item.title} {...item.options}>
-            {item.content}
+            {item.content()}
           </aTabPane>
         ))}
       </aTabs>
