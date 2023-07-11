@@ -1,3 +1,5 @@
+import { useDepartmentSearch } from "@/store";
+import { departmentSelect } from "@/utils";
 import { reactive } from "vue";
 
 export const formState = reactive({
@@ -36,7 +38,7 @@ export const ruleState = {
     ],
   },
   department_name: {
-    type: "string",
+    type: "select",
     label: "所属部门",
     rules: [
       {
@@ -45,6 +47,9 @@ export const ruleState = {
         trigger: "blur",
       },
     ],
+    options: {
+      options: (await departmentSelect(useDepartmentSearch)).options,
+    },
   },
   status: {
     type: "select",
