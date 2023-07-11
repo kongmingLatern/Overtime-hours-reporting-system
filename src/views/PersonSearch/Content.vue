@@ -10,7 +10,11 @@
           :rule-state="ruleState"
         />
 
-        <DeleteButton title="确定是否要删除" okText="确定" />
+        <DeleteButton
+          title="确定是否要删除"
+          okText="确定"
+          :on-confirm="() => onConfirm(record)"
+        />
       </a-space>
     </template>
   </CustomTable>
@@ -28,4 +32,9 @@ const { data, loading, getAllPersonList, columns } = usePersonSearch();
 onMounted(async () => {
   await getAllPersonList();
 });
+
+const onConfirm = (record) => {
+  // NOTE: 删除数据
+  console.log("PersonSearch confirm", record);
+};
 </script>

@@ -10,6 +10,7 @@
           title="查看"
           :form-state="record"
           :rule-state="ruleState"
+          :footer="null"
         />
         <ModalButton
           v-if="record.status === '已驳回'"
@@ -18,6 +19,7 @@
           :form-state="{ ...record, reason: '驳回原因' }"
           :rule-state="ruleState"
           :button-props="{ danger: true }"
+          :footer="null"
         />
         <ModalButton
           v-if="record.status === '已通过'"
@@ -30,11 +32,13 @@
             over_time_reason: { label: '加班事由', type: 'readonly' },
           }"
           :button-props="{ class: 'bg-green-500' }"
+          :footer="null"
         />
 
         <DeleteButton
           :disabled="record.status === '已通过'"
           :button-props="{ danger: true, disabled: record.status === '已通过' }"
+          :on-confirm="() => onConfirm(record)"
         />
       </a-space>
     </template>
@@ -52,4 +56,8 @@ const { data, loading, columns, ruleState, getAllOverWorkPersonList } =
 onMounted(async () => {
   await getAllOverWorkPersonList();
 });
+const onConfirm = (record) => {
+  // NOTE: 删除数据
+  console.log("OverWorkPersonList confirm", record);
+};
 </script>

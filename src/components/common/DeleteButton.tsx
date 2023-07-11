@@ -1,4 +1,9 @@
-import { defineComponent } from "vue";
+import { PropType, defineComponent } from "vue";
+
+interface FunctionType {
+  (record: Record<string, any>): void;
+}
+
 export default defineComponent({
   props: {
     title: {
@@ -14,7 +19,7 @@ export default defineComponent({
       default: "否",
     },
     onConfirm: {
-      type: Function,
+      type: Function as PropType<FunctionType>,
       default: () => {},
     },
     onCancel: {

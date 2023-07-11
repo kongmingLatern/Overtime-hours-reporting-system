@@ -13,7 +13,7 @@
     </template>
   </CustomTable>
   <a-modal v-model:visible="visible" title="加班时长统计图" @ok="handleOk">
-    <div class="max-w-[1000px] h-[500px]">
+    <div class="max-w-[1200px] h-[500px]">
       <BarChart :option="echarts" />
     </div>
   </a-modal>
@@ -51,10 +51,6 @@ const singleSelect = [
       echarts.value = {
         title: {
           text: `xx项目${e}加班时长统计`,
-        },
-        tooltip: {},
-        legend: {
-          data: ["加班时长"],
         },
         xAxis: {
           data:

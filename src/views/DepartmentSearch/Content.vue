@@ -15,7 +15,7 @@
           title="确定是否要删除"
           okText="确定"
           cancelText="取消"
-          :on-confirm="onConfirm"
+          :on-confirm="() => onConfirm(record)"
         />
       </a-space>
     </template>
@@ -40,8 +40,8 @@ const onOk = (updateValue) => {
   console.log("onOk", updateValue);
 };
 
-const onConfirm = () => {
+const onConfirm = (record) => {
   // NOTE: 删除数据
-  console.log("confirm", data.value);
+  console.log("confirm", record);
 };
 </script>
