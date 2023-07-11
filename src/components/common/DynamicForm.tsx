@@ -3,6 +3,7 @@ import { PropType, Ref, defineComponent, reactive, ref } from "vue";
 import SingleSelect from "./SingleSelect";
 import * as dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { handleOverTime } from "@/utils";
 dayjs.extend(relativeTime);
 
 export default defineComponent({
@@ -49,16 +50,23 @@ export default defineComponent({
 
         case "select":
           return <SingleSelect v-model:value={formState[key]} {...options} />;
-        case "readonly":
-          return (
-            <aTypographyParagraph>
-              {key === "over_time" ? (
-                <blockquote>{dayjs(formState[key]).fromNow(true)}</blockquote>
-              ) : (
+        case "readonly": {
+          if (key === "over_time") {
+            const overTime = handleOverTime(formState);
+            formState[key] = overTime;
+            return (
+              <aTypographyParagraph>
+                <blockquote>{overTime}</blockquote>
+              </aTypographyParagraph>
+            );
+          } else {
+            return (
+              <aTypographyParagraph>
                 <blockquote>{formState[key]}</blockquote>
-              )}
-            </aTypographyParagraph>
-          );
+              </aTypographyParagraph>
+            );
+          }
+        }
         default:
           return <aInput v-model:value={formState[key]} {...options} />;
       }

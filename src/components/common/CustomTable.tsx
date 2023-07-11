@@ -1,6 +1,7 @@
 import { defineComponent } from "vue";
 import * as dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { handleOverTime } from "@/utils";
 dayjs.extend(relativeTime);
 
 function filterTime(key) {
@@ -45,15 +46,7 @@ export default defineComponent({
 
         if (!filterTime(column.key)) {
           // 根据加班开始和结束时间算出加班时长
-          const overTime =
-            dayjs(record.end_time).diff(dayjs(record.start_time), "hour") +
-            "小时" +
-            (dayjs(record.end_time).diff(dayjs(record.start_time), "minute") %
-              60) +
-            "分钟" +
-            (dayjs(record.end_time).diff(dayjs(record.start_time), "second") %
-              60) +
-            "秒";
+          const overTime = handleOverTime(record);
           return <span>{overTime}</span>;
         }
 

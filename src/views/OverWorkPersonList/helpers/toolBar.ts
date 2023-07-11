@@ -96,15 +96,8 @@ export const ruleState = {
     ],
   },
   over_time: {
-    type: "text",
+    type: "readonly",
     label: "加班时长",
-    rules: [
-      {
-        required: true,
-        message: "请输入加班时长",
-        trigger: "blur",
-      },
-    ],
   },
   report_time: {
     type: "date",

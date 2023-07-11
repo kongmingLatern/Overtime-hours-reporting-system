@@ -14,6 +14,9 @@
     status: "已通过"
 
  */
+
+import dayjs from "dayjs";
+
 // ['job_number', 'job_name', 'department_name', 'status', 'start_time', 'end_time', 'over_time', 'report_time', 'reason']
 export const handleExcelData = (data: any[]) => {
   function transformTitle() {
@@ -48,3 +51,15 @@ export const handleExcelData = (data: any[]) => {
 
   return [getExcelTitle(), ...getExcelData()];
 };
+
+export function handleOverTime({ start_time, end_time }: any) {
+  if (!start_time || !end_time) return "0时0分0秒";
+  return (
+    dayjs(end_time).diff(dayjs(start_time), "hour") +
+    "小时" +
+    (dayjs(end_time).diff(dayjs(start_time), "minute") % 60) +
+    "分钟" +
+    (dayjs(end_time).diff(dayjs(start_time), "second") % 60) +
+    "秒"
+  );
+}
