@@ -92,8 +92,8 @@ export function useOverWorkPersonList() {
         },
       ],
     },
-    department: {
-      type: "string",
+    department_name: {
+      type: "text",
       label: "所属部门",
       rules: [
         {
