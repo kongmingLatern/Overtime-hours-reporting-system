@@ -28,8 +28,7 @@
 <script setup lang="ts">
 import SearchInput from "@/components/common/SearchInput";
 import SingleSelect from "@/components/common/SingleSelect";
-import { searchList } from "./searchList";
-import { singleSelectList } from "./singleSelectList";
+import { searchList, singleSelectList } from "./helpers";
 </script>
 
 <style lang="scss" scoped>
@@ -39,3 +38,4 @@ import { singleSelectList } from "./singleSelectList";
   align-items: center;
 }
 </style>
+./helpers/searchList ./helpers/singleSelectList
