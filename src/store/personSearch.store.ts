@@ -39,53 +39,6 @@ export const usePersonSearch = () => {
     },
   ];
 
-  const ruleState = {
-    job_number: {
-      type: "number",
-      label: "工号",
-      rules: [
-        {
-          required: true,
-          message: "请输入工号",
-          trigger: "blur",
-        },
-      ],
-    },
-    job_name: {
-      type: "string",
-      label: "姓名",
-      rules: [
-        {
-          required: true,
-          message: "请输入姓名",
-          trigger: "blur",
-        },
-      ],
-    },
-    department: {
-      type: "string",
-      label: "所属部门",
-      rules: [
-        {
-          required: true,
-          message: "请输入所属部门",
-          trigger: "blur",
-        },
-      ],
-    },
-    job: {
-      type: "string",
-      label: "职级",
-      rules: [
-        {
-          required: true,
-          message: "请输入职级",
-          trigger: "blur",
-        },
-      ],
-    },
-  };
-
   async function getAllPersonList() {
     const res = await http.get(AxiosAPIPath["GETALL"]);
     data.value = res.data;
@@ -100,7 +53,6 @@ export const usePersonSearch = () => {
     data,
     loading,
     columns,
-    ruleState,
     init,
     getAllPersonList,
     resetData: getAllPersonList,

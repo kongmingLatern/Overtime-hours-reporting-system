@@ -22,8 +22,8 @@ import ModalButton from "@/components/common/ModalButton";
 import DeleteButton from "@/components/common/DeleteButton";
 import { usePersonSearch } from "@/store";
 import { onMounted } from "vue";
-const { data, loading, getAllPersonList, columns, ruleState } =
-  usePersonSearch();
+import { ruleState } from "./helpers";
+const { data, loading, getAllPersonList, columns } = usePersonSearch();
 
 onMounted(async () => {
   await getAllPersonList();
