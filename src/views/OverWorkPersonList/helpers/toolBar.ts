@@ -74,7 +74,7 @@ export const ruleState = {
     },
   },
   start_time: {
-    type: "text",
+    type: "date",
     label: "加班开始时间",
     rules: [
       {
@@ -85,7 +85,7 @@ export const ruleState = {
     ],
   },
   end_time: {
-    type: "text",
+    type: "date",
     label: "加班结束时间",
     rules: [
       {

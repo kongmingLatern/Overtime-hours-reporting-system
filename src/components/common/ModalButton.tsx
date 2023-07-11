@@ -70,7 +70,6 @@ export default defineComponent({
           .validateFields()
           .then((values) => {
             console.log("Received values of form: ", values);
-            console.log("formState: ", toRaw(formState));
             props.onOk(toRaw(formState));
             visible.value = false;
             formRef.value && formRef.value.resetFields();
