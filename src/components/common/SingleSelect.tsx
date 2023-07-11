@@ -1,4 +1,4 @@
-import { defineComponent, ref } from "vue";
+import { defineComponent, defineEmits, ref } from "vue";
 
 export default defineComponent({
   props: {
@@ -23,16 +23,24 @@ export default defineComponent({
       default: () => {},
     },
   },
-  setup(props, { attrs }) {
+  emits: ["update:value"],
+  setup(props, { attrs, emit }) {
     const select = ref(null);
     const value = ref(props.value);
+
+    const onChange = (targetValue) => {
+      value.value = targetValue;
+      emit("update:value", targetValue);
+    };
 
     return () => (
       <aSelect
         ref={select.value}
         v-model:value={value.value}
         onFocus={props.onFocus}
-        onChange={(targetValue) => props.onChange(targetValue)}
+        onChange={(targetValue) =>
+          props.onChange(targetValue) || onChange(targetValue)
+        }
         placeholder={props.placeholder}
         {...attrs}
       >

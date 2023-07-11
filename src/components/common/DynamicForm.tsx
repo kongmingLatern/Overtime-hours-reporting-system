@@ -48,7 +48,7 @@ export default defineComponent({
           return <aInput v-model:value={formState[key]} {...options} />;
 
         case "select":
-          return <SingleSelect value={formState[key]} {...options} />;
+          return <SingleSelect v-model:value={formState[key]} {...options} />;
         case "readonly":
           return (
             <aTypographyParagraph>
