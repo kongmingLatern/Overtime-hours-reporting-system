@@ -8,9 +8,15 @@
           title="编辑"
           :form-state="record"
           :rule-state="ruleState"
+          :on-ok="onOk"
         />
 
-        <DeleteButton title="确定是否要删除" okText="确定" cancelText="取消" />
+        <DeleteButton
+          title="确定是否要删除"
+          okText="确定"
+          cancelText="取消"
+          :on-confirm="onConfirm"
+        />
       </a-space>
     </template>
   </CustomTable>
@@ -28,4 +34,14 @@ const { data, loading, getAllDepartmentList, columns, ruleState } =
 onMounted(async () => {
   await getAllDepartmentList();
 });
+
+const onOk = (updateValue) => {
+  // NOTE: 编辑 更新数据
+  console.log("onOk", updateValue);
+};
+
+const onConfirm = () => {
+  // NOTE: 删除数据
+  console.log("confirm", data.value);
+};
 </script>
