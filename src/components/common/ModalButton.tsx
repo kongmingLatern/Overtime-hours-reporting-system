@@ -72,8 +72,8 @@ export default defineComponent({
             console.log("Received values of form: ", values);
             props.onOk(toRaw(formState));
             visible.value = false;
-            formRef.value && formRef.value.resetFields();
-            console.log("reset formState: ", toRaw(formState));
+            // formRef.value && formRef.value.resetFields();
+            // console.log("reset formState: ", toRaw(formState));
           })
           .catch((info) => {
             props.onFail(info);
