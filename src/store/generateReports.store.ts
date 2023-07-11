@@ -1,5 +1,4 @@
 import { http } from "@/api";
-import { defineStore } from "pinia";
 import { ref } from "vue";
 
 const enum AxiosAPIPath {
@@ -8,7 +7,7 @@ const enum AxiosAPIPath {
 const data = ref<GenerateReportsType[]>([]);
 const loading = ref<boolean>(true);
 
-export const useGenerateReports = defineStore("generateReports", () => {
+export const useGenerateReports = () => {
   const columns = [
     {
       title: "员工姓名",
@@ -89,4 +88,4 @@ export const useGenerateReports = defineStore("generateReports", () => {
     getAllReportList,
     resetData: getAllReportList,
   };
-});
+};
