@@ -49,6 +49,13 @@ export const ruleState = {
   status: {
     type: "select",
     label: "表单状态",
+    rules: [
+      {
+        required: true,
+        message: "请选择表单状态",
+        trigger: "blur",
+      },
+    ],
     options: {
       options: [
         {
