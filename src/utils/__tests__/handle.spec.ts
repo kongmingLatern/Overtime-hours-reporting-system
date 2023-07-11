@@ -30,29 +30,55 @@ describe("handleExcelData", () => {
   it("should be return title", () => {
     const [title] = handleExcelData(obj);
     expect(title).toEqual([
-      "job_number",
-      "job_name",
-      "project_name",
-      "department_name",
-      "status",
-      "start_time",
-      "end_time",
-      "over_time",
-      "report_time",
+      "工号",
+      "姓名",
+      "所属部门",
+      "表单状态",
+      "加班开始时间",
+      "加班结束时间",
+      "加班时长",
+      "填报时间",
+      "驳回原因",
     ]);
   });
   it("should be return format data", () => {
-    const [_, data] = handleExcelData(obj);
-    expect(data).toEqual([
-      "1",
-      "John Brown",
-      "人员查询",
-      "财务部",
-      "已驳回",
-      "2023-07-11T01:45:20.875Z",
-      "2023-07-12T00:00:00.000Z",
-      "2023-07-11T01:45:20.875Z",
-      "2023-07-11T01:45:20.875Z",
+    const [title, ...data] = handleExcelData(obj);
+
+    expect(title).toStrictEqual([
+      "工号",
+      "姓名",
+      "所属部门",
+      "表单状态",
+      "加班开始时间",
+      "加班结束时间",
+      "加班时长",
+      "填报时间",
+      "驳回原因",
+    ]);
+
+    expect(data).toStrictEqual([
+      [
+        "1",
+        "John Brown",
+        "人员查询",
+        "财务部",
+        "已驳回",
+        "2023-07-11T01:45:20.875Z",
+        "2023-07-12T00:00:00.000Z",
+        "2023-07-11T01:45:20.875Z",
+        "2023-07-11T01:45:20.875Z",
+      ],
+      [
+        "2",
+        "John Brown2",
+        "人员查询",
+        "New York No. 1 Lake Park, New York No. 1 Lake Park",
+        "已通过",
+        "2023-07-11T01:45:20.875Z",
+        "2023-07-12T00:00:00.000Z",
+        "2023-07-30T00:00:00.000Z",
+        "2023-07-11T01:45:20.875Z",
+      ],
     ]);
   });
 });
