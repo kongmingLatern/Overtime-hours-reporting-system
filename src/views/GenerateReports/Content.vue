@@ -12,7 +12,11 @@
       />
     </template>
   </CustomTable>
-  <BarChart v-if="show" :option="echarts" />
+  <a-modal v-model:visible="visible" title="加班时长统计图" @ok="handleOk">
+    <div class="max-w-[1000px] h-[500px]">
+      <BarChart :option="echarts" />
+    </div>
+  </a-modal>
 </template>
 
 <script setup lang="ts">
@@ -22,11 +26,12 @@ import { useGenerateReports } from "@/store";
 import BarChart from "@/components/common/BarEchart.vue";
 import { onMounted, ref } from "vue";
 const { data, loading, columns, getAllReportList } = useGenerateReports();
-onMounted(async () => {
-  await getAllReportList();
-});
-const show = ref(false);
+const visible = ref(false);
 const echarts = ref({});
+const handleOk = (e: MouseEvent) => {
+  console.log(e);
+  visible.value = false;
+};
 const singleSelect = [
   {
     label: "报表类型",
@@ -41,15 +46,15 @@ const singleSelect = [
       },
     ],
     onChange: (e: any, record) => {
-      show.value = true;
+      visible.value = true;
       console.log(e, record);
       echarts.value = {
         title: {
-          text: `${e} 加班时长统计`,
+          text: `xx项目${e}加班时长统计`,
         },
         tooltip: {},
         legend: {
-          data: ["加班时长统计"],
+          data: ["加班时长"],
         },
         xAxis: {
           data:
@@ -85,4 +90,7 @@ const singleSelect = [
     },
   },
 ];
+onMounted(async () => {
+  await getAllReportList();
+});
 </script>
