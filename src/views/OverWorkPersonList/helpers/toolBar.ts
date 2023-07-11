@@ -5,7 +5,7 @@ import { reactive } from "vue";
 export const formState = reactive({
   job_number: "",
   job_name: "",
-  department: "",
+  department_name: "",
   start_time: "",
   end_time: "",
   over_time: "",
@@ -102,7 +102,7 @@ export const ruleState = {
   },
   over_time: {
     type: "readonly",
-    label: "加班时长",
+    label: "加班时长(时)",
   },
   report_time: {
     type: "date",

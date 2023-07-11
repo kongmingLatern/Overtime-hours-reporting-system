@@ -3,6 +3,7 @@ import { useResponsiveTimeReport } from "@/store";
 import ResponsiveTab from "@/components/responsive/ResponsiveTab.tsx";
 import CustomTable from "@/components/common/CustomTable";
 import ModalButton from "@/components/common/ModalButton";
+import { ruleState as RuleState } from "./helpers";
 
 export default defineComponent({
   setup() {
@@ -18,6 +19,7 @@ export default defineComponent({
 
     onMounted(async () => {
       await getAllPendingPersonList();
+      console.log("data", data);
     });
 
     const tabList = [
@@ -27,7 +29,7 @@ export default defineComponent({
         content: () => (
           <CustomTable
             columns={columns}
-            data={data.value}
+            data={data.value.filter((i) => i.pending)}
             loading={loading.value}
             scroll={{ x: 700 }}
             v-slots={{
@@ -69,8 +71,11 @@ export default defineComponent({
                                 }}
                                 onOk={(result) => {
                                   visible.value = false;
-                                  // NOTE: 表单结果
-                                  console.log(result);
+                                  // NOTE: 驳回 表单结果
+                                  console.log({
+                                    ...record,
+                                    reason: result.reason,
+                                  });
                                 }}
                               />
                               <aButton
@@ -86,6 +91,10 @@ export default defineComponent({
                           </div>
                         );
                       },
+                    }}
+                    onOk={(result) => {
+                      // NOTE: 同意 pending 赋值为 0 即可
+                      console.log("同意", result);
                     }}
                   />
                 );
@@ -103,7 +112,7 @@ export default defineComponent({
         content: () => (
           <CustomTable
             columns={reportColumns}
-            data={data.value}
+            data={data.value.filter((i) => !i.pending)}
             loading={loading.value}
             scroll={{ x: 700 }}
             pagination={{
@@ -134,58 +143,16 @@ export default defineComponent({
             job_name: "",
             job_number: "",
             over_time: "",
-            project: "123",
+            project_name: "",
             over_time_reason: "",
           }}
-          ruleState={{
-            job_name: {
-              type: "text",
-              label: "员工姓名",
-            },
-            job_number: {
-              type: "number",
-              label: "工号",
-            },
-            over_time: {
-              type: "date",
-              label: "加班时间",
-            },
-            project: {
-              type: "select",
-              label: "所属项目",
-              options: {
-                options: [
-                  {
-                    value: "1号部门",
-                    options: {
-                      disabled: true,
-                    },
-                  },
-                  {
-                    value: "2号部门",
-                    options: {
-                      disabled: true,
-                    },
-                  },
-                  {
-                    value: "3号部门",
-                    options: {
-                      disabled: false,
-                    },
-                  },
-                ],
-                onChange: (e) => {
-                  console.log("e", e);
-                },
-              },
-            },
-            over_time_reason: {
-              type: "text",
-              label: "加班事由",
-            },
-          }}
+          ruleState={RuleState}
           v-slots={{
             modalFooter: ({ onOk }) => <aButton onClick={onOk}>提交</aButton>,
+          }}
+          onOk={(result) => {
+            // NOTE: 提交 表单结果
+            console.log("提交加班申请", result);
           }}
         />
       </>

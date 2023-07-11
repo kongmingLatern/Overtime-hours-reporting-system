@@ -60,7 +60,6 @@ describe("handleExcelData", () => {
       [
         "1",
         "John Brown",
-        "人员查询",
         "财务部",
         "已驳回",
         "2023-07-11T01:45:20.875Z",
@@ -71,7 +70,6 @@ describe("handleExcelData", () => {
       [
         "2",
         "John Brown2",
-        "人员查询",
         "New York No. 1 Lake Park, New York No. 1 Lake Park",
         "已通过",
         "2023-07-11T01:45:20.875Z",

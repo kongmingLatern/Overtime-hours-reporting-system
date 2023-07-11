@@ -38,9 +38,15 @@ export const useResponsiveTimeReport = () => {
     },
     {
       title: "申请时间",
-      dataIndex: "apply_time",
-      key: "apply_time",
+      dataIndex: "report_time",
+      key: "report_time",
       width: 200,
+    },
+    {
+      title: "加班事由",
+      dataIndex: "over_time_reason",
+      key: "over_time_reason",
+      ellipsis: true,
     },
     {
       title: "操作",
@@ -79,9 +85,15 @@ export const useResponsiveTimeReport = () => {
     },
     {
       title: "申请时间",
-      dataIndex: "apply_time",
-      key: "apply_time",
+      dataIndex: "report_time",
+      key: "report_time",
       width: 200,
+    },
+    {
+      title: "加班事由",
+      dataIndex: "over_time_reason",
+      key: "over_time_reason",
+      ellipsis: true,
     },
   ];
 
@@ -114,7 +126,7 @@ export const useResponsiveTimeReport = () => {
         disabled: true,
       },
     },
-    apply_time: {
+    report_time: {
       type: "date",
       label: "申请时间",
       options: {

@@ -51,7 +51,7 @@ export default defineComponent({
         }
 
         // 正则匹配字符串中的 time 字段
-        if (filterTime(column.key) && /time/.test(column.key)) {
+        if (filterTime(column.key) && /time$/.test(column.key)) {
           return <span>{dayjs(text).format("YYYY-MM-DD HH:mm:ss")}</span>;
         }
 

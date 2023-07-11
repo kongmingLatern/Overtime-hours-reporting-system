@@ -45,6 +45,7 @@ export const handleExcelData = (data: any[]) => {
     return data.map((item) => {
       // 过滤掉 key
       delete item.key;
+      delete item.project_name;
       return Object.values(item);
     });
   }
@@ -56,10 +57,8 @@ export function handleOverTime({ start_time, end_time }: any) {
   if (!start_time || !end_time) return "0时0分0秒";
   return (
     dayjs(end_time).diff(dayjs(start_time), "hour") +
-    "小时" +
-    (dayjs(end_time).diff(dayjs(start_time), "minute") % 60) +
-    "分钟" +
-    (dayjs(end_time).diff(dayjs(start_time), "second") % 60) +
-    "秒"
+    +((dayjs(end_time).diff(dayjs(start_time), "minute") % 60) / 60)
+      .toFixed(1)
+      .slice(1)
   );
 }

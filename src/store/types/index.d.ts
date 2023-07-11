@@ -43,7 +43,9 @@ interface ResponsiveTimeReportType {
   key: string | number;
   job_name: string;
   job_number: string | number;
+  pending: 0 | 1;
   project: string;
   over_time: Date;
-  apply_time: Date;
+  report_time: Date;
+  reason?: string;
 }

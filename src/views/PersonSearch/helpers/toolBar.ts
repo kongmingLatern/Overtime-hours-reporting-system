@@ -5,9 +5,8 @@ import { reactive } from "vue";
 export const formState = reactive({
   job_number: "",
   job_name: "",
-  department: "",
+  department_name: "",
   job: "",
-  operation: "",
 });
 
 export const ruleState = {

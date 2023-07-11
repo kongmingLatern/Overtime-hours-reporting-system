@@ -27,6 +27,7 @@ export function useOverWorkPersonList() {
       title: "所属部门",
       dataIndex: "department_name",
       key: "department_name",
+      width: 100,
       ellipsis: true,
     },
     {
@@ -49,7 +50,7 @@ export function useOverWorkPersonList() {
       ellipsis: true,
     },
     {
-      title: "加班时长",
+      title: "加班时长（时）",
       dataIndex: "over_time",
       key: "over_time",
       width: 100,
