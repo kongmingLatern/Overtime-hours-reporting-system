@@ -5,4 +5,10 @@ interface RuleState {
   options?: Record<string, any>;
 }
 
-type InputType = "number" | "text" | "date" | "readonly" | "select";
+type InputType =
+  | "number"
+  | "text"
+  | "date"
+  | "readonly"
+  | "select"
+  | "password";
