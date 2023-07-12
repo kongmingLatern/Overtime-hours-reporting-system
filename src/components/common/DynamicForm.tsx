@@ -22,7 +22,7 @@ export default defineComponent({
     },
   },
 
-  setup(props, { slots }) {
+  setup(props, { slots, attrs }) {
     const formRef = ref<FormInstance>();
     const formState = reactive(props?.formState || {});
     const ruleState = reactive(props?.ruleState || {});
@@ -67,6 +67,8 @@ export default defineComponent({
             );
           }
         }
+        case "password":
+          return <aInputPassword v-model:value={formState[key]} {...options} />;
         default:
           return <aInput v-model:value={formState[key]} {...options} />;
       }
@@ -89,6 +91,7 @@ export default defineComponent({
         onFinishFailed={(errorInfo) =>
           !props.formRef && onFinishFailed(errorInfo)
         }
+        {...attrs}
       >
         {Object.keys(ruleState).map((key) => {
           const item = ruleState[key];
