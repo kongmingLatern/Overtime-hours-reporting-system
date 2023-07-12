@@ -1,9 +1,10 @@
-import router from "@/router";
-import { RouterName } from "@/router/RouterName";
+import { useGoto } from "./../composables/useGoto";
 import { message } from "ant-design-vue";
 import { reactive } from "vue";
 
 export function useLogin() {
+  const { goToAdmin } = useGoto();
+
   const formState = reactive({
     job_number: "",
     password: "",
@@ -28,9 +29,7 @@ export function useLogin() {
     // NOTE: 登陆 接口
     console.log("value", value);
     message.success("登录成功");
-    router.push({
-      name: RouterName.Admin,
-    });
+    goToAdmin();
   };
 
   return {

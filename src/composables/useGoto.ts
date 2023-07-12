@@ -1,3 +1,4 @@
+import { RouterName } from "@/router/RouterName";
 import { useRouter } from "vue-router";
 
 export const useGoto = () => {
@@ -11,5 +12,6 @@ export const useGoto = () => {
 
   return {
     goTo,
+    goToAdmin: () => goTo(RouterName.Admin),
   };
 };
