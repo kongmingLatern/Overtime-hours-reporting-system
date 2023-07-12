@@ -10,57 +10,57 @@ const routes = createRouter({
     },
     {
       path: "/admin",
-      name: RouterName.Admin,
+      name: RouterName.ADMIN,
       redirect: "/admin/overWorkPersonList",
       component: () => import("@/layout/Basic"),
       children: [
         {
           // NOTE: 加班人员列表
           path: "overWorkPersonList",
-          name: RouterName.OverWorkPersonList,
+          name: RouterName.OVERWORKPERSONLIST,
           component: () => import("@/pages/OverWorkPersonList.vue"),
         },
         {
           // NOTE: 员工查询
           path: "personSearch",
-          name: RouterName.PersonSearch,
+          name: RouterName.PERSONSEARCH,
           component: () => import("@/pages/PersonSearch.vue"),
         },
         {
           // NOTE: 部门查询
           path: "departmentSearch",
-          name: RouterName.DepartmentSearch,
+          name: RouterName.DEPARTMENTSEARCH,
           component: () => import("@/pages/DepartmentSearch.vue"),
         },
         {
           // NOTE: 项目维护
           path: "projectMaintain",
-          name: RouterName.ProjectMaintain,
+          name: RouterName.PROJECTMAINTAIN,
           component: () => import("@/pages/ProjectMaintain.vue"),
         },
         {
           // NOTE: 生成报表
           path: "generateReports",
-          name: RouterName.GenerateReports,
+          name: RouterName.GENERATEREPORTS,
           component: () => import("@/pages/GenerateReports.vue"),
         },
       ],
     },
     {
       path: "/home",
-      name: RouterName.Home,
+      name: RouterName.HOME,
       redirect: "/home/index",
       children: [
         {
           path: "index",
-          name: RouterName.Index,
+          name: RouterName.INDEX,
           component: () => import("@/pages/ResponsiveTimeReport.vue"),
         },
       ],
     },
     {
       path: "/login",
-      name: RouterName.Login,
+      name: RouterName.LOGIN,
       component: () => import("@/pages/Login.vue"),
     },
   ],

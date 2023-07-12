@@ -12,6 +12,6 @@ export const useGoto = () => {
 
   return {
     goTo,
-    goToAdmin: () => goTo(RouterName.Admin),
+    goToAdmin: () => goTo(RouterName.ADMIN),
   };
 };

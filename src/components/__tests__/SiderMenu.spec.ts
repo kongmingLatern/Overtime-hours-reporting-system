@@ -12,15 +12,17 @@ vi.mocked(useRouter as any).mockImplementation(() => {
 });
 
 describe("useGoto", () => {
-  afterEach(() => {
+  beforeEach(() => {
     pushFn.mockReset();
   });
   it("should be called with one time", () => {
     const { goTo } = useGoto();
 
-    goTo("home");
+    goTo(RouterName.HOME);
 
-    expect(pushFn).toBeCalledWith({ name: "home" });
+    expect(pushFn).toBeCalledWith({ name: RouterName.HOME });
+
+    goTo(name);
   });
 
   it("should be called with one time", () => {
@@ -28,6 +30,6 @@ describe("useGoto", () => {
 
     goToAdmin();
 
-    expect(pushFn).toBeCalledWith({ name: RouterName.Admin });
+    expect(pushFn).toBeCalledWith({ name: RouterName.ADMIN });
   });
 });
