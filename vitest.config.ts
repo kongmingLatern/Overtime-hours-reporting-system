@@ -5,7 +5,12 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
     setupFiles: "./vitest.setup.ts",
-    exclude: ["node_modules", "dist", "./src/store/__tests__/fixtures/*.ts"],
+    exclude: [
+      "node_modules",
+      "dist",
+      "./src/__tests__/fixtures/*.ts",
+      "./src/__tests__/helpers/*.ts",
+    ],
   },
   resolve: {
     alias: {
