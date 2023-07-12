@@ -1,6 +1,9 @@
 <template>
   <div class="cover">
-    <div class="bg-image max-w-[900px] min-w-[300px] absolute-center" lg="w-[400px]">
+    <div
+      class="bg-image max-w-[900px] min-w-[300px] absolute-center"
+      lg="w-[400px]"
+    >
       <h2 text-center color-white>加班人员管理后台</h2>
       <DynamicForm
         :form-state="formState"
