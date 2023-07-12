@@ -1,9 +1,9 @@
 import { createPinia, setActivePinia } from "pinia";
-import { useOverWorkPersonList } from "..";
+import { useOverWorkPersonList } from "@/store";
 import { ref } from "vue";
-import { dataList } from "./fixtures";
+import { dataList } from "../fixtures";
 
-vi.mock("..");
+vi.mock("@/store");
 
 vi.mocked(useOverWorkPersonList as Record<string, any>).mockImplementation(
   () => {

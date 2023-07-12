@@ -1,4 +1,4 @@
-import { handleExcelData } from "..";
+import { handleExcelData } from "../utils";
 
 const obj = [
   {
