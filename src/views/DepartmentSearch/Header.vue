@@ -38,4 +38,3 @@ import { searchList, singleSelectList } from "./helpers";
   align-items: center;
 }
 </style>
-./helpers/searchList ./helpers/singleSelectList
