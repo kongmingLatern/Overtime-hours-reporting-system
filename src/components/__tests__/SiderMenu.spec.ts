@@ -1,33 +1,30 @@
-import {
-  createRouterMock,
-  injectRouterMock,
-  VueRouterMock,
-} from "vue-router-mock";
-import { config, mount } from "@vue/test-utils";
+import { VueWrapper, mount } from "@vue/test-utils";
 import { RouterName } from "@/router/RouterName";
 import { useGoto } from "@/composables";
 
-const router = createRouterMock({
-  spy: {
-    create: (fn) => vi.fn(fn),
-    reset: (spy) => spy.mockClear(),
-  },
-});
+function useSetup(setup: () => void) {
+  const Comp = {
+    setup,
+    render() {},
+  };
+  const wrapper = mount(Comp) as VueWrapper<any> & {
+    router: {
+      push: (name: string) => void;
+    };
+  };
 
-injectRouterMock(router);
-
-config.plugins.VueWrapper.install(VueRouterMock);
+  return {
+    wrapper,
+    router: wrapper.router,
+  };
+}
 
 describe("useGoto", () => {
   it("should go to admin page", () => {
-    const Comp = {
-      setup() {
-        const { goToAdmin } = useGoto();
-        goToAdmin();
-      },
-      render() {},
-    };
-    const wrapper = mount(Comp);
-    expect(wrapper.router.push).toBeCalledWith({ name: RouterName.ADMIN });
+    const { router } = useSetup(() => {
+      const { goToAdmin } = useGoto();
+      goToAdmin();
+    });
+    expect(router.push).toBeCalledWith({ name: RouterName.ADMIN });
   });
 });
