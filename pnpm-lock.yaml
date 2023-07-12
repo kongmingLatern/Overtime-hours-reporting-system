@@ -97,6 +97,9 @@ devDependencies:
   vue-router:
     specifier: '4'
     version: 4.2.2(vue@3.2.47)
+  vue-router-mock:
+    specifier: ^0.2.0
+    version: 0.2.0(vue-router@4.2.2)(vue@3.2.47)
   vue-tsc:
     specifier: ^1.4.2
     version: 1.4.2(typescript@5.0.2)
@@ -3894,6 +3897,16 @@ packages:
       semver: 7.5.3
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /vue-router-mock@0.2.0(vue-router@4.2.2)(vue@3.2.47):
+    resolution: {integrity: sha512-CNOd+BuCbqPDtFpGrti+jhZmB1he0dxnty4S/aYSIFrpwnUmUv5Usj1wOe3AwJ1FFNYv8PZ9GJ26HQWmvT+8Qw==}
+    peerDependencies:
+      vue: ^3.2.23
+      vue-router: ^4.0.12
+    dependencies:
+      vue: 3.2.47
+      vue-router: 4.2.2(vue@3.2.47)
     dev: true
 
   /vue-router@4.2.2(vue@3.2.47):

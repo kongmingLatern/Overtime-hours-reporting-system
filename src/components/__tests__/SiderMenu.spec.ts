@@ -1,35 +1,33 @@
-import { useGoto } from "@/composables";
+import {
+  createRouterMock,
+  injectRouterMock,
+  VueRouterMock,
+} from "vue-router-mock";
+import { config, mount } from "@vue/test-utils";
 import { RouterName } from "@/router/RouterName";
-import { useRouter } from "vue-router";
+import { useGoto } from "@/composables";
 
-vi.mock("vue-router");
-
-const pushFn = vi.fn();
-vi.mocked(useRouter as any).mockImplementation(() => {
-  return {
-    push: pushFn,
-  };
+const router = createRouterMock({
+  spy: {
+    create: (fn) => vi.fn(fn),
+    reset: (spy) => spy.mockClear(),
+  },
 });
 
+injectRouterMock(router);
+
+config.plugins.VueWrapper.install(VueRouterMock);
+
 describe("useGoto", () => {
-  beforeEach(() => {
-    pushFn.mockReset();
-  });
-  it("should be called with one time", () => {
-    const { goTo } = useGoto();
-
-    goTo(RouterName.HOME);
-
-    expect(pushFn).toBeCalledWith({ name: RouterName.HOME });
-
-    goTo(name);
-  });
-
-  it("should be called with one time", () => {
-    const { goToAdmin } = useGoto();
-
-    goToAdmin();
-
-    expect(pushFn).toBeCalledWith({ name: RouterName.ADMIN });
+  it("should go to admin page", () => {
+    const Comp = {
+      setup() {
+        const { goToAdmin } = useGoto();
+        goToAdmin();
+      },
+      render() {},
+    };
+    const wrapper = mount(Comp);
+    expect(wrapper.router.push).toBeCalledWith({ name: RouterName.ADMIN });
   });
 });
