@@ -5,15 +5,17 @@ import { dataList } from "./fixtures";
 
 vi.mock("..");
 
-vi.mocked(useOverWorkPersonList).mockImplementation(() => {
-  const data = ref<OverWorkPersonType[]>([]);
-  return {
-    data,
-    getAllOverWorkPersonList: () => {
-      data.value = dataList;
-    },
-  } as any;
-});
+vi.mocked(useOverWorkPersonList as Record<string, any>).mockImplementation(
+  () => {
+    const data = ref<OverWorkPersonType[]>([]);
+    return {
+      data,
+      getAllOverWorkPersonList: () => {
+        data.value = dataList;
+      },
+    };
+  }
+);
 
 describe("test data", () => {
   beforeEach(() => {
