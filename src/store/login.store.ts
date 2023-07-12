@@ -1,5 +1,6 @@
 import router from "@/router";
 import { RouterName } from "@/router/RouterName";
+import { message } from "ant-design-vue";
 import { reactive } from "vue";
 
 export function useLogin() {
@@ -26,6 +27,7 @@ export function useLogin() {
   const onFinish = (value) => {
     // NOTE: 登陆 接口
     console.log("value", value);
+    message.success("登录成功");
     router.push({
       name: RouterName.Admin,
     });

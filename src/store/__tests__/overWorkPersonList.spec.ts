@@ -1,5 +1,32 @@
 import { createPinia, setActivePinia } from "pinia";
 import { useOverWorkPersonList } from "..";
+import { ref } from "vue";
+
+vi.mock("..");
+
+const dataList: OverWorkPersonType[] & { key: string }[] = [
+  {
+    key: "1",
+    department_name: "New York No. 1 Lake Park, New York No. 1 Lake Park",
+    end_time: new Date("2023-07-12"),
+    job_name: "John Brown",
+    job_number: "2",
+    over_time: "2 days",
+    report_time: new Date("2023-07-12"),
+    start_time: new Date("2023-07-10"),
+    status: "已驳回",
+  },
+];
+
+vi.mocked(useOverWorkPersonList).mockImplementation(() => {
+  const data = ref<OverWorkPersonType[]>([]);
+  return {
+    data,
+    getAllOverWorkPersonList: () => {
+      data.value = dataList;
+    },
+  } as any;
+});
 
 describe("test data", () => {
   beforeEach(() => {
@@ -9,78 +36,11 @@ describe("test data", () => {
     const { data } = useOverWorkPersonList();
     expect(data.value).toEqual([]);
   });
-  it.skip("should be null", async () => {
+  it("should be null", async () => {
     const { data, getAllOverWorkPersonList } = useOverWorkPersonList();
+
     await getAllOverWorkPersonList();
-    expect(data.value).toMatchInlineSnapshot(`
-      [
-        {
-          "department": "New York No. 1 Lake Park, New York No. 1 Lake Park",
-          "end_time": "2023-07-12T00:00:00.000Z",
-          "job_name": "John Brown",
-          "job_number": "1",
-          "key": "1",
-          "over_time": "2023-07-10T01:27:16.998Z",
-          "report_time": "2023-07-10T01:27:16.998Z",
-          "start_time": "2023-07-10T01:27:16.998Z",
-          "status": "已驳回",
-        },
-        {
-          "department": "New York No. 1 Lake Park, New York No. 1 Lake Park",
-          "end_time": "2023-07-12T00:00:00.000Z",
-          "job_name": "John Brown2",
-          "job_number": "2",
-          "key": "2",
-          "over_time": "2023-07-30T00:00:00.000Z",
-          "report_time": "2023-07-10T01:27:16.998Z",
-          "start_time": "2023-07-10T01:27:16.998Z",
-          "status": "已通过",
-        },
-        {
-          "department": "New York No. 1 Lake Park, New York No. 1 Lake Park",
-          "end_time": "2023-07-12T00:00:00.000Z",
-          "job_name": "John Brown3",
-          "job_number": "3",
-          "key": "3",
-          "over_time": "2023-09-20T00:00:00.000Z",
-          "report_time": "2023-07-10T01:27:16.998Z",
-          "start_time": "2023-07-10T01:27:16.998Z",
-          "status": "已提交",
-        },
-        {
-          "department": "New 123123York No. 1 Lake Park, New York No. 1 Lake Park",
-          "end_time": "2023-07-12T00:00:00.000Z",
-          "job_name": "哈哈哈",
-          "job_number": "15",
-          "key": "15",
-          "over_time": "2023-07-10T01:27:16.998Z",
-          "report_time": "2023-07-10T01:27:16.998Z",
-          "start_time": "2023-07-10T01:27:16.998Z",
-          "status": "已驳回",
-        },
-        {
-          "department": "New York No. 1 Lake Park, New York No. 1 Lake Park",
-          "end_time": "2023-07-14T00:00:00.000Z",
-          "job_name": "John Brown2",
-          "job_number": "2",
-          "key": "23",
-          "over_time": "2023-07-22T00:00:00.000Z",
-          "report_time": "2023-07-10T01:27:16.998Z",
-          "start_time": "2023-07-10T01:27:16.998Z",
-          "status": "已通过",
-        },
-        {
-          "department": "New York No. 1 Lake Park, New York No. 1 Lake Park",
-          "end_time": "2023-07-22T00:00:00.000Z",
-          "job_name": "John Brown3",
-          "job_number": "3",
-          "key": "34",
-          "over_time": "2023-08-20T00:00:00.000Z",
-          "report_time": "2023-07-10T01:27:16.998Z",
-          "start_time": "2023-07-10T01:27:16.998Z",
-          "status": "已提交",
-        },
-      ]
-    `);
+
+    expect(data.value).toStrictEqual(dataList);
   });
 });

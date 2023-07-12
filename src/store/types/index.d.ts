@@ -20,7 +20,7 @@ interface OverWorkPersonType {
   status: "已驳回" | "已通过" | "已提交";
   start_time: Date;
   end_time: Date;
-  over_time: Date;
+  over_time: string;
   report_time: Date;
 }
 
