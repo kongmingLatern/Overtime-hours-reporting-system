@@ -1,40 +1,41 @@
 import { Icon } from "@iconify/vue";
 import { defineComponent, ref } from "vue";
-import router from "@/router";
+import { useGoto } from "@/composables";
 
 export default defineComponent({
   setup() {
+    const { goTo } = useGoto();
     const selectedKeys = ref<string[]>(["1"]);
     const MenuLists = [
       {
         key: "1",
         icon: "ic:round-person",
         text: "加班人员列表",
-        link: "/admin/overWorkPersonList",
+        name: "overWorkPersonList",
       },
       {
         key: "2",
         icon: "solar:list-broken",
         text: "人员查询",
-        link: "/admin/personSearch",
+        name: "personSearch",
       },
       {
         key: "3",
         icon: "mingcute:department-fill",
         text: "部门查询",
-        link: "/admin/departmentSearch",
+        name: "departmentSearch",
       },
       {
         key: "4",
         icon: "ant-design:project-outlined",
         text: "项目维护",
-        link: "/admin/projectMaintain",
+        name: "projectMaintain",
       },
       {
         key: "5",
         icon: "lucide:sheet",
         text: "生成报表",
-        link: "/admin/generateReports",
+        name: "generateReports",
       },
     ];
 
@@ -61,7 +62,7 @@ export default defineComponent({
           h="inherit"
         >
           {MenuLists.map((item) => (
-            <aMenuItem key={item.key} onClick={() => router.push(item.link)}>
+            <aMenuItem key={item.key} onClick={() => goTo(item.name)}>
               <aSpace>
                 <Icon icon={item.icon} width={20} class={"flex"} />
                 <span>{item.text}</span>
