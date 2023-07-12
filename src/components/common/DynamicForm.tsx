@@ -20,6 +20,10 @@ export default defineComponent({
       type: Object as PropType<Record<string, Partial<RuleState>>>,
       default: () => ({}),
     },
+    onFinish: {
+      type: Function as PropType<(values: any) => void>,
+      default: () => {},
+    },
   },
 
   setup(props, { slots, attrs }) {
@@ -75,6 +79,9 @@ export default defineComponent({
     };
 
     const onFinish = (values: any) => {
+      if (props.onFinish) {
+        props.onFinish(values);
+      }
       console.log("Success:", values);
     };
 
