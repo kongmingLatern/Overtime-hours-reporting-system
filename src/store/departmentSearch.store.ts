@@ -1,9 +1,6 @@
-import { http } from "@/api";
+import { fetchAllDepartment } from "@/api";
 import { ref } from "vue";
 
-const enum AxiosAPIPath {
-  GETALL = "/getAllDepartmentList",
-}
 const data = ref<DepartMentDataType[]>([]);
 const loading = ref<boolean>(true);
 
@@ -85,7 +82,7 @@ export const useDepartmentSearch = () => {
   };
 
   async function getAllDepartmentList() {
-    const res = await http.get(AxiosAPIPath.GETALL);
+    const res = await fetchAllDepartment();
     data.value = res.data;
     loading.value = false;
   }

@@ -1,9 +1,5 @@
-import { http } from "@/api";
+import { fetchAllPendingPerson } from "@/api";
 import { ref } from "vue";
-
-const enum AxiosAPIPath {
-  GETALL = "/getAllPendingPersonList",
-}
 
 const data = ref<ResponsiveTimeReportType[]>([]);
 const loading = ref<boolean>(true);
@@ -136,7 +132,7 @@ export const useResponsiveTimeReport = () => {
   };
 
   async function getAllPendingPersonList() {
-    const res = await http.get(AxiosAPIPath["GETALL"]);
+    const res = await fetchAllPendingPerson();
     data.value = res.data;
     loading.value = false;
   }

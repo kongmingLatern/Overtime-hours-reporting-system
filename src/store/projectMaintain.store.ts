@@ -1,9 +1,6 @@
-import { http } from "@/api";
+import { fetchAllProject } from "@/api";
 import { ref } from "vue";
 
-const enum AxiosAPIPath {
-  GETALL = "/getAllProjectList",
-}
 const data = ref<ProjectMaintainType[]>([]);
 const loading = ref<boolean>(true);
 
@@ -34,7 +31,7 @@ export const useProjectMaintain = () => {
   ];
 
   async function getAllProjectList() {
-    const res = await http.get(AxiosAPIPath.GETALL);
+    const res = await fetchAllProject();
     data.value = res.data;
     loading.value = false;
   }

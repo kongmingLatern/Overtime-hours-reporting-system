@@ -1,9 +1,6 @@
-import { http } from "@/api";
+import { fetchAllPersonSearch } from "@/api";
 import { ref } from "vue";
 
-const enum AxiosAPIPath {
-  GETALL = "/getAllPersonList",
-}
 const data = ref<PersonDataType[]>([]);
 const loading = ref<boolean>(true);
 
@@ -40,7 +37,7 @@ export const usePersonSearch = () => {
   ];
 
   async function getAllPersonList() {
-    const res = await http.get(AxiosAPIPath["GETALL"]);
+    const res = await fetchAllPersonSearch();
     data.value = res.data;
     loading.value = false;
   }

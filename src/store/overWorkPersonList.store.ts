@@ -1,9 +1,5 @@
-import { http } from "@/api";
+import { fetchAllOverWorkPerson } from "@/api";
 import { ref } from "vue";
-
-const enum AxiosAPIPath {
-  GETALL = "/getAllOverWorkPersonList",
-}
 
 const data = ref<OverWorkPersonType[]>([]);
 const loading = ref<boolean>(true);
@@ -169,7 +165,7 @@ export function useOverWorkPersonList() {
   };
 
   async function getAllOverWorkPersonList() {
-    const res = await http.get(AxiosAPIPath.GETALL);
+    const res = await fetchAllOverWorkPerson();
     loading.value = false;
     data.value = res.data;
   }

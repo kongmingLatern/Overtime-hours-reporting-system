@@ -1,9 +1,6 @@
-import { http } from "@/api";
+import { fetchAllGenerateReports } from "@/api";
 import { ref } from "vue";
 
-const enum AxiosAPIPath {
-  GETALL = "/getAllReportList",
-}
 const data = ref<GenerateReportsType[]>([]);
 const loading = ref<boolean>(true);
 
@@ -70,7 +67,7 @@ export const useGenerateReports = () => {
   };
 
   async function getAllReportList() {
-    const res = await http.get(AxiosAPIPath.GETALL);
+    const res = await fetchAllGenerateReports();
     data.value = res.data;
     loading.value = false;
   }
