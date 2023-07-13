@@ -7,6 +7,7 @@ const enum AxiosAPIPath {
 // NOTE: 获取所有的部门查询信息
 export function fetchAllDepartment() {
   return http.get(AxiosAPIPath["GETALL"]);
+  // return Promise.resolve({});
 }
 
 export function addDepartment(data) {

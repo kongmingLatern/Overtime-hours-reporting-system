@@ -9,6 +9,7 @@ const enum AxiosAPIPath {
 // NOTE: 获取所有的加班人员
 export function fetchAllOverWorkPerson() {
   return http.get(AxiosAPIPath.GETALL);
+  // return Promise.resolve({});
 }
 
 export function addOverWorkPerson(data) {

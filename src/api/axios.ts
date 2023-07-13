@@ -2,8 +2,9 @@ import { message } from "ant-design-vue";
 import axios from "axios";
 
 const http = axios.create({
-  baseURL:
-    "https://www.fastmock.site/mock/293bd4e6457a72210f13652b93a118b4/api",
+  // baseURL:
+  //   "https://www.fastmock.site/mock/293bd4e6457a72210f13652b93a118b4/api",
+  baseURL: "http://172.18.19.42:8020",
 });
 
 http.interceptors.request.use(
