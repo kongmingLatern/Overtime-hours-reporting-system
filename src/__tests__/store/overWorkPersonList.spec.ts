@@ -1,19 +1,15 @@
 import { createPinia, setActivePinia } from "pinia";
 import { useOverWorkPersonList } from "@/store";
-import { ref } from "vue";
-import { dataList } from "../fixtures";
+import { overWorkPersonList } from "../fixtures";
+import { fetchAllOverWorkPerson } from "@/api";
 
-vi.mock("@/store");
+vi.mock("@/api");
 
-vi.mocked(useOverWorkPersonList as Record<string, any>).mockImplementation(
+vi.mocked(fetchAllOverWorkPerson as Record<string, any>).mockImplementation(
   () => {
-    const data = ref<OverWorkPersonType[]>([]);
-    return {
-      data,
-      getAllOverWorkPersonList: () => {
-        data.value = dataList;
-      },
-    };
+    return Promise.resolve({
+      data: overWorkPersonList,
+    });
   }
 );
 
@@ -36,6 +32,6 @@ describe("test data", () => {
 
     await getAllOverWorkPersonList();
 
-    expect(data.value).toStrictEqual(dataList);
+    expect(data.value).toStrictEqual(overWorkPersonList);
   });
 });
