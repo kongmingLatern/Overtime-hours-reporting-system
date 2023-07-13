@@ -12,15 +12,16 @@ vi.mocked(fetchAllOverWorkPerson as Record<string, any>).mockImplementation(
     });
   }
 );
+beforeEach(() => {
+  setActivePinia(createPinia());
+});
+afterEach(() => {
+  const { data, loading } = useOverWorkPersonList();
+  data.value = [];
+  loading.value = true;
+});
 
 describe("test data", () => {
-  beforeEach(() => {
-    setActivePinia(createPinia());
-  });
-  afterEach(() => {
-    const { data } = useOverWorkPersonList();
-    data.value = [];
-  });
   it("should be empty array", () => {
     const { data } = useOverWorkPersonList();
     expect(data.value).toEqual([]);
@@ -33,5 +34,21 @@ describe("test data", () => {
     await getAllOverWorkPersonList();
 
     expect(data.value).toStrictEqual(overWorkPersonList);
+  });
+});
+
+describe("test loading", () => {
+  it("should be true when init", () => {
+    const { loading } = useOverWorkPersonList();
+    expect(loading.value).toBeTruthy();
+  });
+  it("should be false when complete", async () => {
+    const { loading, getAllOverWorkPersonList } = useOverWorkPersonList();
+
+    expect(loading.value).toBeTruthy();
+
+    await getAllOverWorkPersonList();
+
+    expect(loading.value).toBeFalsy();
   });
 });
