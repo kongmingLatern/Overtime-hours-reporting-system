@@ -16,9 +16,8 @@ beforeEach(() => {
   setActivePinia(createPinia());
 });
 afterEach(() => {
-  const { data, loading } = useOverWorkPersonList();
-  data.value = [];
-  loading.value = true;
+  const { reset } = useOverWorkPersonList();
+  reset();
 });
 
 describe("test data", () => {
