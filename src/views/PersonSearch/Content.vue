@@ -8,6 +8,7 @@
           title="编辑"
           :form-state="record"
           :rule-state="ruleState"
+          :on-ok="onOk"
         />
 
         <DeleteButton
@@ -33,8 +34,13 @@ onMounted(async () => {
   await getAllPersonList();
 });
 
+const onOk = (value) => {
+  // TODO: 更新人员信息 updatePerson
+  console.log("updatePerson", value);
+};
+
 const onConfirm = (record) => {
-  // NOTE: 删除数据
+  // TODO: 删除数据 removePersonById
   console.log("PersonSearch confirm", record);
 };
 </script>

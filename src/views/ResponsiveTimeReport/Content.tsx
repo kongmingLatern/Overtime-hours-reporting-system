@@ -71,7 +71,7 @@ export default defineComponent({
                                 }}
                                 onOk={(result) => {
                                   visible.value = false;
-                                  // NOTE: 驳回 表单结果
+                                  // TODO: 驳回 updateReject
                                   console.log({
                                     ...record,
                                     reason: result.reason,
@@ -94,6 +94,7 @@ export default defineComponent({
                     }}
                     onOk={(result) => {
                       // NOTE: 同意 pending 赋值为 0 即可
+                      // TODO: 驳回 updateReject
                       console.log("同意", result);
                     }}
                   />

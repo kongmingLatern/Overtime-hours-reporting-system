@@ -174,6 +174,11 @@ export function useOverWorkPersonList() {
     await getAllOverWorkPersonList();
   }
 
+  async function reset() {
+    data.value = [];
+    loading.value = true;
+  }
+
   return {
     init,
     data,
@@ -182,5 +187,6 @@ export function useOverWorkPersonList() {
     ruleState,
     getAllOverWorkPersonList,
     resetData: getAllOverWorkPersonList,
+    reset,
   };
 }

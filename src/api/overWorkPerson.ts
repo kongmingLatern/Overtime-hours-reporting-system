@@ -3,6 +3,7 @@ import { http } from ".";
 const enum AxiosAPIPath {
   GETALL = "/getAllOverWorkPersonList",
   ADD = "/addOverWorkPerson",
+  DELETE = "/deleteOverWorkPerson",
 }
 
 // NOTE: 获取所有的加班人员
@@ -16,9 +17,9 @@ export function addOverWorkPerson(data) {
 }
 
 export function removeOverWorkPersonById(record) {
-  // TODO: 删除数据
-  console.log("OverWorkPersonList confirm", record);
-  return http.delete("/removeOverWorkPerson", {
+  // TODO: 删除加班人员信息
+  console.log("removeOverWorkPerson", record);
+  return http.delete(AxiosAPIPath.DELETE, {
     params: {
       job_number: record.job_number,
     },

@@ -24,7 +24,7 @@ onMounted(async () => {
 });
 
 const onConfirm = (record) => {
-  // NOTE: 删除数据
+  // TODO: 删除数据 removeProjectById
   console.log("confirm", record);
 };
 </script>

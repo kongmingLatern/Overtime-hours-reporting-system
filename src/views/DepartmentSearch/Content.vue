@@ -36,12 +36,12 @@ onMounted(async () => {
 });
 
 const onOk = (updateValue) => {
-  // NOTE: 编辑 更新数据
+  // TODO: 编辑 updateDepartment
   console.log("onOk", updateValue);
 };
 
 const onConfirm = (record) => {
-  // NOTE: 删除数据
+  // TODO: 删除数据 removeDepartmentById
   console.log("confirm", record);
 };
 </script>

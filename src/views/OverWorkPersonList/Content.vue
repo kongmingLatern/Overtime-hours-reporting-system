@@ -57,7 +57,7 @@ onMounted(async () => {
   await getAllOverWorkPersonList();
 });
 const onConfirm = (record) => {
-  // NOTE: 删除数据
+  // TODO: 删除数据
   console.log("OverWorkPersonList confirm", record);
 };
 </script>
