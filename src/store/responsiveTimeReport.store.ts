@@ -27,8 +27,8 @@ export const useResponsiveTimeReport = () => {
     },
     {
       title: "加班时长",
-      dataIndex: "over_time",
-      key: "over_time",
+      dataIndex: "start_time",
+      key: "start_time",
       ellipsis: true,
       width: 100,
     },
@@ -74,8 +74,8 @@ export const useResponsiveTimeReport = () => {
     },
     {
       title: "加班时长",
-      dataIndex: "over_time",
-      key: "over_time",
+      dataIndex: "start_time",
+      key: "start_time",
       ellipsis: true,
       width: 100,
     },
