@@ -1,9 +1,9 @@
 import { http } from ".";
 
 const enum AxiosAPIPath {
-  GETALL = "/getAllPendingPersonList",
+  GETALL = "/getAllProjectList",
 }
 // NOTE: 获取所有的人员查询信息
-export function fetchAllPendingPerson() {
+export function fetchAllProject() {
   return http.get(AxiosAPIPath["GETALL"]);
 }

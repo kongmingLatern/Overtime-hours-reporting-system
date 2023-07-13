@@ -35,7 +35,7 @@ interface PersonDataType {
 interface ProjectMaintainType {
   key: string | number;
   project_name: string;
-  project_time: string;
+  project_time: Date;
   department_name: string;
 }
 
@@ -43,8 +43,8 @@ interface ResponsiveTimeReportType {
   key: string | number;
   job_name: string;
   job_number: string | number;
+  project_name: string;
   pending: 0 | 1;
-  project: string;
   over_time: Date;
   report_time: Date;
   reason?: string;
