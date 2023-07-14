@@ -13,10 +13,10 @@
 <script setup lang="ts">
 import ModalButton from "@/components/common/ModalButton";
 import { formState, ruleState } from "./helpers";
+import { addPerson } from "@/api";
 
-const onOk = (e) => {
-  // TODO: 更新数据 addPerson
-  console.log("onOk", e);
+const onOk = async (e) => {
+  await addPerson(e);
 };
 </script>
 

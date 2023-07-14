@@ -1,3 +1,4 @@
+import { message } from "ant-design-vue";
 import { http } from ".";
 
 const enum AxiosAPIPath {
@@ -10,13 +11,16 @@ export function fetchAllPendingPerson() {
   return http.get(AxiosAPIPath["GETALL"]);
 }
 
+// NOTE: 新增填报信息
 export function addReports(data) {
-  // TODO: 新增填报信息
-  return http.post(AxiosAPIPath["ADD"], data);
+  const res = http.post(AxiosAPIPath["ADD"], data);
+  message.success("填报成功");
+  return res;
 }
 
 // NOTE: 驳回
 export function updateReject(data) {
-  // TODO: 驳回
-  return http.put(AxiosAPIPath["UPDATE"], data);
+  const res = http.put(AxiosAPIPath["UPDATE"], data);
+  message.success("驳回成功");
+  return res;
 }

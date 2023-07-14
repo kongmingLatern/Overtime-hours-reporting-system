@@ -4,6 +4,7 @@ import ResponsiveTab from "@/components/responsive/ResponsiveTab.tsx";
 import CustomTable from "@/components/common/CustomTable";
 import ModalButton from "@/components/common/ModalButton";
 import { ruleState as RuleState } from "./helpers";
+import { addReports, updateReject } from "@/api";
 
 export default defineComponent({
   setup() {
@@ -69,9 +70,12 @@ export default defineComponent({
                                     ],
                                   },
                                 }}
-                                onOk={(result) => {
+                                onOk={async (result) => {
                                   visible.value = false;
-                                  // TODO: 驳回 updateReject
+                                  await updateReject({
+                                    ...record,
+                                    reason: result.reason,
+                                  });
                                   console.log({
                                     ...record,
                                     reason: result.reason,
@@ -92,9 +96,9 @@ export default defineComponent({
                         );
                       },
                     }}
-                    onOk={(result) => {
+                    onOk={async (result) => {
                       // NOTE: 同意 pending 赋值为 0 即可
-                      // TODO: 驳回 updateReject
+                      await updateReject(result);
                       console.log("同意", result);
                     }}
                   />
@@ -151,9 +155,8 @@ export default defineComponent({
           v-slots={{
             modalFooter: ({ onOk }) => <aButton onClick={onOk}>提交</aButton>,
           }}
-          onOk={(result) => {
-            // NOTE: 提交 表单结果
-            console.log("提交加班申请", result);
+          onOk={async (result) => {
+            await addReports(result);
           }}
         />
       </>

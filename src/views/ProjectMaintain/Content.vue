@@ -12,6 +12,7 @@
 </template>
 
 <script setup lang="ts">
+import { removeProjectById } from "@/api";
 import CustomTable from "@/components/common/CustomTable";
 import DeleteButton from "@/components/common/DeleteButton";
 import { useProjectMaintain } from "@/store";
@@ -23,9 +24,8 @@ onMounted(async () => {
   await getAllProjectList();
 });
 
-const onConfirm = (record) => {
-  // TODO: 删除数据 removeProjectById
-  console.log("confirm", record);
+const onConfirm = async (record) => {
+  await removeProjectById(record);
 };
 </script>
 

@@ -28,6 +28,7 @@ import ModalButton from "@/components/common/ModalButton";
 import DeleteButton from "@/components/common/DeleteButton";
 import { useDepartmentSearch } from "@/store";
 import { onMounted } from "vue";
+import { removeDepartmentById, updateDepartment } from "@/api";
 const { data, loading, getAllDepartmentList, columns, ruleState } =
   useDepartmentSearch();
 
@@ -35,13 +36,11 @@ onMounted(async () => {
   await getAllDepartmentList();
 });
 
-const onOk = (updateValue) => {
-  // TODO: 编辑 updateDepartment
-  console.log("onOk", updateValue);
+const onOk = async (updateValue) => {
+  await updateDepartment(updateValue);
 };
 
-const onConfirm = (record) => {
-  // TODO: 删除数据 removeDepartmentById
-  console.log("confirm", record);
+const onConfirm = async (record) => {
+  await removeDepartmentById(record);
 };
 </script>

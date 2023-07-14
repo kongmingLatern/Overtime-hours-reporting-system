@@ -1,3 +1,4 @@
+import { message } from "ant-design-vue";
 import { http } from ".";
 
 const enum AxiosAPIPath {
@@ -11,21 +12,27 @@ export function fetchAllPersonSearch() {
   return http.get(AxiosAPIPath.GETALL);
 }
 
+// NOTE: 添加人员
 export function addPerson(data) {
-  // TODO: 新增人员
-  return http.post(AxiosAPIPath.ADD, data);
+  const res = http.post(AxiosAPIPath.ADD, data);
+  message.success("添加成功");
+  return res;
 }
 
+// NOTE: 通过Id删除人员
 export function removePersonById(record) {
-  // TODO: 删除人员新息
-  return http.delete(AxiosAPIPath.REMOVE, {
+  const res = http.delete(AxiosAPIPath.REMOVE, {
     params: {
       job_number: record.job_number,
     },
   });
+  message.success("删除成功");
+  return res;
 }
 
+// NOTE: 更新人员
 export function updatePerson(data) {
-  // TODO: 编辑 更新人员信息
-  return http.put(AxiosAPIPath.UPDATE, data);
+  const res = http.put(AxiosAPIPath.UPDATE, data);
+  message.success("更新成功");
+  return res;
 }

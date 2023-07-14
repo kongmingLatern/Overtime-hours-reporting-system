@@ -1,3 +1,4 @@
+import { message } from "ant-design-vue";
 import { http } from ".";
 
 const enum AxiosAPIPath {
@@ -9,11 +10,13 @@ export function fetchAllProject() {
   return http.get(AxiosAPIPath["GETALL"]);
 }
 
+// NOTE: 根据 Id 删除项目新息
 export function removeProjectById(record) {
-  // TODO: 删除项目新息
-  return http.delete(AxiosAPIPath.REMOVE, {
+  const res = http.delete(AxiosAPIPath.REMOVE, {
     params: {
       project_id: record.project_id,
     },
   });
+  message.success("删除成功");
+  return res;
 }

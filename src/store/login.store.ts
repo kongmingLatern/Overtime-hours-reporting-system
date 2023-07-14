@@ -1,3 +1,4 @@
+import { fetchLogin } from "@/api";
 import { useGoto } from "./../composables/useGoto";
 import { message } from "ant-design-vue";
 import { reactive } from "vue";
@@ -25,9 +26,8 @@ export function useLogin() {
     },
   };
 
-  const onFinish = (value) => {
-    // TODO: 登陆 接口 fetchLogin
-    console.log("value", value);
+  const onFinish = async (value) => {
+    await fetchLogin(value);
     message.success("登录成功");
     goToAdmin();
   };

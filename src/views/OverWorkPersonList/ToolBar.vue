@@ -20,11 +20,11 @@ import ModalButton from "@/components/common/ModalButton";
 import { formState, ruleState } from "./helpers";
 import { exportExcel, handleExcelData } from "@/utils";
 import { useOverWorkPersonList } from "@/store";
+import { addOverWorkPerson } from "@/api";
 const { data } = useOverWorkPersonList();
 
-const onOk = (e) => {
-  // TODO: 新增数据 updateOverWorkPerson
-  console.log("onOk", e);
+const onOk = async (e) => {
+  await addOverWorkPerson(e);
 };
 </script>
 

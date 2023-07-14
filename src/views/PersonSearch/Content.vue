@@ -28,19 +28,18 @@ import DeleteButton from "@/components/common/DeleteButton";
 import { usePersonSearch } from "@/store";
 import { onMounted } from "vue";
 import { ruleState } from "./helpers";
+import { removePersonById, updatePerson } from "@/api";
 const { data, loading, getAllPersonList, columns } = usePersonSearch();
 
 onMounted(async () => {
   await getAllPersonList();
 });
 
-const onOk = (value) => {
-  // TODO: 更新人员信息 updatePerson
-  console.log("updatePerson", value);
+const onOk = async (value) => {
+  await updatePerson(value);
 };
 
-const onConfirm = (record) => {
-  // TODO: 删除数据 removePersonById
-  console.log("PersonSearch confirm", record);
+const onConfirm = async (record) => {
+  await removePersonById(record);
 };
 </script>
