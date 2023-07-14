@@ -18,6 +18,10 @@ export default defineComponent({
       type: Array,
       default: () => [],
     },
+    loading: {
+      type: Boolean,
+      default: true,
+    },
   },
   setup(props, { slots, attrs }) {
     const handleSlot = {
