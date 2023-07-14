@@ -5,11 +5,13 @@ import { fetchAllGenerateReports } from "@/api";
 
 vi.mock("@/api");
 
-vi.mocked(fetchAllGenerateReports as Record<string, any>).mockImplementation(() => {
-  return Promise.resolve({
-    data: generateReportsList,
-  });
-});
+vi.mocked(fetchAllGenerateReports as Record<string, any>).mockImplementation(
+  () => {
+    return Promise.resolve({
+      data: generateReportsList,
+    });
+  }
+);
 
 describe("test data", () => {
   beforeEach(() => {
