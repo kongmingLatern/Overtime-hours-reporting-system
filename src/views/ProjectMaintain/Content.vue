@@ -26,6 +26,7 @@ onMounted(async () => {
 
 const onConfirm = async (record) => {
   await removeProjectById(record);
+  window.location.reload();
 };
 </script>
 

@@ -37,9 +37,11 @@ onMounted(async () => {
 
 const onOk = async (value) => {
   await updatePerson(value);
+  window.location.reload();
 };
 
 const onConfirm = async (record) => {
   await removePersonById(record);
+  window.location.reload();
 };
 </script>

@@ -25,6 +25,7 @@ const { data } = useOverWorkPersonList();
 
 const onOk = async (e) => {
   await addOverWorkPerson(e);
+  window.location.reload();
 };
 </script>
 

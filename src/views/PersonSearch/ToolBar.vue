@@ -17,6 +17,7 @@ import { addPerson } from "@/api";
 
 const onOk = async (e) => {
   await addPerson(e);
+  // window.location.reload();
 };
 </script>
 

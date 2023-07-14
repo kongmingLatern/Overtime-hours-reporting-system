@@ -76,6 +76,8 @@ export default defineComponent({
                                     ...record,
                                     reason: result.reason,
                                   });
+                                  // window.location.reload();
+
                                   console.log({
                                     ...record,
                                     reason: result.reason,
@@ -99,6 +101,7 @@ export default defineComponent({
                     onOk={async (result) => {
                       // NOTE: 同意 pending 赋值为 0 即可
                       await updateReject(result);
+                      // window.location.reload();
                       console.log("同意", result);
                     }}
                   />
@@ -157,6 +160,7 @@ export default defineComponent({
           }}
           onOk={async (result) => {
             await addReports(result);
+            // window.location.reload();
           }}
         />
       </>

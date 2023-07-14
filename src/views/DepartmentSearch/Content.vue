@@ -38,9 +38,11 @@ onMounted(async () => {
 
 const onOk = async (updateValue) => {
   await updateDepartment(updateValue);
+  window.location.reload();
 };
 
 const onConfirm = async (record) => {
   await removeDepartmentById(record);
+  window.location.reload();
 };
 </script>

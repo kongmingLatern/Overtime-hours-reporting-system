@@ -59,5 +59,6 @@ onMounted(async () => {
 });
 const onConfirm = async (record) => {
   await removeOverWorkPersonById(record);
+  window.location.reload();
 };
 </script>
