@@ -1,43 +1,13 @@
 import { Icon } from "@iconify/vue";
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 import { useGoto } from "@/composables";
+import { MenuLists, useSelectStore } from "@/store";
 
 export default defineComponent({
   setup() {
     const { goTo } = useGoto();
-    const selectedKeys = ref<string[]>(["1"]);
-    const MenuLists = [
-      {
-        key: "1",
-        icon: "ic:round-person",
-        text: "加班人员列表",
-        name: "overWorkPersonList",
-      },
-      {
-        key: "2",
-        icon: "solar:list-broken",
-        text: "人员查询",
-        name: "personSearch",
-      },
-      {
-        key: "3",
-        icon: "mingcute:department-fill",
-        text: "部门查询",
-        name: "departmentSearch",
-      },
-      {
-        key: "4",
-        icon: "ant-design:project-outlined",
-        text: "项目维护",
-        name: "projectMaintain",
-      },
-      {
-        key: "5",
-        icon: "lucide:sheet",
-        text: "生成报表",
-        name: "generateReports",
-      },
-    ];
+    const { selectedKeys, handleClick } = useSelectStore();
+    console.log("selectedKeys", selectedKeys);
 
     return () => (
       <>
@@ -60,6 +30,7 @@ export default defineComponent({
           theme="dark"
           mode="inline"
           h="inherit"
+          onClick={(e) => handleClick(e)}
         >
           {MenuLists.map((item) => (
             <aMenuItem key={item.key} onClick={() => goTo(item.name)}>
