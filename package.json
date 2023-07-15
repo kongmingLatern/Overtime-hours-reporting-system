@@ -23,6 +23,7 @@
     "@vitejs/plugin-vue": "^4.1.0",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vue/test-utils": "^2.4.0",
+    "@vueuse/core": "^10.2.1",
     "ant-design-vue": "^3.2.20",
     "axios": "^1.4.0",
     "dayjs": "^1.11.9",
