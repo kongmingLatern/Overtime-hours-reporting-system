@@ -7,7 +7,6 @@ export default defineComponent({
   setup() {
     const { goTo } = useGoto();
     const { selectedKeys, handleClick } = useSelectStore();
-    console.log("selectedKeys", selectedKeys);
 
     return () => (
       <>
