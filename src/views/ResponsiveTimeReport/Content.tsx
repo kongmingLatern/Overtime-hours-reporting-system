@@ -3,8 +3,7 @@ import { useResponsiveTimeReport } from "@/store";
 import ResponsiveTab from "@/components/responsive/ResponsiveTab.tsx";
 import CustomTable from "@/components/common/CustomTable";
 import ModalButton from "@/components/common/ModalButton";
-import { ruleState as RuleState } from "./helpers";
-import { addReports, updateReject } from "@/api";
+import { updateReject } from "@/api";
 
 export default defineComponent({
   setup() {
@@ -136,32 +135,6 @@ export default defineComponent({
           activeKey={activeKey.value}
           tabList={tabList}
           justify-center
-        />
-        <ModalButton
-          wrap-class-name="full-modal"
-          title="填报信息"
-          containProps={{
-            class: "fixed bottom-[50px] right-2 ",
-          }}
-          buttonProps={{
-            class: "rounded-full w-[45px] h-[45px]",
-          }}
-          buttonText="+"
-          formState={{
-            job_name: "",
-            job_number: "",
-            over_time: "",
-            project_name: "",
-            over_time_reason: "",
-          }}
-          ruleState={RuleState}
-          v-slots={{
-            modalFooter: ({ onOk }) => <aButton onClick={onOk}>提交</aButton>,
-          }}
-          onOk={async (result) => {
-            await addReports(result);
-            // window.location.reload();
-          }}
         />
       </>
     );
