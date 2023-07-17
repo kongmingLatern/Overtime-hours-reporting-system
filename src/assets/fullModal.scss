@@ -7,8 +7,10 @@
   }
   .ant-modal-content {
     display: flex;
+    width: 100vw;
     flex-direction: column;
-    // height: 100vh;
+    height: 100vh;
+    overflow: hidden;
   }
   .ant-modal-body {
     flex: 1;
