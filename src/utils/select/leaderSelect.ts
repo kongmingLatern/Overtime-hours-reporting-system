@@ -7,12 +7,13 @@ export const leaderSelect = async (hook) => {
   await init();
 
   const leaderList = ref(
-    data.value.map((item) => {
+    Array.from(new Set(data.value.map((item) => item.leader))).map((item) => {
       return {
-        value: item.leader,
+        value: item,
       };
     })
   );
+
   return {
     label: "部长",
     value: leaderList.value[0].value,

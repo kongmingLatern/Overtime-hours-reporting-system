@@ -7,12 +7,15 @@ export const projectSelect = async (hook) => {
   await initProjectData();
 
   const projectList = ref(
-    projectData.value.map((item) => {
-      return {
-        value: item.project_name,
-      };
-    })
+    Array.from(new Set(projectData.value.map((item) => item.project_name))).map(
+      (item) => {
+        return {
+          value: item,
+        };
+      }
+    )
   );
+
   return {
     label: "所属项目",
     value: projectList?.value[0]?.value,

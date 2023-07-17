@@ -6,12 +6,16 @@ export const departmentSelect = async (hook) => {
   await init();
 
   const departmentData = ref(
-    data.value.map((item) => {
-      return {
-        value: item.department_name,
-      };
-    })
+    Array.from(new Set(data.value.map((item) => item.department_name))).map(
+      (item) => {
+        return {
+          value: item,
+        };
+      }
+    )
   );
+
+  console.log("departmentData", departmentData);
 
   return {
     label: "所属部门",
