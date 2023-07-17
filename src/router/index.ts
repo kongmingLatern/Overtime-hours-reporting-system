@@ -44,12 +44,12 @@ const routes = createRouter({
           name: RouterName.GENERATEREPORTS,
           component: () => import("@/pages/GenerateReports.vue"),
         },
-        {
-          path: "home",
-          name: RouterName.RESPONSIVE,
-          component: () => import("@/pages/ResponsiveTimeReport.vue"),
-        },
       ],
+    },
+    {
+      path: "/timeReport",
+      name: RouterName.RESPONSIVE,
+      component: () => import("@/pages/ResponsiveTimeReport.vue"),
     },
     {
       path: "/home",
@@ -59,7 +59,7 @@ const routes = createRouter({
         {
           path: "index",
           name: RouterName.INDEX,
-          component: () => import("@/pages/ResponsiveTimeReport.vue"),
+          component: () => import("@/pages/TimeReport.vue"),
         },
       ],
     },
