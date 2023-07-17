@@ -5,6 +5,7 @@ export const enum RouterName {
   DEPARTMENTSEARCH = "departmentSearch",
   PROJECTMAINTAIN = "projectMaintain",
   GENERATEREPORTS = "generateReports",
+  RESPONSIVE = "responsiveTimeReport",
   HOME = "home",
   INDEX = "index",
   LOGIN = "login",

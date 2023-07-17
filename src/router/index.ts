@@ -44,6 +44,11 @@ const routes = createRouter({
           name: RouterName.GENERATEREPORTS,
           component: () => import("@/pages/GenerateReports.vue"),
         },
+        {
+          path: "home",
+          name: RouterName.RESPONSIVE,
+          component: () => import("@/pages/ResponsiveTimeReport.vue"),
+        },
       ],
     },
     {
