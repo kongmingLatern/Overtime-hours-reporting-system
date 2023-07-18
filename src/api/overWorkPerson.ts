@@ -12,7 +12,6 @@ export function fetchAllOverWorkPerson() {
   return http.get(AxiosAPIPath.GETALL);
 }
 
-
 // NOTE: 添加加班人员
 export function addOverWorkPerson(data) {
   const res = http.post(AxiosAPIPath.ADD, data);
@@ -24,7 +23,7 @@ export function addOverWorkPerson(data) {
 export function removeOverWorkPersonById(record) {
   const res = http.delete(AxiosAPIPath.DELETE, {
     params: {
-      job_number: record.job_number,
+      id: record.id,
     },
   });
   message.success("删除成功");
