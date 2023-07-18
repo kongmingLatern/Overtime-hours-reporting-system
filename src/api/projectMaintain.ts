@@ -19,6 +19,15 @@ export function addProject(values) {
   return res;
 }
 
+// NOTE: 根据部门名称获取项目名称
+export function fetchProjectNameByDepartmentName(e) {
+  return http.get("/getProjectNameByDepartmentName", {
+    params: {
+      department_name: e,
+    },
+  });
+}
+
 // NOTE: 编辑项目
 export function updateProject(values) {
   const res = http.put(AxiosAPIPath["UPDATE"], values);
