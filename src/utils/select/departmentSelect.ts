@@ -6,7 +6,7 @@ export const departmentSelect = async (hook) => {
   await init();
 
   const departmentData = ref(
-    Array.from(new Set(data.value.map((item) => item.department_name))).map(
+    Array.from(new Set(data.value?.map((item) => item.department_name)))?.map(
       (item) => {
         return {
           value: item,
