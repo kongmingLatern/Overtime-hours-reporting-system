@@ -90,7 +90,8 @@ export default defineComponent({
           formState={{
             job_name: "",
             job_number: "",
-            over_time: "",
+            start_time: "",
+            end_time: "",
             project_name: "",
             over_time_reason: "",
           }}
