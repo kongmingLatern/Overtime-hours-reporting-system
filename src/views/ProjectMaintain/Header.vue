@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import SearchInput from "@/components/common/SearchInput";
-import { searchList } from "./searchList";
+import { searchList } from "./helpers";
 import DatePicker from "@/components/common/DatePicker.vue";
 </script>
 
@@ -27,4 +27,3 @@ import DatePicker from "@/components/common/DatePicker.vue";
   align-items: center;
 }
 </style>
-./searchList
