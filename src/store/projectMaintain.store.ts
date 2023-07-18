@@ -1,4 +1,4 @@
-import { fetchAllProject } from "@/api";
+import { fetchAllProject, fetchProjectName } from "@/api";
 import { ref } from "vue";
 
 const data = ref<ProjectMaintainType[]>([]);
@@ -35,6 +35,12 @@ export const useProjectMaintain = () => {
     data.value = res.data;
     loading.value = false;
   }
+
+  async function getProjectName(key, value) {
+    const res = await fetchProjectName(key, value);
+    data.value = res.data;
+  }
+
   async function init() {
     await getAllProjectList();
   }
@@ -45,6 +51,7 @@ export const useProjectMaintain = () => {
     loading,
     columns,
     getAllProjectList,
+    getProjectName,
     resetData: getAllProjectList,
   };
 };
