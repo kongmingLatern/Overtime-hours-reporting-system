@@ -7,18 +7,18 @@ export function useLogin() {
   const { goToAdmin } = useGoto();
 
   const formState = reactive({
+    job_name: "",
     job_number: "",
-    password: "",
   });
 
   const ruleState = {
-    job_number: {
+    job_name: {
       type: "text",
-      label: "工号",
-      placeholder: "请输入工号",
-      rules: [{ required: true, message: "请输入工号", trigger: "blur" }],
+      label: "帐号",
+      placeholder: "请输入帐号",
+      rules: [{ required: true, message: "请输入帐号", trigger: "blur" }],
     },
-    password: {
+    job_number: {
       type: "password",
       label: "密码",
       placeholder: "请输入密码",
