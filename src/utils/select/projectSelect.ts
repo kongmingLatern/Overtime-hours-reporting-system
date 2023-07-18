@@ -1,19 +1,25 @@
 import { ref } from "vue";
 import { fuzzyQueryByKey } from "@/utils";
 
-export const projectSelect = async (hook) => {
-  const { data: projectData, init: initProjectData } = hook();
+export const projectSelect = async (hook, flag = false, ...args) => {
+  const { data: projectData, init: initProjectData, getProjectName } = hook();
 
-  await initProjectData();
+  if (!flag) {
+    await initProjectData();
+  } else {
+    // TODO:
+    console.log("args", args);
+    await getProjectName(args[0], args[1].value);
+  }
 
   const projectList = ref(
-    Array.from(new Set(projectData.value.map((item) => item.project_name))).map(
-      (item) => {
-        return {
-          value: item,
-        };
-      }
-    )
+    Array.from(
+      new Set(projectData.value?.map((item) => item.project_name))
+    )?.map((item) => {
+      return {
+        value: item,
+      };
+    })
   );
 
   return {
