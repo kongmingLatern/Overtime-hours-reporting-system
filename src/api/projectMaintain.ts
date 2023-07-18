@@ -3,6 +3,8 @@ import { http } from ".";
 
 const enum AxiosAPIPath {
   GETALL = "/getAllProjectList",
+  GETNAMEBYDEPARTMENTNAME = "/getProjectNameByDepartmentName",
+  GETNAMEBYJOBNUMBER = "/getProjectNameByJobNumber",
   ADD = "/addProject",
   UPDATE = "/updateProject",
   REMOVE = "/deleteProject",
@@ -20,10 +22,18 @@ export function addProject(values) {
 }
 
 // NOTE: 根据部门名称获取项目名称
-export function fetchProjectNameByDepartmentName(e) {
-  return http.get("/getProjectNameByDepartmentName", {
+export function fetchProjectName(key: "department_name" | "job_number", value) {
+  const path =
+    key === "department_name"
+      ? AxiosAPIPath.GETNAMEBYDEPARTMENTNAME
+      : AxiosAPIPath.GETNAMEBYJOBNUMBER;
+
+  console.log("key", key);
+  console.log("value", value);
+
+  return http.get(path, {
     params: {
-      department_name: e,
+      [key]: value,
     },
   });
 }
