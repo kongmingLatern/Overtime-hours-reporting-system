@@ -1,11 +1,12 @@
-import { useDepartmentSearch } from "@/store";
-import { departmentSelect } from "@/utils";
-import { reactive } from "vue";
+import { useDepartmentSearch, useProjectMaintain } from "@/store";
+import { departmentSelect, projectSelect } from "@/utils";
+import { reactive, ref } from "vue";
 
 export const formState = reactive({
   job_number: "",
   job_name: "",
   department_name: "",
+  project_name: "",
   start_time: "",
   end_time: "",
   over_time: "",
@@ -13,6 +14,19 @@ export const formState = reactive({
   status: "",
   reason: "",
 });
+
+const departmentName = ref("");
+const res = ref<any>({});
+
+async function get() {
+  res.value = await projectSelect(
+    useProjectMaintain,
+    true,
+    "department_name",
+    departmentName
+  );
+  return res;
+}
 
 export const ruleState = {
   job_number: {
@@ -49,6 +63,25 @@ export const ruleState = {
     ],
     options: {
       options: (await departmentSelect(useDepartmentSearch)).options,
+      onChange: (e) => {
+        // TODO:
+        departmentName.value = e;
+        //   // await get();
+      },
+    },
+  },
+  project_name: {
+    type: "select",
+    label: "所属项目",
+    rules: [
+      {
+        required: true,
+        message: "请输入所属项目",
+        trigger: "blur",
+      },
+    ],
+    options: {
+      options: res.value?.options,
     },
   },
   status: {
@@ -111,6 +144,17 @@ export const ruleState = {
       {
         required: true,
         message: "请输入填报时间",
+        trigger: "blur",
+      },
+    ],
+  },
+  over_time_reason: {
+    type: "text",
+    label: "加班事由",
+    rules: [
+      {
+        required: true,
+        message: "请输入加班事由",
         trigger: "blur",
       },
     ],

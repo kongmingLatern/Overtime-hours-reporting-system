@@ -52,7 +52,7 @@ import DeleteButton from "@/components/common/DeleteButton";
 import { onMounted } from "vue";
 import { useOverWorkPersonList } from "@/store";
 import { removeOverWorkPersonById } from "@/api";
-const { data, loading, columns, ruleState, getAllOverWorkPersonList } =
+const { data, loading, columns,ruleState, getAllOverWorkPersonList } =
   useOverWorkPersonList();
 onMounted(async () => {
   await getAllOverWorkPersonList();
