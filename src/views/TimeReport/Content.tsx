@@ -92,6 +92,7 @@ export default defineComponent({
             job_number: "",
             start_time: "",
             end_time: "",
+            over_time: "",
             project_name: "",
             over_time_reason: "",
           }}
