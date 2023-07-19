@@ -3,7 +3,7 @@ import { useResponsiveTimeReport } from "@/store";
 import ResponsiveTab from "@/components/responsive/ResponsiveTab.tsx";
 import CustomTable from "@/components/common/CustomTable";
 import ModalButton from "@/components/common/ModalButton";
-import { ruleState as RuleState } from "./helpers";
+import { ruleState as RuleState, formState } from "./helpers";
 import { addReports } from "@/api";
 
 export default defineComponent({
@@ -87,16 +87,8 @@ export default defineComponent({
             class: "rounded-full w-[45px] h-[45px]",
           }}
           buttonText="+"
-          formState={{
-            job_name: "",
-            job_number: "",
-            start_time: "",
-            end_time: "",
-            over_time: "",
-            project_name: "",
-            over_time_reason: "",
-          }}
-          ruleState={RuleState}
+          formState={formState}
+          ruleState={RuleState.value}
           v-slots={{
             modalFooter: ({ onOk }) => <aButton onClick={onOk}>提交</aButton>,
           }}

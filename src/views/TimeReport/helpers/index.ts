@@ -1,6 +1,6 @@
 import { useProjectMaintain } from "@/store";
 import { projectSelect } from "@/utils";
-import { ref } from "vue";
+import { reactive, ref, watch } from "vue";
 
 const currentJobNumber = ref("");
 const res = ref<any>({});
@@ -14,7 +14,17 @@ async function getOptions(job_number) {
   );
 }
 
-export const ruleState = {
+export const formState = reactive({
+  job_name: "",
+  job_number: "",
+  start_time: "",
+  end_time: "",
+  over_time: "",
+  project_name: "",
+  over_time_reason: "",
+});
+
+export const ruleState = ref({
   job_name: {
     type: "text",
     label: "员工姓名",
@@ -27,7 +37,7 @@ export const ruleState = {
         currentJobNumber.value = e;
       },
       onBlur: async () => {
-        await getOptions(currentJobNumber.value);
+        await searchProjectName(currentJobNumber.value);
       },
     },
   },
@@ -47,7 +57,7 @@ export const ruleState = {
     type: "select",
     label: "所属项目",
     options: {
-      options: res.value.options,
+      options: [],
       // options: (await projectSelect(useProjectMaintain)).options,
     },
   },
@@ -55,4 +65,12 @@ export const ruleState = {
     type: "text",
     label: "加班事由",
   },
-};
+});
+
+async function searchProjectName(job_number) {
+  await getOptions(job_number);
+  Object.assign(
+    ruleState.value["project_name"].options.options,
+    res.value.options
+  );
+}
