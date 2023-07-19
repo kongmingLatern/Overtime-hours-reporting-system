@@ -6,7 +6,7 @@ const routes = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/admin",
+      redirect: "/login",
     },
     {
       path: "/admin",
@@ -93,6 +93,15 @@ const routes = createRouter({
       component: () => import("@/pages/Login.vue"),
     },
   ],
+});
+
+routes.addRoute({
+  path: "/:pathMatch(.*)*",
+  name: RouterName.NOTFOUND,
+  meta: {
+    title: "404",
+  },
+  component: () => import("@/pages/NotFound.vue"),
 });
 
 // routes.addRoute()

@@ -9,4 +9,5 @@ export const enum RouterName {
   HOME = "home",
   INDEX = "index",
   LOGIN = "login",
+  NOTFOUND = "NotFound",
 }
