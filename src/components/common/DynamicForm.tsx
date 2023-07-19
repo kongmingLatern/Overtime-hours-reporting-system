@@ -51,7 +51,6 @@ export default defineComponent({
           );
         case "text":
           return <aInput v-model:value={formState[key]} {...options} />;
-
         case "select":
           return <SingleSelect v-model:value={formState[key]} {...options} />;
         case "readonly": {
@@ -73,6 +72,8 @@ export default defineComponent({
         }
         case "password":
           return <aInputPassword v-model:value={formState[key]} {...options} />;
+        case "cascader":
+          return <aCascader v-model:value={formState[key]} {...options} />;
         default:
           return <aInput v-model:value={formState[key]} {...options} />;
       }

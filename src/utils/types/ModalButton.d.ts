@@ -11,4 +11,5 @@ type InputType =
   | "date"
   | "readonly"
   | "select"
-  | "password";
+  | "password"
+  | "cascader";
