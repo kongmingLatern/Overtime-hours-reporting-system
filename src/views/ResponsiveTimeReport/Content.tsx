@@ -19,7 +19,6 @@ export default defineComponent({
 
     onMounted(async () => {
       await getAllPendingPersonList();
-      console.log("data", data);
     });
 
     const tabList = [
