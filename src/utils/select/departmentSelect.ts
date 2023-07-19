@@ -15,8 +15,6 @@ export const departmentSelect = async (hook) => {
     )
   );
 
-  console.log("departmentData", departmentData);
-
   return {
     label: "所属部门",
     placeholder: "请选择所属部门",

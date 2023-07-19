@@ -8,8 +8,7 @@ export const projectSelect = async (hook, flag = false, ...args) => {
     await initProjectData();
   } else {
     // TODO:
-    console.log("args", args);
-    await getProjectName(args[0], args[1].value);
+    await getProjectName(args[0], args[1]);
   }
 
   const projectList = ref(
@@ -27,8 +26,6 @@ export const projectSelect = async (hook, flag = false, ...args) => {
     value: projectList?.value[0]?.value,
     options: projectList?.value,
     placeholder: "请选择所属项目",
-    onChange: async (e: any) => {
-      await fuzzyQueryByKey(hook, "project_name", e);
-    },
+    onChange: async (e: any) => await fuzzyQueryByKey(hook, "project_name", e),
   };
 };
