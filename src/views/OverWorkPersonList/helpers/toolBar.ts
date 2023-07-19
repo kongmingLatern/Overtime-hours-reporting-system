@@ -1,11 +1,14 @@
 import { useDepartmentSearch, useProjectMaintain } from "@/store";
 import { departmentSelect, projectSelect } from "@/utils";
-import { reactive, ref } from "vue";
+import { reactive, ref, watch } from "vue";
+
+const departmentName = ref("");
+const res = ref<any>({});
 
 export const formState = reactive({
   job_number: "",
   job_name: "",
-  department_name: "",
+  department_name: departmentName.value,
   project_name: "",
   start_time: "",
   end_time: "",
@@ -15,20 +18,18 @@ export const formState = reactive({
   reason: "",
 });
 
-const departmentName = ref("");
-const res = ref<any>({});
-
 async function get() {
   res.value = await projectSelect(
     useProjectMaintain,
     true,
     "department_name",
-    departmentName
+    departmentName.value
   );
+  console.log("res", res.value.options);
   return res;
 }
 
-export const ruleState = {
+export const ruleState = ref({
   job_number: {
     type: "number",
     label: "工号",
@@ -66,7 +67,7 @@ export const ruleState = {
       onChange: (e) => {
         // TODO:
         departmentName.value = e;
-        //   // await get();
+        get();
       },
     },
   },
@@ -81,7 +82,7 @@ export const ruleState = {
       },
     ],
     options: {
-      options: res.value?.options,
+      options: [],
     },
   },
   status: {
@@ -159,4 +160,23 @@ export const ruleState = {
       },
     ],
   },
-};
+});
+
+watch(
+  () => formState["department_name"],
+  async (newVal) => {
+    async function get() {
+      res.value = await projectSelect(
+        useProjectMaintain,
+        true,
+        "department_name",
+        newVal
+      );
+      Object.assign(
+        ruleState.value["project_name"].options.options,
+        res.value.options
+      );
+    }
+    await get();
+  }
+);
