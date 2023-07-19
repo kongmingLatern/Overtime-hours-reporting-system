@@ -57,7 +57,7 @@ const singleSelect = [
       console.log(e, record);
       echarts.value = {
         title: {
-          text: `xx项目${e}加班时长统计`,
+          text: `${record.project_name}项目 ${e}加班时长统计`,
         },
         xAxis: {
           data:
