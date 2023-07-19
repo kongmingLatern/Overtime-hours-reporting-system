@@ -7,7 +7,6 @@ export const projectSelect = async (hook, flag = false, ...args) => {
   if (!flag) {
     await initProjectData();
   } else {
-    // TODO:
     await getProjectName(args[0], args[1]);
   }
 

@@ -65,7 +65,6 @@ export const ruleState = ref({
     options: {
       options: (await departmentSelect(useDepartmentSearch)).options,
       onChange: (e) => {
-        // TODO:
         departmentName.value = e;
         get();
       },
