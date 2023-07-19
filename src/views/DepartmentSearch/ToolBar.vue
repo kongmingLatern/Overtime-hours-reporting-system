@@ -17,7 +17,7 @@ import { addDepartment } from "@/api";
 
 const onOk = async (e) => {
   await addDepartment(e);
-  // window.location.reload();
+  window.location.reload();
 };
 </script>
 
