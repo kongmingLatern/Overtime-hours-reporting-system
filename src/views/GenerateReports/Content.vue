@@ -25,6 +25,7 @@ import SingleSelect from "@/components/common/SingleSelect";
 import { useGenerateReports } from "@/store";
 import BarChart from "@/components/common/BarEchart.vue";
 import { onMounted, ref } from "vue";
+import { fetchMonthData, fetchYearData } from "@/api";
 const { data, loading, columns, getAllReportList } = useGenerateReports();
 const visible = ref(false);
 const echarts = ref({});
@@ -42,10 +43,19 @@ const singleSelect = [
         value: "月度",
       },
       {
-        value: "季度",
+        value: "年度",
       },
     ],
-    onChange: (e: any, record) => {
+    onChange: async (e: any, record) => {
+      let res;
+      if (e === "月度") {
+        res = await fetchMonthData(record);
+        console.log("月度,res", res);
+      } else {
+        res = await fetchYearData(record);
+        console.log("年度,res", res);
+      }
+
       visible.value = true;
       console.log(e, record);
       echarts.value = {
@@ -76,10 +86,7 @@ const singleSelect = [
           {
             name: "加班时长统计",
             type: "bar",
-            data:
-              e === "月度"
-                ? [5, 20, 36, 10, 5, 20, 36, 10, 5, 20, 36, 10]
-                : [5, 20, 36, 10],
+            data: e === "月度" ? [] : [5, 20, 36, 10],
           },
         ],
       };
