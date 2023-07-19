@@ -1,10 +1,11 @@
 import { fetchAllPendingPerson } from "@/api";
+import dayjs from "dayjs";
 import { ref } from "vue";
 
 const data = ref<ResponsiveTimeReportType[]>([]);
 const loading = ref<boolean>(true);
 
-export const useResponsiveTimeReport = () => {
+export const useResponsiveTimeReport = (job_number?) => {
   const columns = [
     {
       title: "姓名",
@@ -37,6 +38,10 @@ export const useResponsiveTimeReport = () => {
       dataIndex: "report_time",
       key: "report_time",
       width: 200,
+      defaultSortOrder: "descend",
+      sorter: (a: ResponsiveTimeReportType, b: ResponsiveTimeReportType) =>
+        dayjs(a.report_time).diff(dayjs(b.report_time), "days"),
+      sortDirections: ["descend"],
     },
     {
       title: "加班事由",
@@ -84,6 +89,7 @@ export const useResponsiveTimeReport = () => {
       dataIndex: "report_time",
       key: "report_time",
       width: 200,
+      defaultSortOrder: "descend",
     },
     {
       title: "加班事由",
@@ -132,7 +138,11 @@ export const useResponsiveTimeReport = () => {
   };
 
   async function getAllPendingPersonList() {
-    const res = await fetchAllPendingPerson();
+    let res;
+    if (!job_number) {
+      res = await fetchAllPendingPerson();
+    }
+    res = await fetchAllPendingPerson(job_number);
     data.value = res.data;
     loading.value = false;
   }
@@ -141,7 +151,13 @@ export const useResponsiveTimeReport = () => {
     await getAllPendingPersonList();
   }
 
+  async function reset() {
+    data.value = [];
+    loading.value = true;
+  }
+
   return {
+    reset,
     init,
     data,
     loading,
