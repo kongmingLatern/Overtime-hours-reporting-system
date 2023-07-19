@@ -11,6 +11,7 @@ export default defineComponent({
           bg="#f0f2f5"
           breakpoint="lg"
           collapsed-width={0}
+          z={100}
         >
           <SiderMenu />
         </aLayoutSider>
