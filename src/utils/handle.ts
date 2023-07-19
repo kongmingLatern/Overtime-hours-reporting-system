@@ -19,6 +19,17 @@ import dayjs from "dayjs";
 
 // ['job_number', 'job_name', 'department_name', 'status', 'start_time', 'end_time', 'over_time', 'report_time', 'reason']
 export const handleExcelData = (data: any[]) => {
+  const order = [
+    "job_number",
+    "job_name",
+    "department_name",
+    "status",
+    "start_time",
+    "end_time",
+    "over_time",
+    "report_time",
+    "reason",
+  ];
   function transformTitle() {
     const titleMap = {
       job_number: "工号",
@@ -31,7 +42,6 @@ export const handleExcelData = (data: any[]) => {
       report_time: "填报时间",
       reason: "驳回原因",
     };
-
     return Object.keys(titleMap).map((item) => titleMap[item]);
   }
 
@@ -46,10 +56,14 @@ export const handleExcelData = (data: any[]) => {
       // 过滤掉 key
       delete item.key;
       delete item.project_name;
-      return Object.values(item);
+      return order.map((key) => {
+        if (!item[key]) {
+          return "无";
+        }
+        return item[key];
+      });
     });
   }
-
   return [getExcelTitle(), ...getExcelData()];
 };
 
