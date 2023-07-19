@@ -21,6 +21,7 @@ export const formState = reactive({
   end_time: "",
   over_time: "",
   project_name: "",
+  report_time: "",
   over_time_reason: "",
 });
 
@@ -53,12 +54,15 @@ export const ruleState = ref({
     type: "readonly",
     label: "加班时长(时)",
   },
+  report_time: {
+    type: "date",
+    label: "填报时间",
+  },
   project_name: {
     type: "select",
     label: "所属项目",
     options: {
       options: [],
-      // options: (await projectSelect(useProjectMaintain)).options,
     },
   },
   over_time_reason: {
