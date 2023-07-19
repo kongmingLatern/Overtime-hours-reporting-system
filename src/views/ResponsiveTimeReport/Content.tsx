@@ -1,24 +1,24 @@
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, onMounted, onUnmounted, ref } from "vue";
 import { useResponsiveTimeReport } from "@/store";
 import ResponsiveTab from "@/components/responsive/ResponsiveTab.tsx";
 import CustomTable from "@/components/common/CustomTable";
 import ModalButton from "@/components/common/ModalButton";
 import { updateReject } from "@/api";
+import { message } from "ant-design-vue";
 
 export default defineComponent({
   setup() {
     const activeKey = ref<string>("pending");
-    const {
-      data,
-      loading,
-      columns,
-      reportColumns,
-      getAllPendingPersonList,
-      ruleState,
-    } = useResponsiveTimeReport();
+    const { data, loading, columns, reportColumns, init, reset, ruleState } =
+      useResponsiveTimeReport();
 
     onMounted(async () => {
-      await getAllPendingPersonList();
+      await init();
+    });
+
+    // 组件销毁阶段
+    onUnmounted(async () => {
+      await reset();
     });
 
     const tabList = [
@@ -30,7 +30,7 @@ export default defineComponent({
             columns={columns}
             data={data.value.filter((i) => i.pending)}
             loading={loading.value}
-            scroll={{ x: 700 }}
+            scroll={{ x: 900 }}
             v-slots={{
               operation: (record) => {
                 return (
@@ -74,12 +74,8 @@ export default defineComponent({
                                     ...record,
                                     reason: result.reason,
                                   });
-                                  // window.location.reload();
-
-                                  console.log({
-                                    ...record,
-                                    reason: result.reason,
-                                  });
+                                  message.success("驳回成功");
+                                  window.location.reload();
                                 }}
                               />
                               <aButton
@@ -97,10 +93,9 @@ export default defineComponent({
                       },
                     }}
                     onOk={async (result) => {
-                      // NOTE: 同意 pending 赋值为 0 即可
                       await updateReject(result);
-                      // window.location.reload();
-                      console.log("同意", result);
+                      message.success("同意成功");
+                      window.location.reload();
                     }}
                   />
                 );
@@ -120,7 +115,7 @@ export default defineComponent({
             columns={reportColumns}
             data={data.value.filter((i) => !i.pending)}
             loading={loading.value}
-            scroll={{ x: 700 }}
+            scroll={{ x: 800 }}
             pagination={{
               position: ["bottomCenter"],
             }}
