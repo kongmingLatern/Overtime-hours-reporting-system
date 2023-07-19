@@ -24,7 +24,5 @@ export function addReports(data) {
 
 // NOTE: 驳回
 export function updateReject(data) {
-  const res = http.put(AxiosAPIPath["UPDATE"], data);
-  message.success("驳回成功");
-  return res;
+  return http.put(AxiosAPIPath["UPDATE"], data);
 }
