@@ -7,8 +7,12 @@ const enum AxiosAPIPath {
   UPDATE = "/updateReject",
 }
 // NOTE: 获取所有的人员查询信息
-export function fetchAllPendingPerson() {
-  return http.get(AxiosAPIPath["GETALL"]);
+export function fetchAllPendingPerson(job_number?) {
+  return http.get(AxiosAPIPath["GETALL"], {
+    params: {
+      job_number,
+    },
+  });
 }
 
 // NOTE: 新增填报信息
