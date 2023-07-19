@@ -49,13 +49,10 @@ const singleSelect = [
     onChange: async (e: any, record) => {
       let res;
       if (e === "月度") {
-        res = await fetchMonthData(record);
-        console.log("月度,res", res);
+        res = (await fetchMonthData(record)).data;
       } else {
-        res = await fetchYearData(record);
-        console.log("年度,res", res);
+        res = (await fetchYearData(record)).data;
       }
-
       visible.value = true;
       console.log(e, record);
       echarts.value = {
@@ -79,14 +76,14 @@ const singleSelect = [
                   "11月",
                   "12月",
                 ]
-              : ["1月", "2月", "3月", "4月"],
+              : res.yearList,
         },
         yAxis: {},
         series: [
           {
             name: "加班时长统计",
             type: "bar",
-            data: e === "月度" ? [] : [5, 20, 36, 10],
+            data: e === "月度" ? res : res.overtimeList,
           },
         ],
       };
