@@ -30,6 +30,7 @@ export function useLogin() {
   const onFinish = async (value) => {
     const { data } = await fetchLogin(value);
     localStorage.setItem("job_number", value.job_number);
+    localStorage.setItem("job_name", value.job_name);
     console.log("data", data);
     message.success("登录成功");
     if (data.user_type === 0) {
@@ -43,9 +44,17 @@ export function useLogin() {
     }
   };
 
+  const exit = () => {
+    localStorage.removeItem("job_number");
+    localStorage.removeItem("token");
+    message.success("退出成功");
+    goTo(RouterName.LOGIN);
+  };
+
   return {
     formState,
     ruleState,
     onFinish,
+    exit,
   };
 }
