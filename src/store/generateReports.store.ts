@@ -7,6 +7,11 @@ const loading = ref<boolean>(true);
 export const useGenerateReports = () => {
   const columns = [
     {
+      title: "员工号",
+      dataIndex: "job_number",
+      key: "job_number",
+    },
+    {
       title: "员工姓名",
       dataIndex: "job_name",
       key: "job_name",
