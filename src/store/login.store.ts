@@ -2,9 +2,10 @@ import { fetchLogin } from "@/api";
 import { useGoto } from "./../composables/useGoto";
 import { message } from "ant-design-vue";
 import { reactive } from "vue";
+import { RouterName } from "@/router/RouterName";
 
 export function useLogin() {
-  const { goToAdmin } = useGoto();
+  const { goTo, goToAdmin } = useGoto();
 
   const formState = reactive({
     job_name: "",
@@ -27,9 +28,19 @@ export function useLogin() {
   };
 
   const onFinish = async (value) => {
-    await fetchLogin(value);
+    const { data } = await fetchLogin(value);
+    localStorage.setItem("job_number", value.job_number);
+    console.log("data", data);
     message.success("登录成功");
-    goToAdmin();
+    if (data.user_type === 0) {
+      goTo(RouterName.HOME);
+    } else if (data.user_type === 1) {
+      goTo(RouterName.RESPONSIVE);
+    } else if (data.user_type === 2) {
+      goToAdmin();
+    } else {
+      message.error("系统错误");
+    }
   };
 
   return {
