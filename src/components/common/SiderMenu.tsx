@@ -1,29 +1,34 @@
 import { Icon } from "@iconify/vue";
 import { defineComponent } from "vue";
 import { useGoto } from "@/composables";
-import { MenuLists, useSelectStore } from "@/store";
+import { MenuLists, useLogin, useSelectStore } from "@/store";
 
 export default defineComponent({
   setup() {
     const { goTo } = useGoto();
     const { selectedKeys, handleClick } = useSelectStore();
+    const { exit } = useLogin();
 
     return () => (
       <>
-        <aCarousel autoplay={true} dots={false} p="5">
-          <div class="text-center bg-[#001529] p-2">
-            <h3 color="white">1</h3>
+        <div class="flex justify-around bg-#001529 pb-2">
+          <div>
+            <aAvatar
+              v-slots={{
+                icon: () => <Icon icon="mdi:account" class="w-full h-full" />,
+              }}
+            />
+            <span class="text-white pl-2">
+              {localStorage.getItem("job_name") || "User"}
+            </span>
           </div>
-          <div class="text-center bg-[#001529] p-2">
-            <h3 color="white">2</h3>
+
+          <div>
+            <aButton onClick={exit} ghost>
+              退出登陆
+            </aButton>
           </div>
-          <div class="text-center bg-[#001529] p-2">
-            <h3 color="white">3</h3>
-          </div>
-          <div class="text-center bg-[#001529] p-2">
-            <h3 color="white">4</h3>
-          </div>
-        </aCarousel>
+        </div>
         <aMenu
           v-model:selectedKeys={selectedKeys.value}
           theme="dark"
