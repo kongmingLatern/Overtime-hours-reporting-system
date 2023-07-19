@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { RouterName } from "./RouterName";
+import { getToken } from "@/utils";
+import { message } from "ant-design-vue";
 
 const routes = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -102,6 +104,28 @@ routes.addRoute({
     title: "404",
   },
   component: () => import("@/pages/NotFound.vue"),
+});
+
+routes.beforeEach((to, from, next) => {
+  document.title = to.meta.title as string;
+
+  if (getToken()) {
+    const userType = localStorage.getItem("user_type");
+    if (to.name === RouterName.LOGIN) {
+      next({ name: RouterName.HOME });
+    } else if (to.name === RouterName.RESPONSIVE) {
+      next();
+    } else if (to.name === RouterName.HOME && userType === "1") {
+      next();
+    } else if (to.name === RouterName.ADMIN && userType === "2") {
+      next();
+    }
+  } else {
+    // NOTE: 无 token 的情况下，如果是登录页，直接进入，否则跳转到登录页
+    message.error("请先登录");
+    next({ name: RouterName.LOGIN });
+  }
+  next();
 });
 
 // routes.addRoute()
