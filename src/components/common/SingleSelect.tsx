@@ -26,6 +26,7 @@ export default defineComponent({
   emits: ["update:value"],
   setup(props, { attrs, emit }) {
     const select = ref(null);
+    const options = ref(props.options);
     const value = ref(props.value);
 
     const onChange = (targetValue) => {
@@ -44,8 +45,8 @@ export default defineComponent({
         placeholder={props.placeholder}
         {...attrs}
       >
-        {props.options &&
-          props.options.map((option: any) => (
+        {options.value &&
+          options.value.map((option: any) => (
             <aSelectOption value={option.value} {...option.options}>
               {option.value}
             </aSelectOption>
