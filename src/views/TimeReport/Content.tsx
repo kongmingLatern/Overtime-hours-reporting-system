@@ -9,17 +9,11 @@ import { addReports } from "@/api";
 export default defineComponent({
   setup() {
     const activeKey = ref<string>("pending");
-    const {
-      data,
-      loading,
-      columns,
-      reportColumns,
-      getAllPendingPersonList,
-      ruleState,
-    } = useResponsiveTimeReport();
+    const { data, loading, columns, reportColumns, init, ruleState } =
+      useResponsiveTimeReport(localStorage.getItem("job_number"));
 
     onMounted(async () => {
-      await getAllPendingPersonList();
+      await init();
     });
 
     const tabList = [
@@ -94,6 +88,7 @@ export default defineComponent({
           }}
           onOk={async (result) => {
             await addReports(result);
+            window.location.reload();
           }}
         />
       </>
