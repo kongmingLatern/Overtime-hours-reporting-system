@@ -1,5 +1,5 @@
 <template>
-  <div bg="#001529" flex j-a-c h="150px">
+  <div bg="#001529" flex j-a-c h="full">
     <a-space :size="32" direction="horizontal">
       <a-space :size="32">
         <SearchInput

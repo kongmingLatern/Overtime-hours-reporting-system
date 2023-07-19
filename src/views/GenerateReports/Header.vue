@@ -1,48 +1,6 @@
 <template>
-  <div bg="#001529" flex j-a-c h="150px">
-    <a-space :size="32" direction="horizontal">
-      <a-space :size="32">
-        <SingleSelect
-          v-for="item in singleSelect"
-          :key="item.label"
-          :value="item.value"
-          :options="item.options"
-          :placeholder="item.placeholder"
-          :on-change="item.onChange"
-          class="w-[210px]"
-        />
-      </a-space>
-    </a-space>
-  </div>
+  <div bg="#001529" flex j-a-c h="full" color="white" text="2xl">生成报表</div>
 </template>
-
-<script setup lang="ts">
-import SingleSelect from "@/components/common/SingleSelect";
-const singleSelect = [
-  {
-    label: "报表类型",
-    placeholder: "请选择报表类型",
-    value: "月度",
-    options: [
-      {
-        value: "月度",
-        options: {
-          disabled: true,
-        },
-      },
-      {
-        value: "季度",
-        options: {
-          disabled: true,
-        },
-      },
-    ],
-    onChange: (e: any) => {
-      console.log(e);
-    },
-  },
-];
-</script>
 
 <style lang="scss" scoped>
 :deep(.ant-space-item) {
