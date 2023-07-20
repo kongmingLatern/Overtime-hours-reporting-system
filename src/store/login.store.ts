@@ -31,13 +31,12 @@ export function useLogin() {
     const { data } = await fetchLogin(value);
     localStorage.setItem("job_number", value.job_number);
     localStorage.setItem("job_name", value.job_name);
-    console.log("data", data);
     message.success("登录成功");
-    if (data.user_type === 0) {
+    if (Number(data.user_type) === 0) {
       goTo(RouterName.HOME);
-    } else if (data.user_type === 1) {
+    } else if (Number(data.user_type) === 1) {
       goTo(RouterName.RESPONSIVE);
-    } else if (data.user_type === 2) {
+    } else if (Number(data.user_type) === 2) {
       goToAdmin();
     } else {
       message.error("系统错误");
