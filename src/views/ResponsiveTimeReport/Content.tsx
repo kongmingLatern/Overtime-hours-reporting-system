@@ -1,4 +1,4 @@
-import { defineComponent, onMounted, onUnmounted, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { useResponsiveTimeReport } from "@/store";
 import ResponsiveTab from "@/components/responsive/ResponsiveTab.tsx";
 import CustomTable from "@/components/common/CustomTable";
@@ -9,16 +9,11 @@ import { message } from "ant-design-vue";
 export default defineComponent({
   setup() {
     const activeKey = ref<string>("pending");
-    const { data, loading, columns, reportColumns, init, reset, ruleState } =
+    const { data, loading, columns, reportColumns, init, ruleState } =
       useResponsiveTimeReport();
 
     onMounted(async () => {
       await init();
-    });
-
-    // 组件销毁阶段
-    onUnmounted(async () => {
-      await reset();
     });
 
     const tabList = [
