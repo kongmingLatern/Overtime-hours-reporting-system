@@ -166,7 +166,12 @@ export const useResponsiveTimeReport = (job_number?) => {
       res = await fetchAllPendingPerson();
     }
     res = await fetchAllPendingPerson(job_number);
-    data.value = res.data;
+    data.value = res.data.map((i) => {
+      return {
+        ...i,
+        key: i.job_number,
+      };
+    });
     loading.value = false;
   }
 

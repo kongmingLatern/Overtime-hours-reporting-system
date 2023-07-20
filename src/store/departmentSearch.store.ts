@@ -83,7 +83,12 @@ export const useDepartmentSearch = () => {
 
   async function getAllDepartmentList() {
     const res = await fetchAllDepartment();
-    data.value = res.data;
+    data.value = res.data.map((i) => {
+      return {
+        ...i,
+        key: i.job_number,
+      };
+    });
     loading.value = false;
   }
 

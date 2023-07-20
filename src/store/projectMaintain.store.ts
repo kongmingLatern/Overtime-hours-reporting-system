@@ -32,7 +32,12 @@ export const useProjectMaintain = () => {
 
   async function getAllProjectList() {
     const res = await fetchAllProject();
-    data.value = res.data;
+    data.value = res.data.map((i) => {
+      return {
+        ...i,
+        key: i.job_number,
+      };
+    });
     loading.value = false;
   }
 

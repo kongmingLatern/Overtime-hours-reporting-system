@@ -73,7 +73,12 @@ export const useGenerateReports = () => {
 
   async function getAllReportList() {
     const res = await fetchAllGenerateReports();
-    data.value = res.data;
+    data.value = res.data.map((i) => {
+      return {
+        ...i,
+        key: i.job_number,
+      };
+    });
     loading.value = false;
   }
 

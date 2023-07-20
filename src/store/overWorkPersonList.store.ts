@@ -167,7 +167,12 @@ export function useOverWorkPersonList() {
   async function getAllOverWorkPersonList() {
     const res = await fetchAllOverWorkPerson();
     loading.value = false;
-    data.value = res.data;
+    data.value = res.data.map((i) => {
+      return {
+        ...i,
+        key: i.job_number,
+      };
+    });
   }
 
   async function init() {
