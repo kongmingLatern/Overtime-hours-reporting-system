@@ -145,12 +145,8 @@ const ruleState: Record<keyof typeof formState, Record<string, any>> = {
   },
 };
 const value = ref<string>(options[0].value);
-const onFocus = () => {
-  console.log("focu ---");
-};
 const handleChange = (target) => {
   value.value = target;
-  console.log("handleChange", target);
 };
 const onSearch = (value) => {
   console.log("onSearch", value);

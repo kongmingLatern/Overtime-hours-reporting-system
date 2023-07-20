@@ -28,8 +28,6 @@ export function fetchProjectName(key: "department_name" | "job_number", value) {
       ? AxiosAPIPath.GETNAMEBYDEPARTMENTNAME
       : AxiosAPIPath.GETNAMEBYJOBNUMBER;
 
-  console.log("key", key);
-  console.log("value", value);
 
   return http.get(path, {
     params: {

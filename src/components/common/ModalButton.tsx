@@ -68,8 +68,8 @@ export default defineComponent({
       if (formRef.value) {
         formRef.value
           .validateFields()
-          .then((values) => {
-            console.log("Received values of form: ", values);
+          .then(() => {
+            // console.log("Received values of form: ", values);
             props.onOk(toRaw(formState));
             visible.value = false;
             // formRef.value && formRef.value.resetFields();
@@ -77,7 +77,7 @@ export default defineComponent({
           })
           .catch((info) => {
             props.onFail(info);
-            console.log("Validate Failed:", info);
+            // console.log("Validate Failed:", info);
           });
       }
     };

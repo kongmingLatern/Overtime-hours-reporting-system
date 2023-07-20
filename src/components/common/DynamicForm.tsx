@@ -83,7 +83,6 @@ export default defineComponent({
       if (props.onFinish) {
         props.onFinish(values);
       }
-      console.log("Success:", values);
     };
 
     const onFinishFailed = (errorInfo: any) => {
