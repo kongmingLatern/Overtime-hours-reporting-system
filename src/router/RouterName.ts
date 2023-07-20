@@ -11,4 +11,5 @@ export const enum RouterName {
   LOGIN = "login",
   NOTFOUND = "NotFound",
   MY = "my",
+  ADMINRESPONSIVE = "ADMINRESPONSIVE"
 }

@@ -69,7 +69,18 @@ const routes = createRouter({
       meta: {
         title: "管理填报信息",
       },
-      component: () => import("@/pages/ResponsiveTimeReport.vue"),
+      redirect: "/timeReport/index",
+      component: () => import("@/layout/MobileContent.vue"),
+      children: [
+        {
+          path: "index",
+          name: RouterName.ADMINRESPONSIVE,
+          meta: {
+            title: "管理填报信息",
+          },
+          component: () => import("@/pages/AdminTimeReport.vue"),
+        },
+      ],
     },
     {
       path: "/home",
@@ -115,6 +126,11 @@ routes.addRoute({
 routes.beforeEach((to, from, next) => {
   document.title = to.meta.title as string;
 
+  if (to.name === RouterName.LOGIN && !getToken()) {
+    next();
+    return;
+  }
+
   if (getToken()) {
     const userType = localStorage.getItem("user_type");
     if (to.name === RouterName.LOGIN) {
@@ -130,6 +146,7 @@ routes.beforeEach((to, from, next) => {
     // NOTE: 无 token 的情况下，如果是登录页，直接进入，否则跳转到登录页
     message.error("请先登录");
     next({ name: RouterName.LOGIN });
+    return
   }
   next();
 });

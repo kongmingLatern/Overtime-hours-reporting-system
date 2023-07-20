@@ -1,10 +1,17 @@
+import { useLogin } from "@/store";
 import { getJobName } from "@/utils";
 import { Icon } from "@iconify/vue";
 import { defineComponent } from "vue";
+interface DataType {
+  icon: string;
+  text: string;
+  onClick?: () => void;
+}
 export default defineComponent({
   name: "MyContent",
   setup() {
-    const data: string[] = [
+    const { exit } = useLogin();
+    const data: DataType[] = [
       {
         icon: "mdi:account",
         text: "我的信息",
@@ -24,6 +31,7 @@ export default defineComponent({
       {
         icon: "mdi:logout",
         text: "退出登陆",
+        onClick: exit,
       },
     ];
 
@@ -50,9 +58,10 @@ export default defineComponent({
                     class={
                       "lh-[60px] text-[18px] active:bg-[#f4f4f4] transition"
                     }
+                    onClick={() => item.onClick?.()}
                   >
                     <div class={"flex items-center"}>
-                      <Icon icon={item.icon} width="30" />
+                      <Icon icon={item.icon} width="25" />
                       <span class={"ml-2"}>{item.text}</span>
                     </div>
                     <Icon icon={"mdi:arrow-right"} width="20" color="ccc" />
