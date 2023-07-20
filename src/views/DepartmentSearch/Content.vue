@@ -1,6 +1,12 @@
 <template>
   <slot name="toolbar"></slot>
-  <CustomTable :columns="columns" :data="data" :loading="loading">
+  <CustomTable
+    :columns="columns"
+    :data="data"
+    :loading="loading"
+    :scroll="{ x: 1200 }"
+    :pagination="{ position: ['bottomCenter'] }"
+  >
     <template #operation="record">
       <a-space>
         <ModalButton

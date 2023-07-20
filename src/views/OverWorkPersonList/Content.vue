@@ -1,6 +1,11 @@
 <template>
   <slot name="toolbar"></slot>
-  <CustomTable :columns="columns" :data="data" :loading="loading">
+  <CustomTable
+    :columns="columns"
+    :data="data"
+    :loading="loading"
+    :scroll="{ x: 1200 }"
+  >
     <template #operation="record">
       <a-space>
         <ModalButton
@@ -52,7 +57,7 @@ import DeleteButton from "@/components/common/DeleteButton";
 import { onMounted } from "vue";
 import { useOverWorkPersonList } from "@/store";
 import { removeOverWorkPersonById } from "@/api";
-const { data, loading, columns,ruleState, getAllOverWorkPersonList } =
+const { data, loading, columns, ruleState, getAllOverWorkPersonList } =
   useOverWorkPersonList();
 onMounted(async () => {
   await getAllOverWorkPersonList();
