@@ -1,15 +1,20 @@
 <template>
   <div bg="#001529" flex j-a-c h="full">
-    <a-space :size="32" direction="horizontal">
-      <a-space :size="32">
-        <SearchInput
-          v-for="item in searchList"
-          :key="item.label"
-          :placeholder="item.placeholder"
-          :on-search="item.onSearch"
-        />
-        <DatePicker />
-      </a-space>
+    <a-space :size="32" direction="vertical">
+      <a-row :gutter="[8, 8]" class="j-a-c">
+        <a-col v-for="item in searchList" :key="item.label">
+          <SearchInput
+            :placeholder="item.placeholder"
+            :on-search="item.onSearch"
+            class="lg:w-[250px] md:w-[230px] sm:w-[210px] w-[150px]"
+          />
+        </a-col>
+      </a-row>
+      <a-row>
+        <a-col>
+          <DatePicker class="w-[300px] lg:w-[400px]" />
+        </a-col>
+      </a-row>
     </a-space>
   </div>
 </template>
@@ -23,7 +28,7 @@ import DatePicker from "@/components/common/DatePicker.vue";
 <style lang="scss" scoped>
 :deep(.ant-space-item) {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 </style>

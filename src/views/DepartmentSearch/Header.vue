@@ -1,26 +1,27 @@
 <template>
   <div bg="#001529" flex j-a-c h="full">
     <a-space :size="32" direction="vertical">
-      <a-space :size="32">
-        <SearchInput
-          v-for="item in searchList"
-          :key="item.label"
-          :placeholder="item.placeholder"
-          :on-search="item.onSearch"
-        />
-      </a-space>
+      <a-row :gutter="[8, 8]">
+        <a-col v-for="item in searchList" :key="item.label">
+          <SearchInput
+            :placeholder="item.placeholder"
+            :on-search="item.onSearch"
+            class="lg:w-[250px] md:w-[230px] sm:w-[210px] w-[150px]"
+          />
+        </a-col>
+      </a-row>
 
-      <a-space :size="32">
-        <SingleSelect
-          v-for="item in singleSelectList"
-          :key="item.label"
-          :value="item.value"
-          :options="item.options"
-          :placeholder="item.placeholder"
-          :on-change="item.onChange"
-          class="w-[210px]"
-        />
-      </a-space>
+      <a-row :gutter="[8, 8]">
+        <a-col v-for="item in singleSelectList" :key="item.label">
+          <SingleSelect
+            :value="item.value"
+            :options="item.options"
+            :placeholder="item.placeholder"
+            :on-change="item.onChange"
+            class="lg:w-[260px] md:w-[230px] sm:w-[200px] w-[200px]"
+          />
+        </a-col>
+      </a-row>
     </a-space>
   </div>
 </template>

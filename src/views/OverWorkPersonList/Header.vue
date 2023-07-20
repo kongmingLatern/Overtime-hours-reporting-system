@@ -6,7 +6,7 @@
           <SearchInput
             :placeholder="item.placeholder"
             :on-search="item.onSearch"
-            class="lg:w-[210px] md:w-[160px] sm:w-[130px] xs:w-[100px] w-[100px]"
+            class="lg:w-[250px] md:w-[220px] sm:w-[210px] w-[180px]"
           />
         </a-col>
       </a-row>
@@ -24,7 +24,7 @@
             :options="item.options"
             :placeholder="item.placeholder"
             :on-change="item.onChange"
-            class="lg:w-[210px] md:w-[160px] sm:w-[110px] xs:w-[60px] w-[100px]"
+            class="lg:w-[210px] md:w-[160px] sm:w-[130px] w-[110px]"
           />
         </a-col>
       </a-row>
@@ -36,8 +36,7 @@
 import SearchInput from "@/components/common/SearchInput";
 import SingleSelect from "@/components/common/SingleSelect";
 import RangePicker from "@/components/common/RangePicker.vue";
-import { searchList } from "./helpers";
-import { singleSelectList } from "./helpers";
+import { searchList, singleSelectList } from "./helpers";
 </script>
 
 <style lang="scss" scoped>
