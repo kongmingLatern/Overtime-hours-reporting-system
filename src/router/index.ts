@@ -82,7 +82,7 @@ const routes = createRouter({
         {
           path: "index",
           name: RouterName.INDEX,
-          component: () => import("@/pages/TimeReport.vue"),
+          component: () => import("@/pages/UserTimeReport.vue"),
         },
       ],
     },
