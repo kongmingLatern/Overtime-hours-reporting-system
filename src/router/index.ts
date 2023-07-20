@@ -78,11 +78,17 @@ const routes = createRouter({
       meta: {
         title: "填报信息",
       },
+      component: () => import("@/layout/MobileContent.vue"),
       children: [
         {
           path: "index",
           name: RouterName.INDEX,
           component: () => import("@/pages/UserTimeReport.vue"),
+        },
+        {
+          path: "my",
+          name: RouterName.MY,
+          component: () => import("@/pages/My.vue"),
         },
       ],
     },
