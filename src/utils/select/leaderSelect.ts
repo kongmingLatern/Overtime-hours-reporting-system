@@ -16,8 +16,8 @@ export const leaderSelect = async (hook) => {
 
   return {
     label: "部长",
-    value: leaderList.value[0].value,
-    options: leaderList.value,
+    value: leaderList.value[0].value as string,
+    options: leaderList.value as any[],
     placeholder: "请选择部长名字",
     onChange: async (e: any) => {
       await fuzzyQueryByKey(hook, "leader", e);

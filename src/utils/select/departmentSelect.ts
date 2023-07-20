@@ -18,8 +18,8 @@ export const departmentSelect = async (hook) => {
   return {
     label: "所属部门",
     placeholder: "请选择所属部门",
-    value: departmentData?.value[0]?.value,
-    options: departmentData?.value,
+    value: departmentData?.value[0]?.value as string,
+    options: departmentData?.value as any[],
     onChange: async (e: any) => {
       await fuzzyQueryByKey(hook, "department_name", e);
     },

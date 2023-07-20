@@ -22,8 +22,8 @@ export const projectSelect = async (hook, flag = false, ...args) => {
 
   return {
     label: "所属项目",
-    value: projectList?.value[0]?.value,
-    options: projectList?.value,
+    value: projectList?.value[0]?.value as string,
+    options: projectList?.value as any[],
     placeholder: "请选择所属项目",
     onChange: async (e: any) => await fuzzyQueryByKey(hook, "project_name", e),
   };
