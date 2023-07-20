@@ -27,21 +27,25 @@
 <script lang="ts" setup>
 import { Icon } from "@iconify/vue";
 import { ref } from "vue";
+import { useGoto } from "@/composables";
+import { RouterName } from "@/router/RouterName";
+
 const activeKeys = ref<string>("");
+const { goTo } = useGoto();
 
 const tarbarList = ref([
   {
     key: "pending",
     icon: "material-symbols:pending-actions",
     text: "待审批",
-    link: "/pending",
+    linkName: RouterName.INDEX,
     isActive: true,
   },
   {
     key: "my",
     icon: "mdi:account",
     text: "我的",
-    link: "/my",
+    linkName: RouterName.MY,
     isActive: false,
   },
 ]);
@@ -52,5 +56,11 @@ const changeActive = (key: string) => {
   tarbarList.value.forEach((item) => {
     item.isActive = item.key === key;
   });
+
+  // 路由跳转
+  const target = tarbarList.value.find((item) => item.key === key);
+  if (target) {
+    goTo(target.linkName);
+  }
 };
 </script>
