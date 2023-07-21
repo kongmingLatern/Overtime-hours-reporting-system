@@ -1,8 +1,8 @@
 import { useProjectMaintain } from "@/store";
 import { projectSelect } from "@/utils";
-import { reactive, ref, watch } from "vue";
+import { reactive, ref } from "vue";
 
-const currentJobNumber = ref("");
+const currentJobNumber = ref(localStorage.getItem("job_number") ?? "");
 const res = ref<any>({});
 
 async function getOptions(job_number) {
@@ -15,8 +15,8 @@ async function getOptions(job_number) {
 }
 
 export const formState = reactive({
-  job_name: "",
-  job_number: "",
+  job_name: localStorage.getItem("job_name") ?? "",
+  job_number: currentJobNumber.value,
   start_time: "",
   end_time: "",
   over_time: "",
@@ -24,6 +24,10 @@ export const formState = reactive({
   report_time: "",
   over_time_reason: "",
 });
+
+(async () => {
+  if (currentJobNumber.value) await searchProjectName(currentJobNumber.value);
+})();
 
 export const ruleState = ref({
   job_name: {
@@ -34,6 +38,9 @@ export const ruleState = ref({
     type: "number",
     label: "工号",
     options: {
+      onLoad: () => {
+        console.log("1", 1);
+      },
       onChange: (e) => {
         currentJobNumber.value = e;
       },
