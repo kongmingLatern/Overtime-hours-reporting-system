@@ -5,6 +5,11 @@ import { reactive, ref } from "vue";
 const currentJobNumber = ref(localStorage.getItem("job_number") ?? "");
 const res = ref<any>({});
 
+// NOTE: 若当前用户已经登陆，则自动获取当前用户的工号和姓名
+(async () => {
+  if (currentJobNumber.value) await searchProjectName(currentJobNumber.value);
+})();
+
 async function getOptions(job_number) {
   res.value = await projectSelect(
     useProjectMaintain,
@@ -25,17 +30,13 @@ export const formState = reactive({
   over_time_reason: "",
 });
 
-(async () => {
-  if (currentJobNumber.value) await searchProjectName(currentJobNumber.value);
-})();
-
 export const ruleState = ref({
   job_name: {
-    type: "text",
+    type: "readonly",
     label: "员工姓名",
   },
   job_number: {
-    type: "number",
+    type: "readonly",
     label: "工号",
     options: {
       onLoad: () => {
